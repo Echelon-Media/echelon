@@ -1,0 +1,3440 @@
+@font-face {
+  font-family: "BreadDream";
+  src: url("../fonts/BreadDream-ZpyRz.otf") format("woff");
+}
+
+@font-face {
+  font-family: "centraNo2";
+  src: url("../fonts/Centra\ No2.ttf") format("woff");
+}
+@font-face {
+  font-family: "Blue_ocean";
+  src: url("../fonts/BLUE\ OCEAN.TTF") format("truetype");
+}
+@font-face {
+  font-family: "Londrina";
+  src: url("../fonts/londerina/LondrinaSolid-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "tamil";
+  src: url("../fonts/GIST-TMOTChandra.ttf");
+}
+.shine-50-english {
+  --black: #0f0f10;
+  --white: #ffff;
+  --yellow: #ffc024;
+  --blue: #56cbf4;
+  --pink: #ff5a85;
+  --red: #e73c64;
+  --headline-font: "BreadDream";
+  // --body-font: "centraNo2";
+  --londrina-font: "Londrina";
+  --londria-font: "Londrina";
+  --dropcap-font: "Blue_ocean";
+  --body-font: "Georgia";
+  --tamil-font: "tamil";
+
+  // --outfit-font: "Outfit", sans-serif;
+  // --bebas-font: "Bebas Neue", sans-serif;
+  // --body-font: "Noto Serif", serif;
+  // --image-caption-font: "Exo 2", sans-serif;
+  // --marriwheather-font: "Merriweather", serif;
+  // --antonio-font: "Antonio", sans-serif;
+  //    .top-div {
+
+  //     height: 300px;
+  //     color: black;
+  //     width: 100%;
+  //     background: #3498db;
+  //     clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  //      background: linear-gradient(135deg, #3498db 50%, transparent 50%);
+  // }
+
+  //logos
+  .desktop-logo{
+  display: block;
+}
+
+.mobile-logo{ display: none;}
+
+  .react-player__shadow {
+    background: radial-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgb(0 0 0 / 62%) 60%
+    ) !important;
+
+    .react-player__play-icon {
+      margin-left: 25px;
+    }
+  }
+
+  //Header seaction
+
+  .text-tamil {
+    font-size: 5vw;
+    font-family: var(--tamil-font) !important;
+  }
+
+  .shine-content-top-banner {
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    overflow: hidden;
+    z-index: 2000;
+
+    .shine-content-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6% !important;
+      position: absolute;
+      top: 10;
+      width: 100%;
+      z-index: 2;
+      background: none !important;
+    }
+
+    .top-star {
+      z-index: 1000;
+      margin-left: -20%;
+      margin-top: 20%;
+      transform: rotate(15deg);
+      height: 450px;
+      width: 530px;
+      z-index: 1;
+      margin-right: 0;
+      background: url("../../images/shine50/star.svg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+    }
+
+    .logo {
+      z-index: 1000;
+      width: 250px;
+      margin-left: 0%;
+      margin-top: -45%;
+      margin-bottom: 50%;
+      margin-right: 0;
+
+      img {
+        position: relative;
+        z-index: 15000;
+        width: 250px;
+        height: auto;
+        max-width: 250px !important;
+      }
+    }
+
+    .toggle-menu {
+      border: 1px solid black;
+      opacity: 0.6;
+      width: 100px;
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background: var(--white);
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      padding: 0.5rem;
+      z-index: 10;
+      position: relative;
+      top: 0px;
+      left: -10%;
+    }
+
+    .bar {
+      width: 30px;
+      height: 3px;
+      background-color: var(--black);
+      margin: 0.2rem 0;
+    }
+
+    .languages {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgb(244, 205, 7);
+
+      padding: 3px 15px;
+      color: #000000 !important;
+      font-family: var(--headline-font);
+      font-weight: 200;
+      font-size: 20px;
+      margin-top: 1%;
+    }
+
+    .popup-menu {
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(96, 197, 240, 0.9);
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      opacity: 0;
+      transition: all 0.4s ease;
+      pointer-events: none;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      z-index: 4000;
+
+      &.active {
+        transform: translateX(-50%) translateY(50px);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-items {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        font-weight: 500;
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+        color: var(--white);
+        font-family: var(--breaddream-font);
+        opacity: 0;
+        animation: slideIn 0.5s forwards ease;
+        animation-delay: 0.5s;
+
+        li {
+          border-bottom: 1px solid #fff;
+          padding-bottom: 0.5rem;
+          cursor: pointer;
+        }
+
+        li:nth-child(2) {
+          animation-delay: 0.4s;
+        }
+
+        li:nth-child(3) {
+          animation-delay: 0.5s;
+        }
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        color: var(--white);
+        opacity: 0;
+        animation: slideIn 0.5s forwards ease;
+        animation-delay: 0.6s;
+      }
+
+      .close-menu {
+        background: transparent;
+        color: var(--white);
+        border: none;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        cursor: pointer;
+        opacity: 0;
+        animation: slideIn 0.5s forwards ease;
+        animation-delay: 0.7s;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .banner-video-desktop {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+
+  //Homepage profiles
+
+  //*************************
+  //***********************
+  //Profile Page styles
+  //**********************
+  //************************
+
+  .top-div {
+    display: none;
+    background: none;
+    //    min-height: 600px;
+    //     height: 600px;
+    //     color: black;
+    //     background: #3498db;
+    //    clip-path: polygon(0% 0%, 185% 0%, 55% 94%, 11% 54%, 0% 90%, 0% 60%);
+    width: 1920px;
+    height: 1080px;
+    // clip-path: polygon(
+    //   1759.46px -1628.78px,
+    //   1919.83px -1855.59px,
+    //   1919.83px 304.88px,
+    //   1919.83px 304.88px,
+    //   1598.66028px 396.44696px,
+    //   1307.29904px 442.05848px,
+    //   1046.68816px 450.26852px,
+    //   817.76952px 429.63104px,
+    //   621.485px 388.7px,
+    //   458.77648px 336.02936px,
+    //   330.58584px 280.17308px,
+    //   237.85496px 229.68512px,
+    //   181.52572px 193.11944px,
+    //   162.54px 179.03px,
+    //   2.18px 405.84px,
+    //   2.18px -1754.62px,
+    //   2.18px -1754.62px,
+    //   323.34701px -1846.18724px,
+    //   614.70608px -1891.79952px,
+    //   875.31527px -1900.01068px,
+    //   1104.23264px -1879.37456px,
+    //   1300.51625px -1838.445px,
+    //   1463.22416px -1785.77584px,
+    //   1591.41443px -1729.92092px,
+    //   1684.14512px -1679.43408px,
+    //   1740.47429px -1642.86916px,
+    //   1759.46px -1628.78px
+    // );
+    // background-color: yellow;
+    background: url("../../images/shine50/profiletop.svg");
+    background-position: left;
+    background-size: cover;
+    z-index: 10;
+
+    background-repeat: no-repeat;
+  }
+  .mobile-profile-top {
+    display: none !important;
+  }
+
+  .profile-top {
+    display: flex;
+    width: 100%;
+    background: url("../../images/shine50/profiletop.svg");
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10% 0 10%;
+    margin-top: -0.2%;
+
+    .wrapper-top {
+      background-color: yellow;
+      width: 100%;
+      height: fit-content;
+
+      display: flex;
+      margin-bottom: 15%;
+      margin-top: 10%;
+      z-index: 1;
+    }
+    .wrapper-top::before {
+      background-image: url("../../images/shine50/profile-top-shape.svg");
+
+      background-size: contain;
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+      top: 350px;
+      width: 100%;
+      height: 600%;
+      max-height: 600px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-position: initial;
+      opacity: 0.5; /* Adjust transparency level */
+      z-index: -1; /* Ensure the pseudo-element is behind the content */
+      pointer-events: none;
+    }
+
+    .profile-top-leftside {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      padding-left: 16%;
+
+      height: fit-content;
+
+      .inductee-name {
+        position: relative;
+        font-family: var(--headline-font);
+        font-size: 4vw;
+        text-align: left;
+        z-index: 10000 !important;
+        margin-top: -90px;
+        width: 100%;
+        left: -20%;
+        z-index: 6000;
+        letter-spacing: 0.3rem;
+        text-decoration: double;
+        color: var(--pink);
+        line-height: 1;
+        // box-shadow: #181717;
+        // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+        // text-shadow: -4px -5px 0 rgb(19, 20, 19),
+        //   /* top-left shadow */ -4px 7px 0 rgb(15, 16, 15),
+        //   /* top-right shadow */ -7px 8px 4px rgb(19, 20, 19),
+        //   /* bottom-right shadow */ 5px 8px 1px rgb(19, 20, 19),
+        //   5px -4px 0px rgb(19, 20, 19);
+
+        // -6px -5px 0 rgb(19, 20, 19), -7px 4px 0 rgb(15, 16, 15), -6px 8px 4px rgb(19, 20, 19), 7px 6px 1px rgb(19, 20, 19), 7px -6px 0px rgb(19, 20, 19);
+        text-shadow: -4px -3px 0 rgb(19, 20, 19), -2px 6px 0 rgb(15, 16, 15),
+          -4px 6px 0px rgb(19, 20, 19), 5px 6px 1px rgb(19, 20, 19),
+          3px -3px 0px rgb(19, 20, 19);
+
+        transform: skew(0deg) rotate(-8deg);
+      }
+
+      .bio-section {
+        z-index: 1000;
+        left: -39%;
+        margin-top: 0;
+        position: relative;
+        width: 140%;
+        z-index: 5000;
+        height: auto;
+        padding: 10% 5% 1% 15%;
+        background-color: none;
+        border-radius: 1.2rem;
+        // border: 0px solid black;
+        // border-bottom: 5px solid;
+        // border-left: 5px solid;
+        // background: url('../../images/shine50/bio_background.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left;
+        transform: skew(0deg) rotate(0deg);
+
+        p {
+          // border: 1px solid red;
+
+          margin: 60px 15px -50px 5px;
+          padding: 0;
+          position: relative;
+          font-family: var(--londrina-font);
+          font-size: 1.8vw;
+          line-height: 110%;
+          width: 100%;
+          letter-spacing: 0.03em;
+          font-weight: 200;
+          color: #000;
+          text-wrap: wrap;
+          word-wrap: break-word;
+        }
+      }
+    }
+
+    .profile-top-rightside {
+      float: left;
+      width: 55%;
+      margin-top: -10%;
+      padding: 0 10% 0 2%;
+      height: fit-content;
+      position: relative;
+
+      img {
+        transform: skew(0deg) rotate(5deg);
+        width: 120%;
+        height: auto;
+        position: relative;
+        z-index: 7000;
+      }
+    }
+  }
+
+  .profile-middle-section {
+    background: transparent;
+  }
+
+  .profile-middle-mobile {
+    display: none;
+  }
+
+  .profile-middle {
+    margin-top: -20%;
+    padding: 0 0%;
+    z-index: 0;
+    width: auto;
+    height: fit-content;
+    padding-bottom: 15%;
+    // clip-path: polygon(
+    //   8.36% 12.12%,
+    //   /* 160.56px 280.44px */ 0% 2.59%,
+    //   /* 0px 59.82px */ 0% 93.39%,
+    //   /* 0px 2161.39px */ 0% 93.39%,
+    //   /* 0px 2161.39px */ 16.74% 97.24%,
+    //   /* 321.5604px 2250.46047px */ 31.94% 99.15%,
+    //   /* 613.2768px 2294.82896px */ 45.53% 99.51%,
+    //   /* 874.206px 2302.81609px */ 57.46% 98.64%,
+    //   /* 1103.4048px 2282.74248px */ 67.7% 96.93%,
+    //   /* 1299.93px 2242.92875px */ 76.74% 94.68%,
+    //   /* 1462.8384px 2191.69552px */ 82.89% 92.39%,
+    //   /* 1591.1868px 2137.36341px */ 87.71% 90.23%,
+    //   /* 1684.032px 2088.25304px */ 90.63% 88.68%,
+    //   /* 1740.4308px 2052.68503px */ 91.62% 88.06%,
+    //   /* 1759.44px 2038.98px */ 100% 97.63%,
+    //   /* 1920px 2259.6px */ 100% 6.83%,
+    //   /* 1920px 158.03px */ 100% 6.83%,
+    //   /* 1920px 158.03px */ 83.25% 2.98%,
+    //   /* 1598.4396px 68.95953px */ 68.07% 1.06%,
+    //   /* 1306.7232px 24.59104px */ 54.55% 0.72%,
+    //   /* 1045.794px 16.60391px */ 42.54% 1.59%,
+    //   /* 816.5952px 36.67752px */ 32.29% 3.31%,
+    //   /* 620.07px 76.49125px */ 23.81% 5.52%,
+    //   /* 457.1616px 127.72448px */ 17.12% 7.87%,
+    //   /* 328.8132px 182.05659px */ 12.29% 9.99%,
+    //   /* 235.968px 231.16696px */ 9.36% 11.53%,
+    //   /* 179.5692px 266.73497px */ 8.36% 12.12% /* 160.56px 280.44px */
+    // );
+
+    // background-color: rgb(56, 178, 227);
+    background: url("../../images/shine50/Profilepagebluebg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .profile-middle-secton-content {
+    display: flex;
+  }
+
+  .profile-about-title {
+    display: flex;
+    position: absolute;
+    letter-spacing: 0.25rem;
+    font-family: var(--headline-font);
+    letter-spacing: 0.03em;
+    z-index: 0;
+    font-size: 20vw;
+    border-radius: 2rem;
+    color: rgba(29, 47, 81, 0.108);
+    left: 17%;
+    margin-top: -5%;
+    padding: 0px 15px;
+    width: fit-content;
+  }
+
+  .profile-middle-left {
+    margin-top: 10%;
+    width: 45%;
+    margin-left: 10%;
+    position: relative;
+    height: fit-content;
+
+    .inductee-second-img-wrapper {
+      z-index: 2000;
+      height: fit-content;
+
+      img {
+        z-index: 1000;
+        width: 60%;
+        max-width: 600px;
+        max-height: 800px;
+        margin-top: 100px;
+        margin-left: 30%;
+        padding-bottom: 10%;
+        transform: rotate(-5deg);
+      }
+
+      .bg-star {
+        margin-left: 45%;
+        margin-top: -35%;
+        z-index: 1000;
+        width: 50%;
+      }
+    }
+
+    .profile-video {
+      position: relative;
+      z-index: 100;
+      transform: skew(0deg) rotate(-8deg);
+      margin-top: 10%;
+
+      .react-player__preview {
+        width: 300px;
+        height: 600px;
+      }
+    }
+  }
+
+  .profile-middle-right {
+    background: var();
+    width: 55%;
+    margin-top: 10%;
+    z-index: 100;
+
+    height: fit-content;
+    position: relative;
+
+    .mobile-inductee-second-img-wrapper {
+      display: none;
+    }
+    .links-in-profile {
+      display: block;
+      padding-right: 20%;
+    }
+
+    .profile-about {
+      transform: skew(0deg) rotate(0deg);
+      margin-left: 5%;
+      margin-right: 18%;
+
+      .title {
+        position: relative;
+        letter-spacing: 0.25rem;
+        font-family: var(--headline-font);
+        letter-spacing: 0.03em;
+        z-index: 100;
+        font-size: 2.5vw;
+        background-color: var(--yellow);
+        border-radius: 2rem;
+        color: black;
+        padding: 5px 15px;
+        width: fit-content;
+      }
+    }
+
+    .profile-professional {
+      transform: skew(0deg) rotate(5deg);
+      margin-left: -15%;
+      margin-top: 25%;
+      display: none;
+
+      .title {
+        position: relative;
+        letter-spacing: 0.25rem;
+        font-family: "BreadDream";
+        z-index: 100;
+        font-size: 2vw;
+        background-color: rgb(231, 199, 36);
+        border-radius: 1rem;
+        color: black;
+        padding: 5px 15px;
+        width: fit-content;
+      }
+    }
+
+    div ul {
+      border-left: 10px solid black;
+      margin: 20% 40% 0% 0%;
+      padding: 50px 10px;
+
+      li {
+        width: fit-content;
+        padding-bottom: auto;
+        font-size: 1.5vw;
+        margin-bottom: 1%;
+        line-height: 100%;
+        font-family: var(--londrina-font);
+        span {
+          font-weight: 300;
+          letter-spacing: 0.05em;
+          font-size: 2vw;
+        }
+          .company-name{
+  color: #000;
+   font-family: var(--londrina-font);
+   font-size: 2vw;
+   margin-left: 0;
+   position: relative;
+   top: 10px !important;
+         } 
+      }
+
+      .designation {
+        width: fit-content;
+        height: 120px;
+        background: yellow;
+        position: relative;
+               padding: 10% 5% 10% 40px;
+
+
+        margin-left: -10%;
+
+        
+    
+        &:before {
+          content: "";
+          position: absolute;
+          right: -50px;
+          bottom: 0;
+          width: 0;
+          height: fit-content;
+          border-left: 50px solid yellow;
+          border-top: 0px solid transparent;
+          border-bottom: 120px solid transparent;
+        }
+       
+
+       
+      }
+
+      .company {
+  width: fit-content;
+        height: 50px;
+        background: yellow;
+        position: relative;
+               padding: 10% 5% 10% 40px;
+        margin-left: -10%;
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: -25px;
+          bottom: 0;
+          width: 0;
+          height: fit-content;
+          border-left: 25px solid yellow;
+          border-top: 25px solid transparent;
+          border-bottom: 25px solid transparent;
+        }
+}
+
+
+      .district {
+        width: fit-content;
+        height: 50px;
+        background: var(--pink);
+        position: relative;
+        padding: 15px 5px 15px 35px;
+
+        margin-left: -10%;
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: -25px;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-left: 25px solid var(--pink);
+          border-top: 0px solid transparent;
+          border-bottom: 50px solid transparent;
+        }
+      }
+
+      .age {
+        width: fit-content;
+        height: 50px;
+        background: yellow;
+        position: relative;
+               padding: 5% 5% 7% 40px;
+        margin-left: -10%;
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: -25px;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-left: 25px solid yellow;
+          border-top: 0px solid transparent;
+          border-bottom: 50px solid transparent;
+        }
+      }
+    }
+
+    .profile-speech-bubble {
+      position: relative;
+      background: #040404;
+      border-radius: 10em;
+      width: 200px;
+      height: fit-content;
+      color: white;
+      margin: 5px 0% 200px 0%;
+      transform: skew(0deg) rotate(-18deg);
+      display: none;
+
+      p {
+        padding: 15% 10%;
+        font-family: var(--headline-font);
+        text-align: center;
+        line-height: 1.1em;
+        z-index: 100;
+        font-size: 2.5vw;
+        border-radius: 1rem;
+        color: var(--red);
+      }
+    }
+
+    .profile-speech-bubble:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-top-color: #101010;
+      border-bottom: 0;
+      border-left: 0;
+      margin-left: -10px;
+      margin-bottom: -20px;
+    }
+
+    .profile-social-icons {
+      width: 30px !important;
+      margin: 0 5px 0;
+      cursor: pointer;
+    }
+    .links-in-profile-mobile {
+      display: none !important;
+    }
+    .links-in-profile {
+      display: block;
+      transform: skew(0deg) rotate(0deg) !important;
+      margin-left: 2% !important;
+
+      margin-top: -20%;
+      // margin-top: 20% !important;
+
+      .title {
+        display: none;
+        position: relative !important;
+        letter-spacing: 0.25rem !important;
+        font-family: "BreadDream" !important;
+        z-index: 100 !important;
+        font-size: 2vw !important;
+        background-color: rgb(231, 36, 101) !important;
+        border-radius: 2rem !important;
+        color: black !important;
+        padding: 5px 15px !important;
+        width: fit-content !important;
+        margin-top: -10%;
+      }
+      ul {
+        border: none !important;
+      }
+
+      .links {
+        margin-bottom: 0% !important;
+        display: flex !important;
+        ul {
+          li {
+            padding-right: 15% !important;
+            transform: skew(0deg) rotate(0deg) !important;
+            svg {
+              width: 3px;
+            }
+          }
+        }
+      }
+
+      .social-icons-row-2 {
+        margin-top: -7%;
+        margin-left: 15%;
+      }
+    }
+  }
+
+  .thunder-character {
+    // margin-left: 15%;
+    justify-content: right;
+    align-items: end;
+    justify-self: end;
+    text-align: end;
+    margin-left: 60%;
+
+    img {
+      position: relative;
+      margin-top: -600px;
+      width: 180px;
+      margin-left: 190px;
+      height: auto;
+    }
+  }
+  .profile-stroy-section {
+    padding: 1% 25% 15% 25%;
+    background: url("../../images/shine50/paint_brush.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-size: cover;
+
+    .profile-story {
+      z-index: 1000;
+      position: relative;
+
+      h2 {
+        font-size: 3.5vw;
+        font-family: var(--headline-font);
+        margin-bottom: 15%;
+        line-height: 1.2;
+        color: #e73c64;
+        letter-spacing: 0.13em;
+        text-shadow: -4px -3px 0 rgb(19, 20, 19), -2px 6px 0 rgb(15, 16, 15),
+          -4px 6px 0px rgb(19, 20, 19), 5px 6px 1px rgb(19, 20, 19),
+          3px -3px 0px rgb(19, 20, 19);
+      }
+
+      p {
+        font-size: 1.5vw;
+        font-family: var(--body-font);
+        font-weight: 100;
+        margin-bottom: 2%;
+        margin-left: 0%;
+      }
+
+      p:first-of-type::first-letter {
+        float: left;
+
+        line-height: 25px;
+
+        font-size: 5.5vw;
+
+        // color: #0d0d0d;
+        color: #f625c6 !important;
+
+        // border: solid #d5c5ec;
+
+        padding-top: 3px;
+
+        padding-bottom: 5px;
+
+        padding-right: 0px;
+
+        padding-left: 0px;
+
+        margin-right: 5px;
+        margin-top: 0%;
+        margin-left: -1%;
+        margin-bottom: -1px;
+        // font-weight: bolder;
+        font-family: var(--dropcap-font) !important;
+      }
+    }
+  }
+
+  .profile-midle-wide-image-section {
+    height: 100%;
+    padding: 0 20% 5%;
+    margin-bottom: -5%;
+
+    img {
+      width: auto;
+      margin-top: -150px;
+    }
+  }
+
+  footer {
+    height: min-content;
+    margin-top: -10%;
+    width: auto;
+    background: url("../../images/shine50/shine_footer.webp");
+    background-repeat: no-repeat;
+    background-position: initial;
+
+    background-size: cover;
+    z-index: 2000;
+    text-align: center;
+    align-items: center;
+
+  .shine {
+      position: absolute;
+      opacity: 0.3;
+      width: 400px;
+      margin-top: -100.5px;
+      transform: rotate(-2deg);
+      margin-left: 33%;
+    }
+    .fifty {
+      position: absolute;
+      margin-top: -85px;
+      opacity: 0.3;
+      width: 200px;
+    }
+
+    .blinking-lines {
+      margin-left: 90%;
+    }
+
+    .footer-logo-section {
+      text-align: center;
+
+      display: flex;
+      margin-top: 20%;
+      position: relative;
+      justify-content: center;
+    }
+    .footer-allrightreserved-section {
+      text-align: center;
+      font-size: 1vw;
+      font-weight: bold;
+
+      display: flex;
+      margin-top: 0%;
+
+      position: relative;
+      justify-content: center;
+    }
+    .footer-links-section {
+      position: relative;
+      justify-content: center;
+      text-align: center;
+
+      ul {
+        display: flex;
+        justify-content: center;
+        margin-top: 1%;
+
+        li {
+          font-size: 1.7vw;
+          padding: 2% 2%;
+          font-weight: 800;
+        }
+      }
+    }
+    .footer-social-media-icons {
+      padding-bottom: 5px;
+      display: flex;
+      text-align: center;
+      justify-content: center !important;
+      align-items: center;
+      color: #040404 !important;
+
+      .footer-social-media-icon {
+        padding: 5px;
+z-index: 1000;
+        width: 35px;
+      }
+    }
+  }
+
+  // Staring about page here
+  .about-page {
+    background: var(--pink);
+    height: fit-content;
+
+    footer {
+      background: url("../../images/shine50/about_footer.png") !important;
+
+      width: 100%;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+
+      background-size: cover !important;
+    }
+
+    .about-top {
+      height: 700px;
+      width: 100%;
+      background-image: url("../../images/shine50/abouttop.png");
+      background-repeat: no-repeat;
+      align-items: center;
+      background-size: contain;
+      background-position: initial;
+    }
+
+    .page-title {
+      justify-content: center;
+      h1 {
+        text-align: center;
+        position: relative;
+        font-family: "BreadDream";
+        font-size: 5vw;
+        z-index: 100;
+        padding-top: 15%;
+
+        letter-spacing: 0.5rem;
+        text-decoration: double;
+        color: var(--yellow);
+        line-height: 5.6rem;
+        // box-shadow: #181717;
+        // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+        text-shadow: 0px -4px 0 rgb(19, 20, 19),
+          /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+          /* top-right shadow */ 0px 10px 1px rgb(19, 20, 19),
+          /* bottom-right shadow */ 5px 8px 1px rgb(19, 20, 19),
+          6px -4px 0px rgb(19, 20, 19);
+      }
+    }
+
+    .about-middle-section {
+      height: fit-content;
+      padding: 500px 25%;
+      justify-content: center;
+      .about-shine50 {
+        background-image: url("../../images/shine50/Star_Character-01.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 79%;
+        height: 100%;
+        padding-bottom: 35%;
+        margin-top: -850px;
+        .text-container {
+          transform: skew(0deg) rotate(0deg);
+          padding: 15% 11%;
+          h2 {
+            font-size: 1.8vw;
+            font-family: (var(--headline-font));
+            font-weight: 600;
+            margin-bottom: 5%;
+            margin-left: 10%;
+            color: var(--yellow);
+          }
+          h3 {
+            font-size: 1.5vw;
+            font-family: (var(--londrina-font));
+            margin-bottom: 3%;
+            line-height: 1;
+            font-weight: 500;
+            margin-left: 5%;
+          }
+          p {
+            text-align: left;
+            font-size: 1.25vw;
+            font-weight: 500;
+            font-family: var(--londrina-font);
+            line-height: 1.2;
+            padding-top: 10%;
+            transform: skew(0deg) rotate(10deg);
+          }
+        }
+      }
+
+      .about-neon {
+        background-image: url("../../images/shine50/Star_Character-03.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 100%;
+        padding-bottom: 38%;
+
+        margin-top: 0%;
+        .text-container {
+          padding: 10% 20% 0 10%;
+
+          .neon-h2 {
+            text-align: right;
+            font-size: 1.8vw;
+            font-family: (var(--headline-font));
+            font-weight: 600;
+            color: var(--yellow);
+            margin-bottom: 15%;
+            transform: skew(0deg) rotate(15deg);
+          }
+
+          .neon-p {
+            text-align: left;
+            font-size: 1.2vw;
+            font-weight: 300;
+            font-family: var(--londrina-font);
+            line-height: 1.1;
+            transform: skew(0deg) rotate(0deg);
+          }
+          h2 {
+            text-align: left;
+            font-size: 1.8vw;
+            font-family: (var(--headline-font));
+            font-weight: 600;
+            color: var(--yellow);
+
+            margin-bottom: 10%;
+            transform: skew(0deg) rotate(-10deg);
+          }
+
+          p {
+            text-align: left;
+            font-size: 1.2vw;
+            font-weight: 300;
+            font-family: var(--londrina-font);
+            line-height: 1.1;
+            margin-left: 45px;
+            transform: skew(0deg) rotate(0deg);
+          }
+        }
+      }
+    }
+    .methodology-section {
+      height: fit-content;
+      padding: 0 20% 20% 10%;
+      width: 120%;
+      background-image: url("../../images/shine50/methodology.png");
+      background-repeat: no-repeat;
+      align-items: center;
+      background-size: contain;
+      margin-top: -400px;
+
+      h2 {
+        transform: skew(0deg) rotate(5deg);
+
+        text-align: left;
+        position: relative;
+        font-family: var(--headline-font);
+        font-size: 3vw;
+        z-index: 100;
+        padding-top: 20%;
+        padding-left: 10%;
+        letter-spacing: 0.2rem;
+        text-decoration: double;
+        color: var(--blue);
+        line-height: 2rem;
+        // box-shadow: #181717;
+        // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+        text-shadow: 0px -4px 0 rgb(19, 20, 19),
+          /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+          /* top-right shadow */ 0px 10px 1px rgb(19, 20, 19),
+          /* bottom-right shadow */ 5px 8px 1px rgb(19, 20, 19),
+          6px -4px 0px rgb(19, 20, 19);
+      }
+
+      p {
+        text-align: left;
+        font-size: 1.8vw;
+        padding: 0 15%;
+        font-weight: 600;
+        font-family: var(--body-font);
+        transform: skew(0deg) rotate(-5deg);
+      }
+    }
+    .credit-section {
+      height: fit-content;
+      padding-bottom: 10%;
+      padding: 0 15% 0 10%;
+      h2 {
+        transform: skew(0deg) rotate(6deg);
+
+        text-align: right;
+        position: relative;
+        font-family: "BreadDream";
+        font-size: 3vw;
+        z-index: 100;
+        margin-top: -8%;
+        padding-bottom: 5%;
+        padding-right: 15%;
+        letter-spacing: 0.2rem;
+        text-decoration: double;
+        color: var(--yellow);
+        line-height: 2rem;
+        // box-shadow: #181717;
+        // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+        text-shadow: 0px -4px 0 rgb(19, 20, 19),
+          /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+          /* top-right shadow */ 0px 10px 1px rgb(19, 20, 19),
+          /* bottom-right shadow */ 5px 8px 1px rgb(19, 20, 19),
+          6px -4px 0px rgb(19, 20, 19);
+      }
+
+      ul {
+        z-index: 1000;
+        position: relative;
+        margin-top: 10%;
+
+        li {
+          z-index: 1000;
+          text-align: left;
+          font-size: 1.5vw;
+          padding: 0 10%;
+          font-weight: 500;
+          line-height: 1.8;
+          font-family: var(--body-font);
+          color: var(--white);
+
+          span {
+            font-weight: 800;
+            letter-spacing: 1px;
+          }
+        }
+      }
+      .thunder-character-right {
+        align-items: end;
+        margin-top: -20%;
+        z-index: 100;
+
+        img {
+          z-index: 0;
+          opacity: 1;
+          overflow: hidden;
+          position: relative;
+          margin-left: 85%;
+          width: 200px;
+          height: auto;
+          animation: bounce 0.5s;
+          animation-direction: alternate;
+          animation-iteration-count: infinite;
+        }
+      }
+
+      @keyframes smoothbounceball {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+        to {
+          transform: translate3d(0, 200px, 0);
+        }
+      }
+    }
+  }
+}
+
+// ********************************************
+//*********************************************
+//******** MOBILE Styles **********************
+//******** ************************************
+
+@supports not (-webkit-touch-callout: none) {
+  @media screen and (max-width: 768px) {
+    .shine-50-english {
+      --black: #0f0f10;
+      --white: #ffff;
+      --yellow: #ffc024;
+      --blue: #56cbf4;
+      --pink: #eeeeee;
+      --red: #ff5a85;
+      --headline-font: "BreadDream";
+      --body-font: "centraNo2";
+      //    .top-div {
+
+      //     height: 300px;
+      //     color: black;
+      //     width: 100%;
+      //     background: #3498db;
+      //     clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+      //      background: linear-gradient(135deg, #3498db 50%, transparent 50%);
+
+      // }
+
+      //logo
+.desktop-logo{
+  display: none;
+}
+
+.mobile-logo{ display: block; z-index: 600000; margin-top: 2%;}
+      //banner Mobile
+      .icon-desktop {
+        display: none !important;
+      }
+
+      .shine-content-top-banner {
+        position: absolute;
+        background: none;
+      }
+      .shine-content-nav {
+        position: absolute;
+        padding: 0.5rem 0.5rem !important;
+        .top-star {
+          display: none;
+        }
+        .shinelogo {
+          margin-top: 2%;
+          width: 100px !important;
+        }
+
+        .logo {
+          left: -15%;
+          margin-bottom: 0;
+          margin-top: 10%;
+          width: 80px !important;
+          max-width: 110px !important;
+        }
+
+        .toggle-menu {
+          width: 50px;
+          height: 35px;
+          top: 0px;
+          left: 5%;
+          border-bottom-left-radius: 18px;
+          border-bottom-right-radius: 18px;
+
+          .bar {
+            width: 20px;
+            height: 1.5px;
+            border: 1px solid black;
+          }
+        }
+
+        .languages {
+          margin-left: 15px;
+          margin-right: -5%;
+          font-size: 12px;
+          gap: 0.2rem;
+          padding: 5px;
+          background: rgb(244, 205, 7);
+          padding: 2px;
+
+          color: #000 !important;
+        }
+        .popup-menu {
+          top: 60px;
+          max-width: 280px;
+          padding: 0.6rem;
+
+          .nav-items {
+            font-size: 0.875rem;
+          }
+
+          .social-icons {
+            font-size: 0.875rem;
+          }
+
+          .close-menu {
+            font-size: 1rem;
+          }
+        }
+
+        // .mobile-video {
+        //     width: 100%;
+        //     height: auto;
+        //     display: block;
+        // }
+        .banner-video-desktop {
+          display: none;
+        }
+      }
+
+      .react-player__shadow {
+        background: radial-gradient(
+          rgba(0, 0, 0, 0.3),
+          rgb(0 0 0 / 62%) 60%
+        ) !important;
+
+        .react-player__play-icon {
+          margin-left: 25px;
+        }
+      }
+
+      .top-div {
+        width: fit-content;
+        background: url("../../images/shine50/top_mobile-bg.png");
+        clip-path: none;
+        background-repeat: no-repeat;
+        background-position: inherit;
+        display: block;
+        background-size: cover;
+        z-index: 200;
+
+        //
+        // background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+        z-index: 100;
+        position: relative;
+      }
+      .desktop-profile-top {
+        display: none !important;
+      }
+      .mobile-profile-top {
+        display: block !important;
+      }
+      .profile-top {
+        display: block;
+        width: 100%;
+
+        .profile-top-rightside {
+          float: left;
+          width: 100%;
+          padding: 10px;
+          height: 300px;
+
+          .inductee-name {
+            position: relative;
+            font-family: var(--headline-font);
+            font-size: 9vw;
+            z-index: 500;
+            text-align: center;
+            margin-top: -178%;
+            word-wrap: break-word;
+            width: 100%;
+            left: 5%;
+            right: 5%;
+            padding: 0 10%;
+            letter-spacing: 0.1rem;
+            text-decoration: none;
+            color: rgb(244, 133, 151);
+            line-height: 2.6rem;
+            // box-shadow: #181717;
+            // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+            text-shadow: 7px 1px 0 rgb(19, 20, 19),
+              /* top-left shadow */ 4px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 1px 5px 9px rgb(19, 20, 19),
+              /* bottom-right shadow */ 0px 0px 0px rgb(19, 20, 19),
+              5px 4px 0px rgb(19, 20, 19);
+
+            transform: skew(0deg) rotate(-5deg);
+          }
+
+          .bio-section {
+            z-index: 1000;
+            left: 3%;
+            margin-top: 7%;
+            position: relative;
+            width: 100%;
+            height: 250px;
+            margin-bottom: 50%;
+            background-color: transparent;
+            border: none;
+
+            transform: skew(0deg) rotate(0deg);
+
+            p {
+              padding: 5% 3% 20px;
+
+              position: relative;
+              font-family: var(--londrina-font);
+              line-height: 1.3;
+              font-size: 4.5vw;
+              font-weight: 400;
+            }
+          }
+        }
+
+        // .profile-top-leftside {
+        //   float: left;
+        //   width: 100%;
+        //   margin-top: -270%;
+        //   padding: 0;
+        //   height: 600px;
+        //   position: relative;
+
+        //   img {
+        //     transform: skew(0deg) rotate(0deg);
+        //     width: 600px;
+        //     height: auto;
+        //     position: relative;
+        //     z-index: 1;
+        //   }
+        // }
+         .profile-top-leftside {
+          float: left;
+          width: 100%;
+          padding: 0;
+          height: 600px;
+          top: 0;
+          margin-top: 0;
+          position: absolute;
+
+          img {
+            transform: skew(0deg) rotate(0deg);
+            width: auto;
+            height: 600px;
+            position: relative;
+            z-index: 1;
+            top: 0;
+            
+           
+           
+          }
+          .blink-items{
+            object-fit: fill;
+            max-width: 300px;
+img{
+  
+  
+}
+          }
+        }
+      }
+
+      .profile-middle-section {
+        background: white;
+      }
+      .profile-middle-desktop {
+        display: none !important;
+      }
+
+      .profile-middle-mobile {
+        display: block;
+      }
+      .profile-middle {
+        padding-left: 5%;
+
+        z-index: 200;
+        position: relative;
+        margin-top: -190%;
+        width: auto;
+        height: fit-content;
+        padding-bottom: 20%;
+        clip-path: polygon(
+          8.36% 12.12%,
+          /* 160.56px 280.44px */ 0% 2.59%,
+          /* 0px 59.82px */ 0% 93.39%,
+          /* 0px 2161.39px */ 0% 93.39%,
+          /* 0px 2161.39px */ 16.74% 97.24%,
+          /* 321.5604px 2250.46047px */ 31.94% 99.15%,
+          /* 613.2768px 2294.82896px */ 45.53% 99.51%,
+          /* 874.206px 2302.81609px */ 57.46% 98.64%,
+          /* 1103.4048px 2282.74248px */ 67.7% 96.93%,
+          /* 1299.93px 2242.92875px */ 76.74% 94.68%,
+          /* 1462.8384px 2191.69552px */ 82.89% 92.39%,
+          /* 1591.1868px 2137.36341px */ 87.71% 90.23%,
+          /* 1684.032px 2088.25304px */ 90.63% 88.68%,
+          /* 1740.4308px 2052.68503px */ 91.62% 88.06%,
+          /* 1759.44px 2038.98px */ 100% 97.63%,
+          /* 1920px 2259.6px */ 100% 6.83%,
+          /* 1920px 158.03px */ 100% 6.83%,
+          /* 1920px 158.03px */ 83.25% 2.98%,
+          /* 1598.4396px 68.95953px */ 68.07% 1.06%,
+          /* 1306.7232px 24.59104px */ 54.55% 0.72%,
+          /* 1045.794px 16.60391px */ 42.54% 1.59%,
+          /* 816.5952px 36.67752px */ 32.29% 3.31%,
+          /* 620.07px 76.49125px */ 23.81% 5.52%,
+          /* 457.1616px 127.72448px */ 17.12% 7.87%,
+          /* 328.8132px 182.05659px */ 12.29% 9.99%,
+          /* 235.968px 231.16696px */ 9.36% 11.53%,
+          /* 179.5692px 266.73497px */ 8.36% 12.12% /* 160.56px 280.44px */
+        );
+
+        background-color: rgb(56, 178, 227);
+      }
+
+      .profile-middle-secton-content {
+        display: contents;
+      }
+      .profile-middle-left {
+        width: 100%;
+        padding-top: 430px;
+        z-index: 100;
+
+        position: relative;
+
+        .profile-about {
+          transform: skew(0deg) rotate(0deg);
+          margin-left: -8% !important;
+          margin-top: -27%;
+          width: 100%;
+
+          .title {
+            position: relative;
+            letter-spacing: 0.25rem;
+            font-family: "BreadDream";
+            z-index: 100;
+            font-size: 5vw;
+            background-color: var(--yellow);
+            border-radius: 1rem;
+            color: black;
+            padding: 5px 15px;
+            width: fit-content;
+          }
+          ul {
+            margin: 1% 5% 10%;
+
+            li {
+              padding-bottom: 8px;
+              font-size: 5vw;
+
+              line-height: 1;
+              letter-spacing: 0.05em;
+              font-family: var(--londrina-font);
+              span {
+                font-weight: 500;
+              }
+            }
+          }
+        }
+
+        .profile-professional {
+          transform: skew(0deg) rotate(0deg);
+          margin-left: 0%;
+          margin-top: 8%;
+
+          .title {
+            position: relative;
+            letter-spacing: 0.25rem;
+            font-family: "BreadDream";
+            z-index: 100;
+            font-size: 5vw;
+            background-color: rgb(231, 199, 36);
+            border-radius: 1rem;
+            color: black;
+            padding: 5px 15px;
+            width: fit-content;
+          }
+        }
+
+        div ul {
+          margin: 0% 3% 1% !important;
+
+          li {
+            font-size: 5vw;
+            font-weight: 300;
+            span {
+              font-weight: 600;
+            }
+          }
+        }
+
+        .links-in-profile-mobile {
+          display: block !important;
+          ul {
+            margin-top: 10% !important;
+            margin-left: -5% !important;
+            padding-bottom: 10%;
+          }
+        }
+        .profile-social-icons {
+          width: 45px !important;
+          padding-right: 20px;
+        }
+      }
+
+      .profile-middle-right {
+        background: url("../../images/shine50/mobile_middle_brush.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+
+        background-size: cover;
+        width: 100%;
+        z-index: 1000;
+        padding-top: 20%;
+
+        position: relative;
+        .mobile-inductee-second-img-wrapper {
+          display: block;
+          margin-left: 3%;
+          margin-top: -45% !important;
+        }
+
+        .profile-video {
+          position: relative;
+          z-index: 1000;
+          // transform: skew(0deg) rotate(-6deg);
+          padding-bottom: 60%;
+          padding: 0 15%;
+
+          // div div{
+          //           margin: -75% 5% 0;
+
+          iframe {
+            margin-top: -50% !important;
+            transform: skew(0deg) rotate(-6deg);
+            width: 280px !important;
+            height: 500px !important;
+            position: absolute;
+          }
+          // }
+          .react-player__preview {
+            justify-content: center;
+            margin-top: -50%;
+            transform: skew(0deg) rotate(-6deg);
+            width: 90% !important;
+            height: 100% !important;
+            position: relative;
+          }
+        }
+
+        .profile-speech-bubble {
+          display: none;
+        }
+      }
+
+      .thunder-character {
+        display: none;
+      }
+      .profile-stroy-section {
+        padding: 0% 7% 10%;
+        background: url("../../images/shine50/mobile_middle_brush.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+
+        background-size: cover;
+
+        .profile-story {
+          height: fit-content;
+          margin-top: -55%;
+          z-index: 5000;
+          position: relative;
+          h2 {
+            margin-top: 20%;
+            font-size: 8vw;
+            font-family: var(--headline-font);
+            margin-bottom: 15%;
+            line-height: 1.1;
+            letter-spacing: 1;
+            text-shadow: 7px 1px 0 rgb(19, 20, 19),
+              /* top-left shadow */ 4px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 1px 5px 9px rgb(19, 20, 19),
+              /* bottom-right shadow */ 0px 0px 0px rgb(19, 20, 19),
+              5px 4px 0px rgb(19, 20, 19);
+          }
+
+          p {
+            line-height: 1.4rem;
+
+            color: #0d0d0d;
+            padding-left: 5%;
+            font-size: 4.8vw;
+            font-family: var(--body-font);
+            margin-bottom: 5%;
+          }
+          p:last-of-type {
+            margin-bottom: -10%;
+          }
+
+          p:first-of-type::first-letter {
+            line-height: 35px;
+
+            font-size: 8vw;
+
+            color: #0d0d0d;
+
+            // border: solid #d5c5ec;
+
+            padding-top: 3px;
+
+            padding-bottom: 5px;
+
+            padding-right: 1px;
+
+            padding-left: 3px;
+
+            margin-right: 0px;
+            margin-top: -2.5%;
+            margin-left: -6%;
+            margin-bottom: -6px;
+            font-weight: bolder;
+          }
+        }
+      }
+
+      .profile-midle-wide-image-section {
+        display: none;
+      }
+
+      footer {
+        height: min-content;
+        margin-top: 0;
+        width: auto;
+        background: url("../../images/shine50/mobile-footer.png");
+        background-repeat: no-repeat;
+        background-position: initial;
+
+        background-size: cover;
+        z-index: 2000;
+        text-align: center;
+        align-items: center;
+
+        .shine {
+        position: absolute;
+        opacity: 0.3;
+        width: 400px;
+        margin-top: -40.5px;
+        transform: rotate(-3deg);
+        margin-left: 25%;
+      }
+        .fifty {
+          position: absolute;
+          margin-top: -98.5px;
+          opacity: 0.3;
+          width: 150px;
+        }
+
+        .blinking-lines {
+          margin-left: 90%;
+        }
+
+        .footer-logo-section {
+          text-align: center;
+
+          display: flex;
+          padding-top: 0%;
+          position: relative;
+          justify-content: center;
+          img {
+            width: 200px;
+          }
+        }
+        .footer-allrightreserved-section {
+          text-align: center;
+          font-size: 1.8vw;
+          font-weight: bold;
+
+          display: flex;
+          margin-top: 0%;
+
+          position: relative;
+          justify-content: center;
+        }
+        .footer-links-section {
+          position: relative;
+          justify-content: center;
+          text-align: center;
+
+          ul {
+            display: block;
+            justify-content: center;
+            margin-top: 0%;
+
+            li {
+              font-size: 3.2vw;
+              padding: 1%;
+              font-weight: 800;
+            }
+          }
+        }
+        .footer-social-media-icons {
+          text-align: center;
+          justify-content: center;
+          padding: 2%;
+          color: #040404 !important;
+        }
+      }
+
+      .about-page {
+        background: var(--red);
+        height: fit-content !important;
+        .shine-content-top-banner {
+          .popup-menu {
+            left: 38% !important;
+          }
+        }
+
+        footer {
+          background: url("../../images/shine50/about-mobile-footer.webp") !important;
+          position: relative;
+          height: auto;
+          z-index: 1000;
+
+          width: 100% !important;
+          background-repeat: no-repeat !important;
+          background-position: initial !important;
+
+          background-size: cover !important;
+          .footer-logo-section {
+            text-align: center;
+            display: flex;
+            padding-top: 0%;
+            position: relative;
+            justify-content: center;
+            img {
+              padding-top: 10%;
+
+              width: 200px;
+            }
+          }
+        }
+
+        .about-top {
+          height: 600px;
+          width: 100%;
+          background-image: url("../../images/shine50/abouttop.png");
+          background-repeat: no-repeat;
+          align-items: center;
+          background-size: contain;
+        }
+
+        .page-title {
+          justify-content: center;
+          h1 {
+            text-align: center;
+            position: relative;
+            font-family: var(--headline-font);
+            font-size: 6.5vw;
+            z-index: 100;
+            padding-top: 10%;
+
+            letter-spacing: 0.1rem;
+            text-decoration: double;
+            color: var(--yellow);
+            line-height: 5.6rem;
+            // box-shadow: #181717;
+            // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+            text-shadow: 0px -4px 0 rgb(19, 20, 19),
+              /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 0px 5px 1px rgb(19, 20, 19),
+              /* bottom-right shadow */ 5px 4px 1px rgb(19, 20, 19),
+              3px -4px 0px rgb(19, 20, 19);
+          }
+        }
+
+        .about-middle-section {
+          height: fit-content;
+          padding: 0% 5% 1%;
+          justify-content: center;
+          .about-shine50 {
+            background-image: url("../../images/shine50/Star_Character-01.png");
+            background-size: cover;
+            width: 390px;
+            height: 450px;
+            margin-top: -125%;
+
+            .text-container {
+              padding: 10% 10% 7% 18%;
+              transform: skew(0deg) rotate(0deg);
+
+              h2 {
+                font-size: 5vw;
+                font-family: (var(--headline-font));
+                font-weight: 600;
+                margin-bottom: 8%;
+                transform: skew(0deg) rotate(-5deg);
+              }
+              h3 {
+                font-size: 3.8vw;
+                font-family: (var(--body-font));
+                font-weight: 800;
+                margin-bottom: 0%;
+                line-height: 1;
+
+                font-weight: 600;
+              }
+              p {
+                text-align: left;
+                font-size: 3.4vw;
+                line-height: 1;
+                margin-top: -3%;
+                margin-left: -10%;
+                font-weight: 300;
+                font-family: var(--londrina-font);
+                transform: skew(0deg) rotate(5deg);
+              }
+            }
+          }
+
+          .about-neon {
+            background-image: url("../../images/shine50/Star_Character-03.png");
+            background-size: cover;
+            width: 390px;
+            height: 450px;
+            margin-top: 10%;
+            .text-container {
+              transform: skew(0deg) rotate(-25deg);
+              padding: 10% 10% 7% 18%;
+
+              .neon-h2 {
+                text-align: right;
+
+                font-size: 5vw;
+                font-family: (var(--headline-font));
+                font-weight: 600;
+                width: 100%;
+                margin-top: 3%;
+                margin-left: 5%;
+                margin-bottom: 0%;
+                transform: skew(0deg) rotate(25deg);
+
+                margin-bottom: 10%;
+              }
+
+              .neon-p {
+                text-align: left;
+                width: 300px;
+                font-size: 3vw;
+                margin-top: -1%;
+                margin-left: -5%;
+                font-weight: 300;
+                font-family: var(--londrina-font);
+                line-height: 1.1;
+                transform: skew(0deg) rotate(18deg);
+              }
+
+              h2 {
+                font-size: 5vw;
+                font-family: (var(--headline-font));
+                font-weight: 600;
+                width: 100%;
+                margin-top: 2%;
+                margin-left: 5%;
+                margin-bottom: 2%;
+                transform: skew(0deg) rotate(12deg);
+              }
+
+              p {
+                text-align: left;
+                width: 300px;
+                font-size: 3vw;
+                line-height: 1.1;
+                margin-top: 0%;
+                margin-left: -15%;
+                font-weight: 400;
+                font-family: var(--londrina-font);
+                transform: skew(0deg) rotate(18deg);
+              }
+            }
+          }
+        }
+        .methodology-section {
+          height: fit-content;
+          padding: 0 2% 30% 15%;
+          width: 150%;
+          background-image: url("../../images/shine50/methodology.png");
+          background-repeat: no-repeat;
+          align-items: center;
+          background-size: contain;
+          margin-top: 0;
+
+          h2 {
+            transform: skew(0deg) rotate(8deg);
+
+            text-align: left;
+            position: relative;
+            font-family: "BreadDream";
+            font-size: 6vw;
+            z-index: 100;
+            padding-top: 20%;
+            padding-left: 10%;
+            letter-spacing: 0.2rem;
+            text-decoration: double;
+            color: var(--blue);
+            line-height: 2rem;
+            text-shadow: 0px -4px 0 rgb(19, 20, 19),
+              /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 0px 5px 1px rgb(19, 20, 19),
+              /* bottom-right shadow */ 5px 4px 1px rgb(19, 20, 19),
+              3px -4px 0px rgb(19, 20, 19);
+            letter-spacing: 0.1rem;
+          }
+
+          p {
+            text-align: left;
+            font-size: 3.5vw;
+            padding: 1% 45% 0 0%;
+            font-weight: 600;
+            font-family: var(--body-font);
+            transform: skew(0deg) rotate(-8deg);
+            // background: linear-gradient(
+            //   rgb(0, 0, 0),
+            //   rgb(26, 25, 25),
+            //   rgba(0, 0, 0, 0.974),
+            //   rgb(0, 0, 0),
+            //   rgb(228, 225, 225),
+            //   rgb(255, 255, 255),
+            //   rgb(255, 255, 255)
+            // );
+            -webkit-background-clip: text;
+            background-clip: text;
+          }
+        }
+        .credit-section {
+          height: fit-content;
+          padding-bottom: 10%;
+          h2 {
+            transform: skew(0deg) rotate(6deg);
+
+            text-align: right;
+            position: relative;
+            font-family: "BreadDream";
+            font-size: 8vw;
+            z-index: 100;
+            margin-top: 10%;
+            padding-bottom: 10%;
+            padding-right: 15%;
+            letter-spacing: 0.2rem;
+            text-decoration: double;
+            color: var(--yellow);
+            line-height: 2rem;
+            text-shadow: 0px -4px 0 rgb(19, 20, 19),
+              /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 0px 5px 1px rgb(19, 20, 19),
+              /* bottom-right shadow */ 5px 4px 1px rgb(19, 20, 19),
+              3px -4px 0px rgb(19, 20, 19);
+            letter-spacing: 0.1rem;
+          }
+          ul {
+            width: 100%;
+
+            li {
+              text-align: left;
+              font-size: 3.4vw;
+              padding: 0 10%;
+              font-weight: 400;
+              width: 121%;
+              margin-left: -35px;
+              line-height: 1.5;
+              font-family: var(--body-font);
+              color: var(--white);
+            }
+          }
+          .thunder-character-right {
+            align-items: end;
+            margin-top: -10%;
+
+            img {
+              position: relative;
+              margin-left: 75%;
+              width: 150px;
+              height: auto;
+              transform: skew(0deg) rotate(10deg);
+            }
+          }
+          p {
+            text-align: left;
+            font-size: 4.5vw;
+            padding: 1% 45% 0 0%;
+            font-weight: 600;
+            font-family: var(--body-font);
+            transform: skew(0deg) rotate(-8deg);
+            // background: linear-gradient(
+            //   rgb(0, 0, 0),
+            //   rgb(26, 25, 25),
+            //   rgba(0, 0, 0, 0.974),
+            //   rgb(0, 0, 0),
+            //   rgb(228, 225, 225),
+            //   rgb(255, 255, 255),
+            //   rgb(255, 255, 255)
+            // );
+            -webkit-background-clip: text;
+            background-clip: text;
+          }
+        }
+      }
+    }
+  }
+}
+
+// IOS
+@supports (-webkit-touch-callout: none) {
+  @media only screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+    .shine-50-english {
+      --black: #0f0f10;
+      --white: #ffff;
+      --yellow: #ffc024;
+      --blue: #56cbf4;
+      --pink: #eeeeee;
+      --red: #ff5a85;
+      --headline-font: "BreadDream";
+      --body-font: "centraNo2";
+      //    .top-div {
+
+      //     height: 300px;
+      //     color: black;
+      //     width: 100%;
+      //     background: #3498db;
+      //     clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+      //      background: linear-gradient(135deg, #3498db 50%, transparent 50%);
+
+      // }
+
+      //banner Mobile
+      .icon-desktop {
+        display: none !important;
+      }
+
+      .shine-content-top-banner {
+        position: absolute;
+        background: none;
+      }
+      .shine-content-nav {
+        position: absolute;
+        padding: 0.5rem 0.5rem !important;
+        .top-star {
+          display: none;
+        }
+        .shinelogo {
+          margin-top: 2%;
+          width: 100px !important;
+        }
+
+        .logo {
+          left: 0;
+          margin-bottom: 0;
+          margin-top: 10%;
+          width: 80px !important;
+          max-width: 110px !important;
+        }
+
+        .toggle-menu {
+          width: 50px;
+          height: 35px;
+          top: 0px;
+          left: 9%;
+          border-bottom-left-radius: 18px;
+          border-bottom-right-radius: 18px;
+
+          .bar {
+            width: 20px;
+            height: 1.5px;
+            border: 1px solid black;
+          }
+        }
+
+        .languages {
+          margin-left: 15px;
+          margin-right: -5%;
+          font-size: 12px;
+          gap: 0.2rem;
+          padding: 5px;
+          background: rgb(244, 205, 7);
+          padding: 2px;
+
+          color: #000 !important;
+        }
+
+        .popup-menu {
+          top: 60px;
+          max-width: 280px;
+          padding: 0.6rem;
+
+          .nav-items {
+            font-size: 0.875rem;
+          }
+
+          .social-icons {
+            font-size: 0.875rem;
+          }
+
+          .close-menu {
+            font-size: 1rem;
+          }
+        }
+
+        // .mobile-video {
+        //     width: 100%;
+        //     height: auto;
+        //     display: block;
+        // }
+        .banner-video-desktop {
+          display: none;
+        }
+      }
+
+      .react-player__shadow {
+        background: radial-gradient(
+          rgba(0, 0, 0, 0.3),
+          rgb(0 0 0 / 62%) 60%
+        ) !important;
+
+        .react-player__play-icon {
+          margin-left: 25px;
+        }
+      }
+
+      .top-div {
+        width: fit-content;
+        background: url("../../images/shine50/top_mobile-bg.png");
+        clip-path: none;
+        background-repeat: no-repeat;
+        background-position: inherit;
+        display: block;
+        background-size: cover;
+        z-index: 200;
+
+        //
+        // background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+        z-index: 100;
+        position: relative;
+      }
+      .desktop-profile-top {
+        display: none !important;
+      }
+      .mobile-profile-top {
+        display: block !important;
+      }
+      .profile-top {
+        display: block;
+        width: 100%;
+
+        .profile-top-rightside {
+          float: left;
+          width: 100%;
+          padding: 10px;
+          height: 300px;
+
+          .inductee-name {
+            position: relative;
+            font-family: var(--headline-font);
+            font-size: 9vw;
+            z-index: 500;
+            text-align: center;
+            margin-top: -191%;
+            word-wrap: break-word;
+            width: 90%;
+            left: 5%;
+            right: 5%;
+            padding: 0 10%;
+            letter-spacing: 0.1rem;
+            text-decoration: none;
+            color: rgb(244, 133, 151);
+            line-height: 2.6rem;
+            // box-shadow: #181717;
+            // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+            text-shadow: 7px 1px 0 rgb(19, 20, 19),
+              /* top-left shadow */ 4px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 1px 5px 9px rgb(19, 20, 19),
+              /* bottom-right shadow */ 0px 0px 0px rgb(19, 20, 19),
+              5px 4px 0px rgb(19, 20, 19);
+
+            transform: skew(0deg) rotate(-5deg);
+          }
+
+          .bio-section {
+            z-index: 1000;
+            left: 3%;
+            margin-top: 5%;
+            position: relative;
+            width: 100%;
+            height: 250px;
+            margin-bottom: 0%;
+            background-color: transparent;
+            border: none;
+
+            transform: skew(0deg) rotate(0deg);
+
+            p {
+              padding: 5% 3% 20px;
+
+              position: relative;
+              font-family: var(--londrina-font);
+              line-height: 1.3;
+              font-size: 4.5vw;
+              font-weight: 400;
+            }
+          }
+        }
+
+        .profile-top-leftside {
+          float: left;
+          width: 100%;
+          margin-top: -290%;
+          padding: 0;
+          height: 600px;
+          position: relative;
+
+          img {
+            transform: skew(0deg) rotate(0deg);
+            width: 600px;
+            height: auto;
+            position: relative;
+            z-index: 1;
+          }
+            .blink-items{
+img{
+          display: none;
+        }}
+
+          
+          
+        }
+      }
+
+      .profile-middle-section {
+        background: white;
+      }
+      .profile-middle-desktop {
+        display: none !important;
+      }
+
+      .profile-middle-mobile {
+        display: block;
+      }
+      .profile-middle {
+        padding-left: 5%;
+
+        z-index: 200;
+        position: relative;
+        margin-top: -207%;
+        width: auto;
+        height: fit-content;
+        padding-bottom: 20%;
+        clip-path: polygon(
+          8.36% 12.12%,
+          /* 160.56px 280.44px */ 0% 2.59%,
+          /* 0px 59.82px */ 0% 93.39%,
+          /* 0px 2161.39px */ 0% 93.39%,
+          /* 0px 2161.39px */ 16.74% 97.24%,
+          /* 321.5604px 2250.46047px */ 31.94% 99.15%,
+          /* 613.2768px 2294.82896px */ 45.53% 99.51%,
+          /* 874.206px 2302.81609px */ 57.46% 98.64%,
+          /* 1103.4048px 2282.74248px */ 67.7% 96.93%,
+          /* 1299.93px 2242.92875px */ 76.74% 94.68%,
+          /* 1462.8384px 2191.69552px */ 82.89% 92.39%,
+          /* 1591.1868px 2137.36341px */ 87.71% 90.23%,
+          /* 1684.032px 2088.25304px */ 90.63% 88.68%,
+          /* 1740.4308px 2052.68503px */ 91.62% 88.06%,
+          /* 1759.44px 2038.98px */ 100% 97.63%,
+          /* 1920px 2259.6px */ 100% 6.83%,
+          /* 1920px 158.03px */ 100% 6.83%,
+          /* 1920px 158.03px */ 83.25% 2.98%,
+          /* 1598.4396px 68.95953px */ 68.07% 1.06%,
+          /* 1306.7232px 24.59104px */ 54.55% 0.72%,
+          /* 1045.794px 16.60391px */ 42.54% 1.59%,
+          /* 816.5952px 36.67752px */ 32.29% 3.31%,
+          /* 620.07px 76.49125px */ 23.81% 5.52%,
+          /* 457.1616px 127.72448px */ 17.12% 7.87%,
+          /* 328.8132px 182.05659px */ 12.29% 9.99%,
+          /* 235.968px 231.16696px */ 9.36% 11.53%,
+          /* 179.5692px 266.73497px */ 8.36% 12.12% /* 160.56px 280.44px */
+        );
+
+        background-color: rgb(56, 178, 227);
+      }
+
+      .profile-middle-secton-content {
+        display: contents;
+      }
+      .profile-middle-left {
+        width: 100%;
+        padding-top: 350px;
+        z-index: 100;
+
+        position: relative;
+
+        .profile-about {
+          transform: skew(0deg) rotate(0deg);
+          margin-left: -8% !important;
+          margin-top: -20%;
+          width: 100%;
+
+          .title {
+            position: relative;
+            letter-spacing: 0.25rem;
+            font-family: "BreadDream";
+            z-index: 100;
+            font-size: 5vw;
+            background-color: var(--yellow);
+            border-radius: 1rem;
+            color: black;
+            padding: 5px 15px;
+            width: fit-content;
+          }
+          ul {
+            margin: 1% 5% 10%;
+
+            li {
+              padding-bottom: 8px;
+              font-size: 5vw;
+
+              line-height: 1;
+              letter-spacing: 0.05em;
+              font-family: var(--londrina-font);
+              span {
+                font-weight: 500;
+              }
+            }
+          }
+        }
+
+        .profile-professional {
+          transform: skew(0deg) rotate(0deg);
+          margin-left: 0%;
+          margin-top: 8%;
+
+          .title {
+            position: relative;
+            letter-spacing: 0.25rem;
+            font-family: "BreadDream";
+            z-index: 100;
+            font-size: 5vw;
+            background-color: rgb(231, 199, 36);
+            border-radius: 1rem;
+            color: black;
+            padding: 5px 15px;
+            width: fit-content;
+          }
+        }
+
+        div ul {
+          margin: 6% 3% 1% !important;
+
+          li {
+            font-size: 5vw;
+            font-weight: 300;
+            span {
+              font-weight: 600;
+            }
+          }
+        }
+        .links-in-profile-mobile {
+          display: block !important;
+          ul {
+            margin-top: 10% !important;
+            margin-left: -5% !important;
+            padding-bottom: 10%;
+          }
+        }
+        .profile-social-icons {
+          width: 45px !important;
+          padding-right: 20px;
+        }
+      }
+
+      .profile-middle-right {
+        background: url("../../images/shine50/mobile_middle_brush.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+
+        background-size: cover;
+        width: 100%;
+        z-index: 1000;
+        padding-top: 20%;
+
+        position: relative;
+        .mobile-inductee-second-img-wrapper {
+          display: block;
+          margin-left: 3%;
+          margin-top: -45% !important;
+        }
+
+        .profile-video {
+          position: relative;
+          z-index: 1000;
+          // transform: skew(0deg) rotate(-6deg);
+          padding-bottom: 60%;
+          padding: 0 15%;
+
+          // div div{
+          //           margin: -75% 5% 0;
+
+          iframe {
+            margin-top: -50% !important;
+            transform: skew(0deg) rotate(-6deg);
+            width: 280px !important;
+            height: 500px !important;
+            position: absolute;
+          }
+          // }
+          .react-player__preview {
+            justify-content: center;
+            margin-top: -50%;
+            transform: skew(0deg) rotate(-6deg);
+            width: 90% !important;
+            height: 100% !important;
+            position: relative;
+          }
+        }
+      }
+
+      .thunder-character {
+        display: none;
+      }
+      .profile-stroy-section {
+        padding: 0% 7% 10%;
+        background: url("../../images/shine50/mobile_middle_brush.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+
+        background-size: cover;
+
+        .profile-story {
+          height: fit-content;
+          margin-top: -75%;
+          z-index: 5000;
+          position: relative;
+          h2 {
+            margin-top: 20%;
+            font-size: 8vw;
+            font-family: var(--headline-font);
+            margin-bottom: 15%;
+            line-height: 1.1;
+            letter-spacing: 1;
+            text-shadow: 7px 1px 0 rgb(19, 20, 19),
+              /* top-left shadow */ 4px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 1px 5px 9px rgb(19, 20, 19),
+              /* bottom-right shadow */ 0px 0px 0px rgb(19, 20, 19),
+              5px 4px 0px rgb(19, 20, 19);
+          }
+
+          p {
+            line-height: 1.4rem;
+
+            color: #0d0d0d;
+            padding-left: 5%;
+            font-size: 4.8vw;
+            font-family: var(--body-font);
+            margin-bottom: 5%;
+          }
+          p:last-of-type {
+            margin-bottom: -10%;
+          }
+
+          p:first-of-type::first-letter {
+            float: left;
+
+            line-height: 35px;
+
+            font-size: 8vw;
+
+            color: #0d0d0d;
+
+            // border: solid #d5c5ec;
+
+            padding-top: 3px;
+
+            padding-bottom: 5px;
+
+            padding-right: 1px;
+
+            padding-left: 3px;
+
+            margin-right: 0px;
+            margin-top: -2.5%;
+            margin-left: -6%;
+            margin-bottom: -6px;
+            font-weight: bolder;
+          }
+        }
+      }
+
+      .profile-midle-wide-image-section {
+        display: none;
+      }
+
+      footer {
+        height: min-content;
+        margin-top: 0;
+        width: auto;
+        background: url("../../images/shine50/mobile-footer.png");
+        background-repeat: no-repeat;
+        background-position: initial;
+
+        background-size: cover;
+        z-index: 2000;
+        text-align: center;
+        align-items: center;
+
+        .shine {
+          position: absolute;
+          opacity: 0.2;
+          width: 400px;
+          margin-top: -45.5px;
+          transform: rotate(-2deg);
+          margin-left: 25%;
+        }
+        .fifty {
+          position: absolute;
+          margin-top: -95.5px;
+          opacity: 0.3;
+          width: 200px;
+        }
+
+        .blinking-lines {
+          margin-left: 90%;
+        }
+
+        .footer-logo-section {
+          text-align: center;
+
+          display: flex;
+          padding-top: 0%;
+          position: relative;
+          justify-content: center;
+          img {
+            width: 200px;
+          }
+        }
+        .footer-allrightreserved-section {
+          text-align: center;
+          font-size: 1.8vw;
+          font-weight: bold;
+
+          display: flex;
+          margin-top: 0%;
+
+          position: relative;
+          justify-content: center;
+        }
+
+        .footer-links-section {
+          position: relative;
+          justify-content: center;
+          text-align: center;
+
+          ul {
+            display: block;
+            justify-content: center;
+            margin-top: 0%;
+
+            li {
+              font-size: 3.2vw;
+              padding: 1%;
+              font-weight: 800;
+            }
+          }
+        }
+        .footer-social-media-icons {
+          text-align: center;
+          justify-content: center;
+          padding: 2%;
+          color: #040404 !important;
+        }
+      }
+
+      .about-page {
+        background: var(--red);
+        height: fit-content !important;
+
+        footer {
+          background: url("../../images/shine50/about-mobile-footer.webp") !important;
+          position: relative;
+          height: auto;
+          z-index: 1000;
+
+          width: 100% !important;
+          background-repeat: no-repeat !important;
+          background-position: initial !important;
+
+          background-size: cover !important;
+          .footer-logo-section {
+            text-align: center;
+            display: flex;
+            padding-top: 0%;
+            position: relative;
+            justify-content: center;
+            img {
+              padding-top: 10%;
+
+              width: 200px;
+            }
+          }
+        }
+
+        .about-top {
+          height: 600px;
+          width: 100%;
+          background-image: url("../../images/shine50/abouttop.png");
+          background-repeat: no-repeat;
+          align-items: center;
+          background-size: contain;
+        }
+
+        .page-title {
+          justify-content: center;
+          h1 {
+            text-align: center;
+            position: relative;
+            font-family: var(--headline-font);
+            font-size: 6.5vw;
+            z-index: 100;
+            padding-top: 10%;
+
+            letter-spacing: 0.1rem;
+            text-decoration: double;
+            color: var(--yellow);
+            line-height: 5.6rem;
+            // box-shadow: #181717;
+            // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+            text-shadow: 0px -4px 0 rgb(19, 20, 19),
+              /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 0px 5px 1px rgb(19, 20, 19),
+              /* bottom-right shadow */ 5px 4px 1px rgb(19, 20, 19),
+              3px -4px 0px rgb(19, 20, 19);
+          }
+        }
+
+        .about-middle-section {
+          height: fit-content;
+          padding: 0% 5% 1%;
+          justify-content: center;
+          .about-shine50 {
+            background-image: url("../../images/shine50/Star_Character-01.png");
+            background-size: cover;
+            width: 390px;
+            height: 450px;
+            margin-top: -125%;
+
+            .text-container {
+              padding: 10% 10% 7% 18%;
+              transform: skew(0deg) rotate(0deg);
+
+              h2 {
+                font-size: 5vw;
+                font-family: (var(--headline-font));
+                font-weight: 600;
+                margin-bottom: 8%;
+                transform: skew(0deg) rotate(-5deg);
+              }
+              h3 {
+                font-size: 4vw;
+                font-family: (var(--body-font));
+                font-weight: 800;
+                margin-bottom: 0%;
+                line-height: 1;
+
+                font-weight: 600;
+              }
+              p {
+                text-align: left;
+                font-size: 3.2vw;
+                line-height: 1;
+                margin-top: -2%;
+                margin-left: -10%;
+                font-weight: 600;
+                font-family: var(--body-font);
+                transform: skew(0deg) rotate(5deg);
+              }
+            }
+          }
+
+          .about-neon {
+            background-image: url("../../images/shine50/Star_Character-03.png");
+            background-size: cover;
+            width: 390px;
+            height: 450px;
+            margin-top: 10%;
+            .text-container {
+              transform: skew(0deg) rotate(-25deg);
+              padding: 10% 10% 7% 18%;
+
+              .neon-h2 {
+                text-align: right;
+
+                font-size: 5vw;
+                font-family: (var(--headline-font));
+                font-weight: 600;
+                width: 100%;
+                margin-top: 3%;
+                margin-left: 5%;
+                margin-bottom: 0%;
+                transform: skew(0deg) rotate(25deg);
+
+                margin-bottom: 10%;
+              }
+
+              .neon-p {
+                text-align: left;
+                width: 300px;
+                font-size: 3vw;
+                margin-top: -1%;
+                margin-left: -5%;
+                font-weight: 300;
+                font-family: var(--londrina-font);
+                line-height: 1.1;
+                transform: skew(0deg) rotate(18deg);
+              }
+
+              h2 {
+                font-size: 5vw;
+                font-family: (var(--headline-font));
+                font-weight: 600;
+                width: 100%;
+                margin-top: 2%;
+                margin-left: 5%;
+                margin-bottom: 2%;
+                transform: skew(0deg) rotate(12deg);
+              }
+
+              p {
+                text-align: left;
+                width: 300px;
+                font-size: 3vw;
+                line-height: 1.1;
+                margin-top: 0%;
+                margin-left: -15%;
+                font-weight: 400;
+                font-family: var(--londrina-font);
+                transform: skew(0deg) rotate(18deg);
+              }
+            }
+          }
+        }
+        .methodology-section {
+          height: fit-content;
+          padding: 0 2% 30% 15%;
+          width: 150%;
+          background-image: url("../../images/shine50/methodology.png");
+          background-repeat: no-repeat;
+          align-items: center;
+          background-size: contain;
+          margin-top: 0;
+
+          h2 {
+            transform: skew(0deg) rotate(8deg);
+
+            text-align: left;
+            position: relative;
+            font-family: "BreadDream";
+            font-size: 6vw;
+            z-index: 100;
+            padding-top: 20%;
+            padding-left: 10%;
+            letter-spacing: 0.2rem;
+            text-decoration: double;
+            color: var(--blue);
+            line-height: 2rem;
+            text-shadow: 0px -4px 0 rgb(19, 20, 19),
+              /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 0px 5px 1px rgb(19, 20, 19),
+              /* bottom-right shadow */ 5px 4px 1px rgb(19, 20, 19),
+              3px -4px 0px rgb(19, 20, 19);
+            letter-spacing: 0.1rem;
+          }
+
+          p {
+            text-align: left;
+            font-size: 4.5vw;
+            padding: 1% 45% 0 0%;
+            font-weight: 600;
+            font-family: var(--body-font);
+            transform: skew(0deg) rotate(-8deg);
+            // background: linear-gradient(
+            //   rgb(0, 0, 0),
+            //   rgb(26, 25, 25),
+            //   rgba(0, 0, 0, 0.974),
+            //   rgb(0, 0, 0),
+            //   rgb(228, 225, 225),
+            //   rgb(255, 255, 255),
+            //   rgb(255, 255, 255)
+            // );
+            -webkit-background-clip: text;
+            background-clip: text;
+          }
+        }
+        .credit-section {
+          height: fit-content;
+          padding-bottom: 10%;
+          h2 {
+            transform: skew(0deg) rotate(6deg);
+
+            text-align: right;
+            position: relative;
+            font-family: "BreadDream";
+            font-size: 8vw;
+            z-index: 100;
+            margin-top: 10%;
+            padding-bottom: 10%;
+            padding-right: 15%;
+            letter-spacing: 0.2rem;
+            text-decoration: double;
+            color: var(--yellow);
+            line-height: 2rem;
+            text-shadow: 0px -4px 0 rgb(19, 20, 19),
+              /* top-left shadow */ -1px -3px 0 rgb(15, 16, 15),
+              /* top-right shadow */ 0px 5px 1px rgb(19, 20, 19),
+              /* bottom-right shadow */ 5px 4px 1px rgb(19, 20, 19),
+              3px -4px 0px rgb(19, 20, 19);
+            letter-spacing: 0.1rem;
+          }
+          ul {
+            width: 100%;
+
+            li {
+              text-align: left;
+              font-size: 3.4vw;
+              padding: 0 10%;
+              font-weight: 400;
+              width: 121%;
+              margin-left: -35px;
+              line-height: 1.5;
+              font-family: var(--body-font);
+              color: var(--white);
+            }
+          }
+          .thunder-character-right {
+            align-items: end;
+            margin-top: -10%;
+
+            img {
+              position: relative;
+              margin-left: 75%;
+              width: 150px;
+              height: auto;
+              transform: skew(0deg) rotate(10deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 410px)  {
+  //use if nessssesary
+
+
+  // .shine-50-english{
+  //      .profile-top {
+  //       display: block;
+  //       width: 100%;
+
+  //       .profile-top-rightside {
+  //         float: left;
+  //         width: 100%;
+  //         padding: 10px;
+  //         height: 300px;
+
+  //         .inductee-name {
+  //           position: relative;
+  //           font-family: var(--headline-font);
+  //           font-size: 9vw;
+  //           z-index: 500;
+  //           text-align: center;
+  //           margin-top: -167%;
+  //           word-wrap: break-word;
+  //           width: 100%;
+  //           left: 5%;
+  //           right: 5%;
+  //           padding: 0 10%;
+  //           letter-spacing: 0.1rem;
+  //           text-decoration: none;
+  //           color: rgb(244, 133, 151);
+  //           line-height: 2.6rem;
+  //           // box-shadow: #181717;
+  //           // text-shadow: 2vmin 1vmin 1vmin #181717, -2vmin  1vmin #2a2828;
+  //           text-shadow: 7px 1px 0 rgb(19, 20, 19),
+  //             /* top-left shadow */ 4px -3px 0 rgb(15, 16, 15),
+  //             /* top-right shadow */ 1px 5px 9px rgb(19, 20, 19),
+  //             /* bottom-right shadow */ 0px 0px 0px rgb(19, 20, 19),
+  //             5px 4px 0px rgb(19, 20, 19);
+
+  //           transform: skew(0deg) rotate(-5deg);
+  //         }
+
+  //         .bio-section {
+  //           z-index: 1000;
+  //           left: 3%;
+  //           margin-top: 7%;
+  //           position: relative;
+  //           width: 100%;
+  //           height: 250px;
+  //           margin-bottom: 50%;
+  //           background-color: transparent;
+  //           border: none;
+
+  //           transform: skew(0deg) rotate(0deg);
+
+  //           p {
+  //             padding: 5% 3% 20px;
+
+  //             position: relative;
+  //             font-family: var(--londrina-font);
+  //             line-height: 1.3;
+  //             font-size: 4.5vw;
+  //             font-weight: 400;
+  //           }
+  //         }
+  //       }
+
+  //       .profile-top-leftside {
+  //         float: left;
+  //         width: 100%;
+  //         padding: 0;
+  //         height: 600px;
+  //         top: 0;
+  //         margin-top: 0;
+  //         position: absolute;
+
+  //         img {
+  //           transform: skew(0deg) rotate(0deg);
+  //           width: fit-content;
+  //           height: auto;
+  //           position: absolute;
+  //           z-index: 1;
+  //           top: 0;
+            
+           
+           
+  //         }
+  //       }
+  //     }
+  // }
+}
+
+//*******************************************
+//end of mobile
+
+//Big Screens - High res
+@media screen and (min-width: 1400px) {
+  .shine-50-english {
+    .profile-top {
+      .wrapper-top::before {
+        padding: 0 60% 0 40%;
+        background-size: cover !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1700px) {
+  .shine-50-english {
+    .about-page {
+      .about-top {
+        background-size: cover;
+      }
+    }
+
+    .profile-middle {
+      padding-bottom: 20%;
+    }
+
+
+ .profile-middle-right {
+ 
+    width: 55%;
+    margin-top: 10%;
+    z-index: 100;
+
+    height: fit-content;
+    position: relative;
+
+    .mobile-inductee-second-img-wrapper {
+      display: none;
+    }
+    .links-in-profile {
+      display: block;
+      padding-right: 20%;
+    }
+
+    .profile-about {
+      transform: skew(0deg) rotate(0deg);
+      margin-left: 5%;
+      margin-right: 18%;
+
+      .title {
+        position: relative;
+        letter-spacing: 0.25rem;
+        font-family: var(--headline-font);
+        letter-spacing: 0.03em;
+        z-index: 100;
+        font-size: 2.5vw;
+        background-color: var(--yellow);
+        border-radius: 2rem;
+        color: black;
+        padding: 5px 15px;
+        width: fit-content;
+      }
+    }
+
+    .profile-professional {
+      transform: skew(0deg) rotate(5deg);
+      margin-left: -15%;
+      margin-top: 25%;
+      display: none;
+
+      .title {
+        position: relative;
+        letter-spacing: 0.25rem;
+        font-family: "BreadDream";
+        z-index: 100;
+        font-size: 2vw;
+        background-color: rgb(231, 199, 36);
+        border-radius: 1rem;
+        color: black;
+        padding: 5px 15px;
+        width: fit-content;
+      }
+    }
+
+    div ul {
+      border-left: 10px solid black;
+      margin: 20% 40% 0% 0%;
+      padding: 50px 10px;
+
+      li {
+        width: fit-content;
+        padding-bottom: auto;
+        font-size: 1.5vw;
+        margin-bottom: 1%;
+        line-height: 100%;
+        font-family: var(--londrina-font);
+        span {
+          font-weight: 300;
+          letter-spacing: 0.05em;
+          font-size: 1.9vw;
+        }
+          .company-name{
+  color: #000;
+   font-family: var(--londrina-font);
+   font-size: 1.8vw;
+         } 
+      }
+
+      .designation {
+        width: fit-content;
+        height: 120px;
+        background: yellow;
+        position: relative;
+        padding: 15px 15% 15px 70px;
+
+        margin-left: -10%;
+
+        
+    
+        &:before {
+          content: "";
+          position: absolute;
+          right: -50px;
+          bottom: 0;
+          width: 0;
+          height: fit-content;
+          border-left: 50px solid yellow;
+          border-top: 0px solid transparent;
+          border-bottom: 120px solid transparent;
+        }
+       
+
+       
+      }
+
+      .company {
+  width: fit-content;
+        height: 50px;
+        background: yellow;
+        position: relative;
+        padding: 15px 15% 15px 70px;
+
+        margin-left: -10%;
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: -25px;
+          bottom: 0;
+          width: 0;
+          height: fit-content;
+          border-left: 25px solid yellow;
+          border-top: 25px solid transparent;
+          border-bottom: 25px solid transparent;
+        }
+}
+
+
+      .district {
+        width: fit-content;
+        height: 50px;
+        background: var(--pink);
+        position: relative;
+        padding: 15px 15% 15px 70px;
+
+        margin-left: -10%;
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: -25px;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-left: 25px solid var(--pink);
+          border-top: 0px solid transparent;
+          border-bottom: 50px solid transparent;
+        }
+      }
+
+      .age {
+        width: fit-content;
+        height: 50px;
+        background: yellow;
+        position: relative;
+        padding: 15px 15% 15px 70px;
+
+        margin-left: -10%;
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: -25px;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-left: 25px solid yellow;
+          border-top: 0px solid transparent;
+          border-bottom: 50px solid transparent;
+        }
+      }
+    }
+
+    .profile-speech-bubble {
+      position: relative;
+      background: #040404;
+      border-radius: 10em;
+      width: 200px;
+      height: fit-content;
+      color: white;
+      margin: 5px 0% 200px 0%;
+      transform: skew(0deg) rotate(-18deg);
+      display: none;
+
+      p {
+        padding: 15% 10%;
+        font-family: var(--headline-font);
+        text-align: center;
+        line-height: 1.1em;
+        z-index: 100;
+        font-size: 2.5vw;
+        border-radius: 1rem;
+        color: var(--red);
+      }
+    }
+
+    .profile-speech-bubble:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-top-color: #101010;
+      border-bottom: 0;
+      border-left: 0;
+      margin-left: -10px;
+      margin-bottom: -20px;
+    }
+
+    .profile-social-icons {
+      width: 40px !important;
+      margin: 0 5px 0;
+      cursor: pointer;
+    }
+    .links-in-profile-mobile {
+      display: none !important;
+    }
+    .links-in-profile {
+      display: block;
+      transform: skew(0deg) rotate(0deg) !important;
+      margin-left: 2% !important;
+
+      margin-top: -10%;
+      // margin-top: 20% !important;
+
+      .title {
+        display: none;
+        position: relative !important;
+        letter-spacing: 0.25rem !important;
+        font-family: "BreadDream" !important;
+        z-index: 100 !important;
+        font-size: 2vw !important;
+        background-color: rgb(231, 36, 101) !important;
+        border-radius: 2rem !important;
+        color: black !important;
+        padding: 5px 15px !important;
+        width: fit-content !important;
+        margin-top: -10%;
+      }
+      ul {
+        border: none !important;
+      }
+
+      .links {
+        margin-bottom: 0% !important;
+        display: flex !important;
+        ul {
+          li {
+            padding-right: 15% !important;
+            transform: skew(0deg) rotate(0deg) !important;
+            svg {
+              width: 3px;
+            }
+          }
+        }
+      }
+
+      .social-icons-row-2 {
+        margin-top: 7%;
+        margin-left: 15%;
+      }
+    }
+  }
+
+
+
+
+  }
+
+
+
+
+}

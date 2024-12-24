@@ -1,0 +1,2 @@
+// shinecontentaboutbackground.svg
+

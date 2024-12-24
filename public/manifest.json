@@ -1,0 +1,38 @@
+{
+  "theme_color": "#e6ecf5",
+  "background_color": "#e6ecf5",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Echelon.lk - Echelon Magazine website",
+  "short_name": "Echelon",
+  "description": "Echelon stands for the pursuit of intelligent storytelling, spotlighting Sri Lanka\u2019s governance and policy framework, unravelling market intricacies, and profiling the leaders, winning strategies, and bold innovations driving successful businesses. Compelling reads, immersive videos, rich photography, bold graphics, and engaging design enrich our content.",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
