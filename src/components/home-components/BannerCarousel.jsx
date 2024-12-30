@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
@@ -35,12 +36,24 @@ const BannerCarousel = ({ bannerPosts }) => {
     <div className="absolute md:contents hidden caresoul-home-desktop">
       <div className="overflow-hidden">
         {images.length > 0 && (
-          <div
-            className="cover"
-            style={{
-              background: `url(${images[currentImage]})  center / cover`,
-            }}
-            priority
+          // <div
+          //   className="cover"
+          //   style={{
+          //     background: `url(${images[currentImage]})  center / cover`,
+          //   }}
+          //   priority
+          // />
+
+          <Image
+          className="cover"
+          src={images[currentImage]}
+          height={300}
+          width={100}
+          objectFit="cover"
+          objectPosition="center"
+          priority
+          alt="  "
+        
           />
         )}
       </div>
