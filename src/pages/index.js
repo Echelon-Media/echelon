@@ -270,7 +270,7 @@ export default function Home() {
  useEffect(() => {
     const timer = setTimeout(() => {
       onLoadComplete();
-    },2000); 
+    },1000); 
     return () => clearTimeout(timer);
   }, []);
 
