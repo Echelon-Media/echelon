@@ -266,21 +266,21 @@ export default function Home() {
   //   }
   // }, []);
 
-
-//  useEffect(() => {
-//     const timer = setTimeout(() => {
-//       onLoadComplete();
-//     },1000); // Assume banner loads in 2 seconds
-//     return () => clearTimeout(timer);
-//   }, []);
+//loading time
+ useEffect(() => {
+    const timer = setTimeout(() => {
+      onLoadComplete();
+    },1500); 
+    return () => clearTimeout(timer);
+  }, []);
 
   
 
-//   const [isBannerLoaded, setIsBannerLoaded] = useState(false);
+  const [isBannerLoaded, setIsBannerLoaded] = useState(false);
 
-//   const onLoadComplete = () => {
-//     setIsBannerLoaded(true);
-//   };
+  const onLoadComplete = () => {
+    setIsBannerLoaded(true);
+  };
 
 
   return (
@@ -344,9 +344,9 @@ export default function Home() {
 
       {/* <BannerAd />
       <MobileAd /> */}
-      {/* {isBannerLoaded ? <Navbar />:<></>} */}
+      {isBannerLoaded ? <Navbar />:<></>}
       
-      <Navbar />
+
       <BannerCarousel bannerPosts={bannerPosts} />
 
       {loading ? (
