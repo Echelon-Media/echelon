@@ -24,7 +24,7 @@ import { useRef } from "react";
 import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import BannerCarousel from "@/components/home-components/BannerCarousel";
+// import BannerCarousel from "@/components/home-components/BannerCarousel";
 
 
 // ADS Lazy Loadinf
@@ -35,9 +35,9 @@ const VerticalAd = dynamic(() => import("@/components/ads/verticalAd"));
 
 //componenets Lazy loading
 
-// const BannerCarousel = dynamic(() =>
-//   import("@/components/home-components/BannerCarousel")
-// );
+const BannerCarousel = dynamic(() =>
+  import("@/components/home-components/BannerCarousel")
+);
 const PostSection = dynamic(() =>
   import("@/components/home-components/PostSection")
 );
@@ -267,20 +267,20 @@ export default function Home() {
   // }, []);
 
 
- useEffect(() => {
-    const timer = setTimeout(() => {
-      onLoadComplete();
-    },1000); // Assume banner loads in 2 seconds
-    return () => clearTimeout(timer);
-  }, []);
+//  useEffect(() => {
+//     const timer = setTimeout(() => {
+//       onLoadComplete();
+//     },1000); // Assume banner loads in 2 seconds
+//     return () => clearTimeout(timer);
+//   }, []);
 
   
 
-  const [isBannerLoaded, setIsBannerLoaded] = useState(false);
+//   const [isBannerLoaded, setIsBannerLoaded] = useState(false);
 
-  const onLoadComplete = () => {
-    setIsBannerLoaded(true);
-  };
+//   const onLoadComplete = () => {
+//     setIsBannerLoaded(true);
+//   };
 
 
   return (
@@ -344,9 +344,9 @@ export default function Home() {
 
       {/* <BannerAd />
       <MobileAd /> */}
-      {isBannerLoaded ? <Navbar />:<></>}
+      {/* {isBannerLoaded ? <Navbar />:<></>} */}
       
-
+      <Navbar />
       <BannerCarousel bannerPosts={bannerPosts} />
 
       {loading ? (
