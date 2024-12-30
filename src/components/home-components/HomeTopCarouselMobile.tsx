@@ -146,7 +146,7 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
              
             </div>
 
-            <div className="max-w-xs sm:max-w-sm md:max-w-3xl mx-auto flex grid-rows-4 md:grid-cols-4 gap-4 flex flex-nowrap justify-center items-center home-top-carousel-mobile-progress-bar">
+            <div className="max-w-xs sm:max-w-sm md:max-w-3xl mx-auto flex grid-rows-4 md:grid-cols-4 gap-4  flex-nowrap justify-center items-center home-top-carousel-mobile-progress-bar">
               {bannerPosts.map((_, index) => (
                 <button
                   key={index}
