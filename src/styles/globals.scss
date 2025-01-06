@@ -1386,6 +1386,11 @@ p strong {
   position: "relative";
   bottom: "10px";
   top: "30px";
+  .list-header{
+    .home-popular-header{
+      color: white !important;
+    }
+  }
 }
 
 .story-page-popular-Floating {
@@ -3885,6 +3890,15 @@ p strong {
     margin-top: 2%;
     text-overflow: hidden;
     text-wrap: wrap;
+  }
+
+  .popular-relative-story{
+    top: 0vh !important;
+    .list-header{
+      .home-popular-header{
+        color: white !important;
+      }
+    }
   }
 
   // **** mobile end of story page*****//
