@@ -198,7 +198,7 @@ const Navbar = () => {
         <nav
           style={{
             width: "100%",
-            height: navVisible || hovering ? "14.5px" : "0px",
+            height: navVisible || hovering ? "17px" : "0px",
             overflow: "hidden",
             transition: "height 0.5s ease",
           }}
