@@ -347,9 +347,9 @@ export default function Home() {
       {isBannerLoaded ? <><Navbar />
       
 
-      <BannerCarousel bannerPosts={bannerPosts} /></>
+      </>
       :<></>}
-
+<BannerCarousel bannerPosts={bannerPosts} />
       {loading ? (
         <div className="min-h-screen">{/* <Loading /> */}</div>
       ) : (
