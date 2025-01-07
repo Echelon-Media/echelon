@@ -45,19 +45,21 @@ class MyDocument extends Document {
             async
             src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
           />
+
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            as="style"
+          />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            media="print"
+            onLoad="this.media='all'"
+          />
+
         </Head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-          as="style"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-          media="print"
-          onLoad="this.media='all'"
-        />
-     
+
 
         <body>
           <Main />

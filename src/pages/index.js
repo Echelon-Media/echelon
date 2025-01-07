@@ -270,7 +270,7 @@ export default function Home() {
  useEffect(() => {
     const timer = setTimeout(() => {
       onLoadComplete();
-    },1800); 
+    },2000); 
     return () => clearTimeout(timer);
   }, []);
 
@@ -344,10 +344,11 @@ export default function Home() {
 
       {/* <BannerAd />
       <MobileAd /> */}
-      {isBannerLoaded ? <Navbar />:<></>}
+      {isBannerLoaded ? <><Navbar />
       
 
-      <BannerCarousel bannerPosts={bannerPosts} />
+      <BannerCarousel bannerPosts={bannerPosts} /></>
+      :<></>}
 
       {loading ? (
         <div className="min-h-screen">{/* <Loading /> */}</div>
