@@ -379,7 +379,7 @@ export default function Home() {
                 //   "https://backend.echelon.lk/wp-content/uploads/2024/09/Echelon-September-2024.pdf"
                 // }
                 // target="_blank"
-                slot={"home_top_right_vertically_long_300*500"}
+                slot={"story_top_right_vertically_long_300*500"}
               />
 
               
