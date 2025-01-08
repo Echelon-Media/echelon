@@ -24,7 +24,6 @@ import { useRef } from "react";
 import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import Adscene from "@/components/home-components/adscene";
 // import BannerCarousel from "@/components/home-components/BannerCarousel";
 
 
@@ -358,7 +357,7 @@ export default function Home() {
           <HomeTopCarouselMobile bannerPosts={bannerPosts} />
           {/* <BannerAd /> */}
           <MobileAd slot={"home_mobile_square_1"} />
-{/* <Adscene/> */}
+
           <main id="main" className="first-main mt-5">
             <PostSection homePagePosts={homepagePosts1} />
             <div className="desktop-right-side ">
@@ -380,7 +379,7 @@ export default function Home() {
                 //   "https://backend.echelon.lk/wp-content/uploads/2024/09/Echelon-September-2024.pdf"
                 // }
                 // target="_blank"
-                slot={"story_top_right_vertically_long_2_300*500"}
+                slot={"home_top_right_vertically_long_300*500"}
               />
 
               
