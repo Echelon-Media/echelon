@@ -21,11 +21,12 @@ class MyDocument extends Document {
           ></meta>
 
           <Script
+          defer
             strategy="lazyOnload"
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS}`}
           />
 
-          <Script id="ga-script" strategy="lazyOnload">
+          <Script defer id="ga-script" strategy="lazyOnload">
             {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -42,6 +43,7 @@ class MyDocument extends Document {
           <meta name="robots" content="max-image-preview:large"></meta>
 
           <script
+          defer
             async
             src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
           />

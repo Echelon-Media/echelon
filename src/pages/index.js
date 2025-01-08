@@ -355,7 +355,7 @@ export default function Home() {
       ) : (
         <>
           <HomeTopCarouselMobile bannerPosts={bannerPosts} />
-          <BannerAd />
+          {/* <BannerAd /> */}
           <MobileAd slot={"home_mobile_square_1"} />
 
           <main id="main" className="first-main mt-5">
