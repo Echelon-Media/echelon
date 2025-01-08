@@ -36,25 +36,23 @@ const BannerCarousel = ({ bannerPosts }) => {
     <div className="absolute md:contents hidden caresoul-home-desktop">
       <div className="overflow-hidden">
         {images.length > 0 && (
-          // <div
-          //   className="cover"
-          //   style={{
-          //     background: `url(${images[currentImage]})  center / cover`,
-          //   }}
-          //   priority
-          // />
-
-          <Image
-          className="cover"
-          src={images[currentImage]}
-          height={300}
-          width={100}
-          objectFit="cover"
-          objectPosition="center"
-          priority
-          alt="  "
-        
+          <div
+            className="cover"
+            style={{
+              background: `url(${images[currentImage]})  center / cover`,
+            }}
+            priority
           />
+
+          // <Image
+          // className="cover"
+          // src={images[currentImage]}
+          // height={300}
+          // width={100}
+          // objectFit="contain"
+          // objectPosition="center"
+          // priority
+          // alt="  "/>
         )}
       </div>
       <div className="inherit banner-box-list mb-5 inset-x-0 bottom-0 flex justify-center space-x-2 px-16 py-0">

@@ -466,11 +466,11 @@ b {
 /* banner caresoul */
 .cover {
   background-position: top;
-  background-size: cover;
-  height: 100%;
+  background-size: contain;
+  height: auto;
   width: 100%;
   min-height: 80vh;
-  max-height: 80vh;
+  // max-height: 80vh;
   content-visibility: auto;
 }
 
