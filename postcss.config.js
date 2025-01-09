@@ -1,8 +1,6 @@
 module.exports = {
-  compiler: {
-    styledComponents: true,
-  },
   plugins: {
+    "tailwindcss/nesting": "postcss-nesting",
     tailwindcss: {},
     autoprefixer: {},
   },

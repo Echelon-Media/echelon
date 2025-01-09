@@ -14,7 +14,7 @@ const NotFound = () => {
       <Head>
         <title>404 Error</title>
        
-        <link
+        {/* <link
           rel="preload"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           as="style"
@@ -24,7 +24,7 @@ const NotFound = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           media="print"
           onload="this.media='all'"
-        />
+        /> */}
       </Head>
       <Navbar />
       <div className="bg-gray-200 w-full px-16 md:px-0 h-screen flex items-center justify-center">

@@ -68,7 +68,7 @@ const PrivacyPolicy = () => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <link
+        {/* <link
           rel="preload"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           as="style"
@@ -78,7 +78,7 @@ const PrivacyPolicy = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           media="print"
           onload="this.media='all'"
-        />
+        /> */}
       </Head>
       <Navbar />
       <img src="" alt="" />

@@ -160,17 +160,7 @@ function Post({ post, type }) {
           <meta name="twitter:image" content={ogImage} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:image:alt" content={ogTitile} />
-          <link
-            rel="preload"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            as="style"
-          />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            media="print"
-            onLoad="this.media='all'"
-          />
+          
         </Head>
         {post.type == "branded" || post.type == "brandedvideos" ? (
           <></>

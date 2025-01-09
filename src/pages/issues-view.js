@@ -93,7 +93,7 @@ const MagazineIssues = () => {
           name="twitter:image"
           content="https://echelon.lk/_next/static/media/logo.c39512be.png"
         />
-
+{/* 
         <link
           rel="preload"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -104,7 +104,7 @@ const MagazineIssues = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           media="print"
           onload="this.media='all'"
-        />
+        /> */}
       </Head>
       <Navbar />
       <main>

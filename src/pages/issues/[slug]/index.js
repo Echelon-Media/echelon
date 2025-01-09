@@ -126,7 +126,7 @@ const MagIssu = ({ posts, slug }) => {
           content="https://testing.neonmedia.lk/_next/static/media/logo.c39512be.png"
         />
 
-        <link
+        {/* <link
           rel="preload"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           as="style"
@@ -136,7 +136,7 @@ const MagIssu = ({ posts, slug }) => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           media="print"
           onLoad="this.media='all'"
-        />
+        /> */}
       </Head>
 
       <Navbar />

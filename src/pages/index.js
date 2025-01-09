@@ -24,7 +24,7 @@ import { useRef } from "react";
 import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-// import BannerCarousel from "@/components/home-components/BannerCarousel";
+import BannerCarousel from "@/components/home-components/BannerCarousel";
 
 
 // ADS Lazy Loadinf
@@ -35,9 +35,9 @@ const VerticalAd = dynamic(() => import("@/components/ads/verticalAd"));
 
 //componenets Lazy loading
 
-const BannerCarousel = dynamic(() =>
-  import("@/components/home-components/BannerCarousel")
-);
+// const BannerCarousel = dynamic(() =>
+//   import("@/components/home-components/BannerCarousel")
+// );
 const PostSection = dynamic(() =>
   import("@/components/home-components/PostSection")
 );
@@ -270,7 +270,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoadComplete();
-    }, 2000);
+    }, 2400);
     return () => clearTimeout(timer);
   }, []);
 
@@ -345,11 +345,13 @@ export default function Home() {
       {/* <BannerAd />
       <MobileAd /> */}
       {isBannerLoaded ? <><Navbar />
-
+       
 
       </>
+      
         : <></>}
-      <BannerCarousel bannerPosts={bannerPosts} />
+     
+     <BannerCarousel bannerPosts={bannerPosts} />
       {loading ? (
         <div className="min-h-screen">{/* <Loading /> */}</div>
       ) : (
@@ -361,7 +363,7 @@ export default function Home() {
           <main id="main" className="first-main mt-5">
             <PostSection homePagePosts={homepagePosts1} />
             <div className="desktop-right-side ">
-              {/* <div className={`postList ${popularFixed}`}>
+              <div className={`postList ${popularFixed}`}>
                 <div className="home-popular-header-wrapper">
                   <h2
                     className="text-xl text-black home-popular-header homepage-popular"
@@ -371,7 +373,7 @@ export default function Home() {
                   </h2>
                 </div>
                 <PostList />
-              </div> */}
+              </div>
               <VerticalAd
                 adClass={firstfixclass}
 
