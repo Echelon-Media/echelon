@@ -10,7 +10,7 @@ const VerticalAd = ({ adStyle, adClass, url, img, slot }) => {
     : "https://www.youtube.com/playlist?list=PL85zhIvKzyYZYgTOw_bkkgrASeysu3oit";
   return (
     <>
-      <div className={`${adClass} rightShort mb-5 `} style={adStyle}>
+      <div className={`${adClass}  mb-5 `} style={adStyle}>
         <div className="vertical-ads-background">
           <div className="ad-title">Advertisement</div>
           <div className="side-ad " id={"side-ad"}>

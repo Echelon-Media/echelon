@@ -381,7 +381,22 @@ export default function Home() {
 
             </div>
           </main>
-       
+          <main id="main" className="first-main mt-5 flex">
+            {/* Post Section */}
+            <section className="flex-1">
+              <PostSection homePagePosts={homepagePosts1} />
+            </section>
+
+            {/* Right-side Ad */}
+            <div className="desktop-right-side w-[300px]">
+              <VerticalAd
+                adClass={` sticky top-0`}
+                slot={"story_top_right_vertically_long_300*500"}
+              />
+            </div>
+          </main>
+<br/>
+
           <MobileAd slot={"home_mobile_square_4"} />
           {/* <HomebrandedPicksMobile /> */}
           {/* <HomeBrandedPicks /> */},
