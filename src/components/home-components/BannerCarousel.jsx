@@ -45,11 +45,11 @@ const BannerCarousel = ({ bannerPosts }) => {
           />
 
           // <Image
-          // className="cover"
+          // // className="cover"
           // src={images[currentImage]}
-          // height={300}
-          // width={100}
-          // objectFit="contain"
+          // height={400}
+          // width={1840}
+          // objectFit="cover"
           // objectPosition="center"
           // priority
           // alt="  "/>
