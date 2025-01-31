@@ -42,8 +42,7 @@ class MyDocument extends Document {
 
           <meta name="robots" content="max-image-preview:large"></meta>
 
-          <script
-          defer
+          <Script
             async
             src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
           />

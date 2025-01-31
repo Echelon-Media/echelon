@@ -24,7 +24,7 @@ import { useRef } from "react";
 import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import BannerCarousel from "@/components/home-components/BannerCarousel";
+// import BannerCarousel from "@/components/home-components/BannerCarousel";
 
 
 // ADS Lazy Loadinf
@@ -35,11 +35,11 @@ const VerticalAd = dynamic(() => import("@/components/ads/verticalAd"));
 
 //componenets Lazy loading
 
-// const BannerCarousel = dynamic(() =>
-//   import("@/components/home-components/BannerCarousel")
-// );
+const BannerCarousel = dynamic(() =>
+  import("@/components/home-components/BannerCarousel", { ssr: false })
+);
 const PostSection = dynamic(() =>
-  import("@/components/home-components/PostSection")
+  import("@/components/home-components/PostSection",{ ssr: false })
 );
 const PostList = dynamic(() => import("@/components/home-components/PostList"));
 
@@ -270,7 +270,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoadComplete();
-    }, 1000);
+    }, 3600);
     return () => clearTimeout(timer);
   }, []);
 
