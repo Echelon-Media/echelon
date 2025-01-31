@@ -1,5 +1,10 @@
-const TerserPlugin = require('terser-webpack-plugin');
-const postcssPresetEnv = require('postcss-preset-env');
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  output: "out",
+};
+
+module.exports = nextConfig;
 
 module.exports = {
   images: {
@@ -24,43 +29,5 @@ module.exports = {
         permanent: false,
       },
     ];
-  },
-
-  webpack: (config, { dev, isServer }) => {
-    // JavaScript Minification
-    if (!dev && !isServer) {
-      config.optimization.minimize = true;
-      config.optimization.minimizer = [
-        new TerserPlugin({
-          terserOptions: {
-            compress: {
-              drop_console: true, // Removes console.log() in production
-            },
-          },
-        }),
-      ];
-    }
-
-    // CSS Optimization using PostCSS
-    if (!dev) {
-      config.module.rules.push({
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  require('postcss-preset-env')(),
-                  require('cssnano')({ preset: 'default' }), // Minifies CSS
-                ],
-              },
-            },
-          },
-        ],
-      });
-    }
-
-    return config;
   },
 };
