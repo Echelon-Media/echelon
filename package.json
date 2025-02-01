@@ -23,6 +23,7 @@
     "@headlessui/react": "^2.2.0",
     "@mui/icons-material": "^5.15.17",
     "@mui/material": "^5.15.17",
+    "@neshca/cache-handler": "^1.9.0",
     "axios": "^1.5.0",
     "eslint-config-next": "^15.0.4",
     "framer-motion": "^11.5.4",
