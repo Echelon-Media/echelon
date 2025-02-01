@@ -401,13 +401,13 @@ export default function Home() {
           <main>
             <PostSection homePagePosts={homepagePosts2} />
             <div className="desktop-right-side sm-fulls">
-              <VerticalAd
+              {/* <VerticalAd
                 adClass={Thirdfixclass}
                 // img={ad1}
                 // url={
                 //   "https://youtube.com/playlist?list=PL85zhIvKzyYYPAE5HipW_u1nsoQaTuKoO&si=VqiWHMpQtleYf00y"
                 // }
-                slot={"story_top_right_vertically_long_300*500"} />
+                slot={"story_top_right_vertically_long_300*500"} /> */}
 
 
 
