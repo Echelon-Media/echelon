@@ -37,7 +37,7 @@ const PaginatePosts = () => {
     setLoading(true);
     try {
       const results = await getAllPostsPaginate(perPage, pageNumber);
-      setTotalPages(results.max_pages); // Ensure totalPages is a number
+      setTotalPages(results?.max_pages); // Ensure totalPages is a number
       setSet1(results.results.slice(0, 15)); // Ensure this is an array
       setSet2(results.results.slice(15, 30)); // Ensure this is an array
     } catch (error) {
