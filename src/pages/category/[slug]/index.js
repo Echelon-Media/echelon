@@ -75,7 +75,7 @@ export default function CategoryPage({ categoryName, posts, slug }) {
   return (
     <>
       <Head>
-        <title> {categoryName} | Echelon </title>
+        <title> {` ${categoryName} | Echelon`} </title>
         <meta
           name="description"
           content={`All Stories of the ${categoryName} Category`}

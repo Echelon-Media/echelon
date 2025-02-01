@@ -73,7 +73,7 @@ export default function AuthorPage({ authorName, posts, slug, authorId }) {
   return (
     <>
       <Head>
-        <title> {authorName}'s Stories | Echelon </title>
+        <title> {`${authorName}'s Stories | Echelon`} </title>
         <meta
           name="description"
           content={`${authorName}'s Stories | Echelon`}
