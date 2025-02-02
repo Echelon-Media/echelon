@@ -41,16 +41,16 @@ const BannerCarousel = dynamic(() =>
 const PostSection = dynamic(() =>
   import("@/components/home-components/PostSection",{ ssr: false })
 );
-const PostList = dynamic(() => import("@/components/home-components/PostList"));
+const PostList = dynamic(() => import("@/components/home-components/PostList"),{ ssr: false });
 
 const BrandVoiceCarouselDesktop = dynamic(() =>
-  import("@/components/home-components/HomeBrandedPicksDesktop")
+  import("@/components/home-components/HomeBrandedPicksDesktop" ,{ ssr: false })
 );
 const ScrollToTop = dynamic(() =>
-  import("@/components/story-components/ScrollToTop")
+  import("@/components/story-components/ScrollToTop" ,{ ssr: false })
 );
 
-const Footer = dynamic(() => import("@/components/Footer"));
+const Footer = dynamic(() => import("@/components/Footer" ,{ ssr: false }));
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -270,7 +270,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoadComplete();
-    }, 2000);
+    }, 800);
     return () => clearTimeout(timer);
   }, []);
 
