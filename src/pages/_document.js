@@ -20,7 +20,7 @@ class MyDocument extends Document {
             content="ca-pub-3125013168548093"
           ></meta>
 
-          <Script
+          {/* <Script
           defer
             strategy="lazyOnload"
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS}`}
@@ -35,7 +35,7 @@ class MyDocument extends Document {
               page_path: window.location.pathname,
             });
                 `}
-          </Script>
+          </Script> */}
           <meta name="robots" content="index, follow"></meta>
           <meta name="nogooglebot" content="index, follow"></meta>
           <meta name="theme-color" content="#e6ecf5"></meta>
