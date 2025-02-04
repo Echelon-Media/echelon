@@ -19,31 +19,31 @@ export default function Footer() {
     <>
       <footer>
         <div className="footer-news-letter-social-media-icons">
-          <a href="https://www.facebook.com/echelonmag/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.facebook.com/echelonmag/" target="_blank"  aria-label="Echelon facebook"  rel="noopener noreferrer">
             <FontAwesomeIcon
               icon={faFacebookF}
               className="footer-social-media-icons"
             />
           </a>
-          <a href="https://www.instagram.com/echelon_mag" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/echelon_mag" target="_blank"  aria-label="Echelon Instagram" rel="noopener noreferrer">
             <FontAwesomeIcon
               icon={faInstagram}
               className="footer-social-media-icons"
             />
           </a>
-          <a href="https://x.com/EchelonMag" target="_blank" rel="noopener noreferrer">
+          <a href="https://x.com/EchelonMag" target="_blank"  aria-label="Echelon X" rel="noopener noreferrer">
             <FontAwesomeIcon
               icon={faXTwitter}
               className="footer-social-media-icons"
             />
           </a>
-          <a href="https://lk.linkedin.com/company/echelon-sri-lanka" target="_blank" rel="noopener noreferrer">
+          <a href="https://lk.linkedin.com/company/echelon-sri-lanka" target="_blank"  aria-label="Echelon linkedin" rel="noopener noreferrer">
             <FontAwesomeIcon
               icon={faLinkedinIn}
               className="footer-social-media-icons"
             />
           </a>
-          <a href="https://www.youtube.com/@Echelonmag" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.youtube.com/@Echelonmag" target="_blank"  aria-label="Echelon youtube" rel="noopener noreferrer">
             <FontAwesomeIcon
               icon={faYoutube}
               className="footer-social-media-icons"
@@ -62,31 +62,31 @@ export default function Footer() {
             </Link>
           </div> */}
           {/* <div className="footer-news-letter-social-media-icons">
-              <a href="" target="_blank" rel="noopener noreferrer">
+              <a href="" target="_blank"  aria-label="" rel="noopener noreferrer">
                 <FontAwesomeIcon
                   icon={faFacebookF}
                   className="footer-social-media-icons"
                 />
               </a>
-              <a href="" target="_blank" rel="noopener noreferrer">
+              <a href="" target="_blank"  aria-label="" rel="noopener noreferrer">
                 <FontAwesomeIcon
                   icon={faInstagram}
                   className="footer-social-media-icons"
                 />
               </a>
-              <a href="" target="_blank" rel="noopener noreferrer">
+              <a href="" target="_blank"  aria-label="" rel="noopener noreferrer">
                 <FontAwesomeIcon
                   icon={faTwitter}
                   className="footer-social-media-icons"
                 />
               </a>
-              <a href="" target="_blank" rel="noopener noreferrer">
+              <a href="" target="_blank"  aria-label="" rel="noopener noreferrer">
                 <FontAwesomeIcon
                   icon={faLinkedinIn}
                   className="footer-social-media-icons"
                 />
               </a>
-              <a href="" target="_blank" rel="noopener noreferrer">
+              <a href="" target="_blank"  aria-label="" rel="noopener noreferrer">
                 <FontAwesomeIcon
                   icon={faYoutube}
                   className="footer-social-media-icons"
