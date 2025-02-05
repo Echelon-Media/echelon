@@ -17,7 +17,7 @@ const VerticalAd = ({ adStyle, adClass, url, img, slot }) => {
             {/* <Link href={link}>
               <Image src={image} width={300} height={500} alt="vertical-ad" />
             </Link> */}
-            <GPTProvider networkId={103700377} debug={false} fallback="collapse">
+            <GPTProvider networkId={103700377} lazyLoad debug={false} fallback="collapse">
               <GPTSlot
                 slotId={slot || "home_top_right_vertically_long_300*500"}
                 adUnit={slot || "home_top_right_vertically_long_300*500"}

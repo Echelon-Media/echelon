@@ -28,9 +28,9 @@ import Navbar from "@/components/Navbar";
 
 
 // ADS Lazy Loadinf
-const BannerAd = dynamic(() => import("@/components/ads/BannerAd"));
-const MobileAd = dynamic(() => import("@/components/ads/MobileAd"));
-const VerticalAd = dynamic(() => import("@/components/ads/verticalAd"));
+const BannerAd = dynamic(() => import("@/components/ads/BannerAd",{ ssr: false }));
+const MobileAd = dynamic(() => import("@/components/ads/MobileAd",{ ssr: false }));
+const VerticalAd = dynamic(() => import("@/components/ads/verticalAd",{ ssr: false }));
 
 
 //componenets Lazy loading

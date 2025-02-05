@@ -45,6 +45,7 @@ class MyDocument extends Document {
           <Script
             defer
             src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+             strategy="lazyOnload"
           />
 
          

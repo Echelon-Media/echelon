@@ -20,7 +20,7 @@ const BannerAd = ({slot}) => {
           style={{ width: "970px", height: "250px" }}
         >
          
-          <GPTProvider networkId={103700377} debug={false} fallback="collapse">
+          <GPTProvider networkId={103700377} lazyLoad debug={false} fallback="collapse">
             <GPTSlot
               slotId="home_middle_wide_two"
               adUnit="home_middle_wide_two"
