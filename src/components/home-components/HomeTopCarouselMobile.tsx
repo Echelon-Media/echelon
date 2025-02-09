@@ -22,8 +22,8 @@ interface Props {
 export default function TopCarouselMobiles({ bannerPosts }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperCore | null>(null);
+  const progressRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const animationFrame = useRef<number | null>(null);
-  const progressRef = useRef<HTMLSpanElement | null>(null);
   const duration = 5000;
   let startTime = useRef<number>(performance.now());
 
@@ -37,8 +37,8 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
     const animate = () => {
       const elapsedTime = performance.now() - startTime.current;
       const progress = Math.min((elapsedTime / duration) * 100, 100);
-      if (progressRef.current) {
-        progressRef.current.style.width = `${progress}%`;
+      if (progressRefs.current[activeIndex]) {
+        progressRefs.current[activeIndex]!.style.width = `${progress}%`;
       }
       if (progress < 100) {
         animationFrame.current = requestAnimationFrame(animate);
@@ -95,6 +95,7 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
                 <div className="home-top-carousel-mobile-stapline">{post.excerpt}</div>
               </Link>
             </div>
+            {/* Progress Bar */}
             <div className="home-top-carousel-mobile-progress-bar flex justify-center items-center">
               {bannerPosts.map((_, idx) => (
                 <button
@@ -104,8 +105,8 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
                 >
                   <span className="w-14 bg-slate-600 h-1 rounded-full relative">
                     <span
-                      ref={idx === activeIndex ? progressRef : null}
-                      className="absolute inset-0 bg-white rounded-full"
+                      ref={(el) => (progressRefs.current[idx] = el)}
+                      className="absolute inset-0 bg-white rounded-full transition-all duration-500"
                       style={{ width: idx === activeIndex ? "100%" : "0%" }}
                     />
                   </span>
