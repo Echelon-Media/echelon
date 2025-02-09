@@ -4,33 +4,39 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import HomeEditorsPickCarouselDesktop from "@/components/home-components/HomeEditorsPickCarouselDesktop";
-import FestivalLeftMainSection from "@/components/home-components/FestivalLeftMainSection";
-import FestivalRightSubSections from "@/components/home-components/FestivalRightSubSections";
 config.autoAddCss = false;
-import { Exo_2, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { getAdvertorials, getBrandedPicks, getEditorials } from "./api/api";
 import { useEffect, useState } from "react";
-import HomeTopCarouselMobile from "@/components/home-components/HomeTopCarouselMobile";
-import HomeEditorsPickCarouselMobile from "@/components/home-components/HomeEditorsPickCarouselMobile";
+
+
 import dynamic from "next/dynamic";
 
 import { useRouter } from "next/router";
-import Loading from "../components/Loading";
-import logo from "@/images/logo.png";
-import ad1 from "@/images/vertical.gif";
-import ad2 from "@/images/new_issue.jpg";
-import { useRef } from "react";
-import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
+// import Loading from "../components/Loading";
+// import logo from "@/images/logo.png";
+// import ad1 from "@/images/vertical.gif";
+// import ad2 from "@/images/new_issue.jpg";
+// import { useRef } from "react";
+
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 // import BannerCarousel from "@/components/home-components/BannerCarousel";
+// import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
+// import HomeTopCarouselMobile from "@/components/home-components/HomeTopCarouselMobile";
+// import HomeEditorsPickCarouselMobile from "@/components/home-components/HomeEditorsPickCarouselMobile";
+// import HomeEditorsPickCarouselDesktop from "@/components/home-components/HomeEditorsPickCarouselDesktop";
+
 
 
 // ADS Lazy Loadinf
 const BannerAd = dynamic(() => import("@/components/ads/BannerAd",{ ssr: false }));
 const MobileAd = dynamic(() => import("@/components/ads/MobileAd",{ ssr: false }));
 const VerticalAd = dynamic(() => import("@/components/ads/verticalAd",{ ssr: false }));
+const HomebrandedPicksMobiles = dynamic(() => import("../components/home-components/HomeBrandedPicksMobile.tsx"), { ssr: false });
+const HomeTopCarouselMobile = dynamic(() => import("@/components/home-components/HomeTopCarouselMobile"), { ssr: false });
+const HomeEditorsPickCarouselMobile = dynamic(() => import("@/components/home-components/HomeEditorsPickCarouselMobile"), { ssr: false });
+const HomeEditorsPickCarouselDesktop = dynamic(() => import("@/components/home-components/HomeEditorsPickCarouselDesktop"), { ssr: false });
 
 
 //componenets Lazy loading
@@ -51,6 +57,10 @@ const ScrollToTop = dynamic(() =>
 );
 
 const Footer = dynamic(() => import("@/components/Footer" ,{ ssr: false }));
+
+
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -107,7 +117,88 @@ export default function Home() {
 
   // Function to cache data in localStorage
 
+  // useEffect(() => {
+  //   async function fetchInitialData() {
+  //     try {
+  //       const [editorialData, brandedData, brandedPicks] = await Promise.all([
+  //         getEditorials(),
+  //         getAdvertorials(),
+  //         getBrandedPicks(),
+  //       ]);
+
+  //       // Filter and process editorial data
+  //       const nonVideoPosts = editorialData.filter(
+  //         (post) => post.type !== "videos"
+  //       );
+
+  //       const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
+  //       let firstThreePosts;
+  //       let restOfEditorials;
+
+  //       if (topPosts.length > 0) {
+  //         // Sort topPosts by "top_position"
+  //         const sortedTopPosts = topPosts.sort(
+  //           (a, b) => a.top_position - b.top_position
+  //         );
+
+  //         if (sortedTopPosts.length < 3) {
+  //           // If there are less than 3 top posts, fill the remaining slots from nonVideoPosts
+  //           const remainingPostsCount = 3 - sortedTopPosts.length;
+  //           firstThreePosts = sortedTopPosts.concat(
+  //             nonVideoPosts.slice(0, remainingPostsCount)
+  //           );
+  //         } else {
+  //           // Take the first three posts from the sorted top posts
+  //           firstThreePosts = sortedTopPosts.slice(0, 3);
+  //         }
+
+  //         restOfEditorials = editorialData.filter(
+  //           (post) => !firstThreePosts.includes(post)
+  //         );
+  //       } else {
+  //         firstThreePosts = nonVideoPosts.slice(0, 3);
+  //         restOfEditorials = editorialData.filter(
+  //           (post) => !firstThreePosts.includes(post)
+  //         );
+  //       }
+
+  //       const firstFourPosts = brandedPicks.length
+  //         ? firstThreePosts.concat(brandedPicks[0])
+  //         : firstThreePosts;
+
+  //       setBannerPosts(firstFourPosts);
+
+  //       setEditorials(restOfEditorials);
+
+  //       // Set advertorials
+  //       setAdvertorials(brandedData);
+
+  //       // Combine editorial and advertorial data for homepage posts
+  //       const homepagePosts = [];
+  //       for (
+  //         let i = 0;
+  //         i < Math.min(restOfEditorials.length, brandedData.length);
+  //         i += 2
+  //       ) {
+  //         homepagePosts.push(...restOfEditorials.slice(i, i + 2));
+  //         homepagePosts.push(...brandedData.slice(i, i + 2));
+  //       }
+  //       setHomepagePosts1(homepagePosts.slice(0, 20));
+  //       setHomepagePosts2(homepagePosts.slice(20, 40));
+  //       setHomepagePosts3(homepagePosts.slice(40)); // Assuming 60 is a reasonable number for homepage posts
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+
+  //   fetchInitialData();
+  // }, []);
+
   useEffect(() => {
+    let isMounted = true; // To prevent state updates if the component unmounts
+  
     async function fetchInitialData() {
       try {
         const [editorialData, brandedData, brandedPicks] = await Promise.all([
@@ -115,76 +206,56 @@ export default function Home() {
           getAdvertorials(),
           getBrandedPicks(),
         ]);
-
-        // Filter and process editorial data
-        const nonVideoPosts = editorialData.filter(
-          (post) => post.type !== "videos"
-        );
-
+  
+        if (!isMounted) return;
+  
+        // Filter and process editorial data once
+        const nonVideoPosts = editorialData.filter((post) => post.type !== "videos");
         const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
-        let firstThreePosts;
-        let restOfEditorials;
-
-        if (topPosts.length > 0) {
-          // Sort topPosts by "top_position"
-          const sortedTopPosts = topPosts.sort(
-            (a, b) => a.top_position - b.top_position
-          );
-
-          if (sortedTopPosts.length < 3) {
-            // If there are less than 3 top posts, fill the remaining slots from nonVideoPosts
-            const remainingPostsCount = 3 - sortedTopPosts.length;
-            firstThreePosts = sortedTopPosts.concat(
-              nonVideoPosts.slice(0, remainingPostsCount)
-            );
-          } else {
-            // Take the first three posts from the sorted top posts
-            firstThreePosts = sortedTopPosts.slice(0, 3);
-          }
-
-          restOfEditorials = editorialData.filter(
-            (post) => !firstThreePosts.includes(post)
-          );
+  
+        let firstThreePosts = [];
+        let restOfEditorials = [];
+  
+        if (topPosts.length) {
+          const sortedTopPosts = [...topPosts].sort((a, b) => a.top_position - b.top_position);
+          firstThreePosts = sortedTopPosts.length < 3
+            ? [...sortedTopPosts, ...nonVideoPosts.slice(0, 3 - sortedTopPosts.length)]
+            : sortedTopPosts.slice(0, 3);
         } else {
           firstThreePosts = nonVideoPosts.slice(0, 3);
-          restOfEditorials = editorialData.filter(
-            (post) => !firstThreePosts.includes(post)
-          );
         }
-
-        const firstFourPosts = brandedPicks.length
-          ? firstThreePosts.concat(brandedPicks[0])
-          : firstThreePosts;
-
-        setBannerPosts(firstFourPosts);
-
-        setEditorials(restOfEditorials);
-
-        // Set advertorials
-        setAdvertorials(brandedData);
-
-        // Combine editorial and advertorial data for homepage posts
+  
+        restOfEditorials = nonVideoPosts.filter((post) => !firstThreePosts.includes(post));
+  
+        // Optimize homepage posts creation
         const homepagePosts = [];
-        for (
-          let i = 0;
-          i < Math.min(restOfEditorials.length, brandedData.length);
-          i += 2
-        ) {
-          homepagePosts.push(...restOfEditorials.slice(i, i + 2));
-          homepagePosts.push(...brandedData.slice(i, i + 2));
+        const minLength = Math.min(restOfEditorials.length, brandedData.length);
+        for (let i = 0; i < minLength; i += 2) {
+          homepagePosts.push(...restOfEditorials.slice(i, i + 2), ...brandedData.slice(i, i + 2));
         }
+  
+        // Batch state updates to prevent multiple re-renders
+        setBannerPosts(firstThreePosts.concat(brandedPicks[0] || []));
+        setEditorials(restOfEditorials);
+        setAdvertorials(brandedData);
         setHomepagePosts1(homepagePosts.slice(0, 20));
         setHomepagePosts2(homepagePosts.slice(20, 40));
-        setHomepagePosts3(homepagePosts.slice(40)); // Assuming 60 is a reasonable number for homepage posts
+        setHomepagePosts3(homepagePosts.slice(40, 60));
+  
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     }
-
+  
     fetchInitialData();
+  
+    return () => {
+      isMounted = false; // Cleanup to prevent state update on unmount
+    };
   }, []);
+  
 
   useEffect(() => {
     const handleScroll = () => {
