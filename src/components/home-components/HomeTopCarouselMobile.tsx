@@ -21,17 +21,15 @@ interface Props {
 }
 
 export default function TopCarouselMobiles({ bannerPosts }: Props) {
-
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
-  const [brandedPicks, setBrandedPicks] = useState<any[]>([]);
-  const swiperRef = useRef<SwiperCore>(null) as React.MutableRefObject<SwiperCore>;
-
+  const swiperRef = useRef<SwiperCore | null>(null);
   const duration = 5000;
   const animationFrame = useRef<number>(0);
   const startTime = useRef<number>(0);
   const pauseTime = useRef<number | null>(null);
 
+  // Optimize animations and avoid unnecessary re-renders
   useEffect(() => {
     startAnimation();
     return () => cancelAnimationFrame(animationFrame.current);
@@ -61,15 +59,14 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
 
   const handleProgressBarClick = (index: number) => {
     setActiveIndex(index);
-    setProgress(index * (100 / brandedPicks.length));
+    setProgress(index * (100 / bannerPosts.length));
     if (swiperRef.current) {
       swiperRef.current.slideTo(index);
-      console.log("next", swiperRef.current);
     }
   };
 
   const handleNextSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % brandedPicks.length);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % bannerPosts.length);
     setProgress(0);
     startTime.current = performance.now();
     if (swiperRef.current) {
@@ -105,48 +102,50 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
         onTouchEnd={handleTouchEnd}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
-        }}>
-
+        }}
+      >
         {bannerPosts.map((post, index) => (
           <SwiperSlide key={index}>
             <div className="home-top-carousel-mobile-featured-image">
+              {/* Lazy load images to improve initial loading */}
               <Image
                 src={post.vertical_image}
                 width={400}
                 height={200}
                 alt={post.title}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wQAAwAB/1hjZAAAAABJRU5ErkJggg=="
                 onContextMenu={(e) => e.preventDefault()}
+                priority={index === 0} // Prioritize the first image
               />
             </div>
             <div className="home-top-carousel-mobile-bottom-wrapper">
-               <Link
-                    href={"/category/[slug]"}
-                    as={`/category/${post.category
-                      ?.toString()
-                      .replace(/\s+/g, "-")
-                      .toLowerCase()}`}
-                  >
+              <Link
+                href={"/category/[slug]"}
+                as={`/category/${post.category
+                  ?.toString()
+                  .replace(/\s+/g, "-")
+                  .toLowerCase()}`}
+              >
                 <div className="home-top-carousel-mobile-category titlefont">
                   {post.category}
                 </div>
-                </Link>
-                <Link href="/[slug]/" as={`/${post.slug}/`}>
+              </Link>
+              <Link href="/[slug]/" as={`/${post.slug}/`}>
                 <div className="home-top-carousel-mobile-title titlefont">
                   {post.title
-                   ?.replace(/&#8217;/g, "'")
-              .replace(/&#038;/g, "&")
-              .replace(/&#8211;/g, "-")
-              ?.replace(/(^|\.\s+)([a-z])/g, (match) => match)}
+                    ?.replace(/&#8217;/g, "'")
+                    .replace(/&#038;/g, "&")
+                    .replace(/&#8211;/g, "-")
+                    ?.replace(/(^|\.\s+)([a-z])/g, (match) => match)}
                 </div>
-                
+
                 <div className="home-top-carousel-mobile-stapline">
                   {post.excerpt}
                 </div>
-                 </Link>
-             
+              </Link>
             </div>
-
-            <div className="max-w-xs sm:max-w-sm md:max-w-3xl mx-auto flex grid-rows-4 md:grid-cols-4 gap-4  flex-nowrap justify-center items-center home-top-carousel-mobile-progress-bar">
+            <div className="max-w-xs sm:max-w-sm md:max-w-3xl mx-auto flex grid-rows-4 md:grid-cols-4 gap-4 flex-nowrap justify-center items-center home-top-carousel-mobile-progress-bar">
               {bannerPosts.map((_, index) => (
                 <button
                   key={index}
@@ -174,4 +173,4 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
       </Swiper>
     </div>
   );
-};
+}
