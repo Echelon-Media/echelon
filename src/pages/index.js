@@ -346,7 +346,7 @@ document.head.appendChild(gptScript);
   useEffect(() => {
     const timer = setTimeout(() => {
       onLoadComplete();
-    }, 2000);
+    }, 0);
     return () => clearTimeout(timer);
   }, []);
 
