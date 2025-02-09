@@ -65,9 +65,9 @@ const Footer = dynamic(() => import("@/components/Footer" ,{ ssr: false }));
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  // const [editorials, setEditorials] = useState([]);
+  const [editorials, setEditorials] = useState([]);
   const [bannerPosts, setBannerPosts] = useState([]);
-  // const [advertorials, setAdvertorials] = useState([]);
+  const [advertorials, setAdvertorials] = useState([]);
   const [homepagePosts1, setHomepagePosts1] = useState([]);
   const [homepagePosts2, setHomepagePosts2] = useState([]);
   const [homepagePosts3, setHomepagePosts3] = useState([]);
@@ -91,7 +91,7 @@ export default function Home() {
     router.push(`/page/${currentPage}`);
   };
 
-  // const [elementHeight, setElementHeight] = useState(0);
+  const [elementHeight, setElementHeight] = useState(0);
 
   useEffect(() => {
     // Ensure the code only runs on the client
