@@ -33,14 +33,14 @@ class MyDocument extends Document {
             });
                 `}
           </Script> */}
-          
+
           <meta name="robots" content="noindex, nofollow" />
           <meta name="nogooglebot" content="noindex, nofollow" />
           <meta name="theme-color" content="#e6ecf5" />
           <meta name="robots" content="max-image-preview:large" />
 
           {/* Optimized FontAwesome loading */}
-         
+
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -53,6 +53,41 @@ class MyDocument extends Document {
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
             />
           </noscript> */}
+
+          {/* <!-- Preconnect to Google Fonts --> */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+          {/* <!-- Preload critical fonts --> */}
+          <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600&display=swap"
+            as="style"
+          />
+          <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
+            as="style"
+          />
+          <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
+            as="style"
+          />
+
+          {/* <!-- Load fonts from Google Fonts --> */}
+          <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
+            rel="stylesheet"
+          />
 
           <Script
             defer
