@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import "swiper/css";
+import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css";
 
 interface BannerPost {
   vertical_image: string;
@@ -20,30 +21,32 @@ interface Props {
 }
 
 export default function TopCarouselMobiles({ bannerPosts }: Props) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef<SwiperCore | null>(null);
-  const progressRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const animationFrame = useRef<number | null>(null);
+
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [progress, setProgress] = useState<number>(0);
+  const [brandedPicks, setBrandedPicks] = useState<any[]>([]);
+  const swiperRef = useRef<SwiperCore>(null) as React.MutableRefObject<SwiperCore>;
+
   const duration = 5000;
-  let startTime = useRef<number>(performance.now());
+  const animationFrame = useRef<number>(0);
+  const startTime = useRef<number>(0);
+  const pauseTime = useRef<number | null>(null);
 
   useEffect(() => {
     startAnimation();
-    return () => cancelAnimationFrame(animationFrame.current!);
+    return () => cancelAnimationFrame(animationFrame.current);
   }, [activeIndex]);
 
   const startAnimation = () => {
-    startTime.current = performance.now();
-    const animate = () => {
-      const elapsedTime = performance.now() - startTime.current;
-      const progress = Math.min((elapsedTime / duration) * 100, 100);
-      if (progressRefs.current[activeIndex]) {
-        progressRefs.current[activeIndex]!.style.width = `${progress}%`;
-      }
-      if (progress < 100) {
-        animationFrame.current = requestAnimationFrame(animate);
-      } else {
+    startTime.current = performance.now() - progress * (duration / 100);
+    const animate = (now: number) => {
+      const elapsedTime = now - startTime.current;
+      const timeFraction = elapsedTime / duration;
+      setProgress((timeFraction % 1) * 100);
+      if (timeFraction >= 1) {
         handleNextSlide();
+      } else {
+        animationFrame.current = requestAnimationFrame(animate);
       }
     };
     animationFrame.current = requestAnimationFrame(animate);
@@ -51,25 +54,59 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
 
   const handleSlideChange = (swiper: SwiperCore) => {
     setActiveIndex(swiper.realIndex);
-    startAnimation();
+    startTime.current = performance.now();
+    pauseTime.current = null;
+    setProgress(0);
+  };
+
+  const handleProgressBarClick = (index: number) => {
+    setActiveIndex(index);
+    setProgress(index * (100 / brandedPicks.length));
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index);
+      console.log("next", swiperRef.current);
+    }
   };
 
   const handleNextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % brandedPicks.length);
+    setProgress(0);
+    startTime.current = performance.now();
     if (swiperRef.current) {
       swiperRef.current.slideNext();
+    }
+  };
+
+  const handleTouchStart = () => {
+    pauseTime.current = performance.now();
+    cancelAnimationFrame(animationFrame.current);
+  };
+
+  const handleTouchEnd = () => {
+    if (pauseTime.current !== null) {
+      const pauseDuration = performance.now() - pauseTime.current;
+      startTime.current += pauseDuration;
+      startAnimation();
     }
   };
 
   return (
     <div className="home-top-carousel-mobile-main-wrapper">
       <Swiper
-        autoplay={{ delay: duration, disableOnInteraction: false }}
-        loop
+        autoplay={{
+          delay: duration,
+          disableOnInteraction: true,
+        }}
+        loop={true}
         spaceBetween={30}
         slidesPerView={1}
         onSlideChange={handleSlideChange}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-      >
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}>
+
         {bannerPosts.map((post, index) => (
           <SwiperSlide key={index}>
             <div className="home-top-carousel-mobile-featured-image">
@@ -78,37 +115,56 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
                 width={400}
                 height={200}
                 alt={post.title}
-                layout="intrinsic"
-                priority={index === 0}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </div>
             <div className="home-top-carousel-mobile-bottom-wrapper">
-              <Link href={`/category/${post.category.replace(/\s+/g, "-").toLowerCase()}`}>
+               <Link
+                    href={"/category/[slug]"}
+                    as={`/category/${post.category
+                      ?.toString()
+                      .replace(/\s+/g, "-")
+                      .toLowerCase()}`}
+                  >
                 <div className="home-top-carousel-mobile-category titlefont">
                   {post.category}
                 </div>
-              </Link>
-              <Link href={`/${post.slug}/`}>
+                </Link>
+                <Link href="/[slug]/" as={`/${post.slug}/`}>
                 <div className="home-top-carousel-mobile-title titlefont">
-                  {post.title.replace(/&#8217;/g, "'").replace(/&#038;/g, "&").replace(/&#8211;/g, "-")}
+                  {post.title
+                   ?.replace(/&#8217;/g, "'")
+              .replace(/&#038;/g, "&")
+              .replace(/&#8211;/g, "-")
+              ?.replace(/(^|\.\s+)([a-z])/g, (match) => match)}
                 </div>
-                <div className="home-top-carousel-mobile-stapline">{post.excerpt}</div>
-              </Link>
+                
+                <div className="home-top-carousel-mobile-stapline">
+                  {post.excerpt}
+                </div>
+                 </Link>
+             
             </div>
-            {/* Progress Bar */}
-            <div className="home-top-carousel-mobile-progress-bar flex justify-center items-center">
-              {bannerPosts.map((_, idx) => (
+
+            <div className="max-w-xs sm:max-w-sm md:max-w-3xl mx-auto flex grid-rows-4 md:grid-cols-4 gap-4  flex-nowrap justify-center items-center home-top-carousel-mobile-progress-bar">
+              {bannerPosts.map((_, index) => (
                 <button
-                  key={idx}
-                  className="p-1 rounded focus:outline-none focus-visible:ring-red-200"
-                  onClick={() => swiperRef.current?.slideTo(idx)}
+                  key={index}
+                  className={`p-1 rounded focus:outline-none focus-visible:ring focus-visible:ring-red-200 group`}
+                  onClick={() => handleProgressBarClick(index)}
                 >
-                  <span className="w-14 bg-slate-600 h-1 rounded-full relative">
+                  <span
+                    aria-label={`progressbar-${index}`}
+                    className="flex w-14 bg-slate-600 h-1 rounded-full relative"
+                    role="progressbar"
+                    aria-valuenow={activeIndex === index ? progress : 0}
+                  >
                     <span
-                      ref={(el) => (progressRefs.current[idx] = el)}
-                      className="absolute inset-0 bg-white rounded-full transition-all duration-500"
-                      style={{ width: idx === activeIndex ? "100%" : "0%" }}
-                    />
+                      className="absolute inset-0 bg-white rounded-full"
+                      style={{
+                        width: activeIndex === index ? `${progress}%` : "0%",
+                      }}
+                    ></span>
                   </span>
                 </button>
               ))}
@@ -118,4 +174,4 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
       </Swiper>
     </div>
   );
-}
+};
