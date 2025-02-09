@@ -40,23 +40,19 @@ class MyDocument extends Document {
           <meta name="robots" content="max-image-preview:large" />
 
           {/* Optimized FontAwesome loading */}
-          <link
-            rel="preload"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            as="style"
-          />
+         
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
             media="print"
             onLoad="this.onload=null;this.removeAttribute('media');"
           />
-          <noscript>
+          {/* <noscript>
             <link
               rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
             />
-          </noscript>
+          </noscript> */}
 
           <Script
             defer
