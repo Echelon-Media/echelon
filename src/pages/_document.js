@@ -64,30 +64,14 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600&display=swap"
             as="style"
           />
-          <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
-            as="style"
-          />
-          <link
-            rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
-            as="style"
-          />
-
+         
+         
           {/* <!-- Load fonts from Google Fonts --> */}
           <link
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600&display=swap"
             rel="stylesheet"
           />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
-            rel="stylesheet"
-          />
+          
 
           <Script
             defer
