@@ -12,13 +12,10 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="preconnect" href="https://backend.echelon.lk"></link>
-          <link rel="manifest" href="/manifest.json"></link>
-          <link rel="icon" href={"/favicon.png"}></link>
-          <meta
-            name="google-adsense-account"
-            content="ca-pub-3125013168548093"
-          ></meta>
+          <link rel="preconnect" href="https://backend.echelon.lk" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="icon" href="/favicon.png" />
+          <meta name="google-adsense-account" content="ca-pub-3125013168548093" />
 
           {/* <Script
           defer
@@ -36,12 +33,13 @@ class MyDocument extends Document {
             });
                 `}
           </Script> */}
-          <meta name="robots" content="noindex, nofollow"></meta>
-          <meta name="nogooglebot" content="noindex, nofollow"></meta>
-          <meta name="theme-color" content="#e6ecf5"></meta>
+          
+          <meta name="robots" content="noindex, nofollow" />
+          <meta name="nogooglebot" content="noindex, nofollow" />
+          <meta name="theme-color" content="#e6ecf5" />
+          <meta name="robots" content="max-image-preview:large" />
 
-          <meta name="robots" content="max-image-preview:large"></meta>
-
+          {/* Optimized FontAwesome loading */}
           <link
             rel="preload"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -63,31 +61,13 @@ class MyDocument extends Document {
           <Script
             defer
             src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
-             strategy="lazyOnload"
+            strategy="lazyOnload"
           />
-
-         
-
-
-
         </Head>
-        
 
         <body>
           <Main />
-          {/* <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            as="style"
-          />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            media="print"
-            onLoad="this.media='all'"
-
-            
-          /> */}
+          {/* Previously duplicated FontAwesome links removed from here */}
           <NextScript />
         </body>
       </Html>
