@@ -65,20 +65,20 @@ const Footer = dynamic(() => import("@/components/Footer" ,{ ssr: false }));
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [editorials, setEditorials] = useState([]);
+  // const [editorials, setEditorials] = useState([]);
   const [bannerPosts, setBannerPosts] = useState([]);
-  const [advertorials, setAdvertorials] = useState([]);
+  // const [advertorials, setAdvertorials] = useState([]);
   const [homepagePosts1, setHomepagePosts1] = useState([]);
   const [homepagePosts2, setHomepagePosts2] = useState([]);
   const [homepagePosts3, setHomepagePosts3] = useState([]);
-  const [popularPosts, setPopularPosts] = useState([]);
+  // const [popularPosts, setPopularPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isFixed, setIsFixed] = useState(false);
-  const [isFixed2, setIsFixed2] = useState(false);
-  const [isFixed3, setIsFixed3] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [isPopularFixed, setIsPopularFixed] = useState(false);
-  const [isTopAd, setIsTopAd] = useState(false);
+  // const [isFixed, setIsFixed] = useState(false);
+  // const [isFixed2, setIsFixed2] = useState(false);
+  // const [isFixed3, setIsFixed3] = useState(false);
+  // const [isDesktop, setIsDesktop] = useState(false);
+  // const [isPopularFixed, setIsPopularFixed] = useState(false);
+  // const [isTopAd, setIsTopAd] = useState(false);
 
  
 
@@ -91,7 +91,7 @@ export default function Home() {
     router.push(`/page/${currentPage}`);
   };
 
-  const [elementHeight, setElementHeight] = useState(0);
+  // const [elementHeight, setElementHeight] = useState(0);
 
   useEffect(() => {
     // Ensure the code only runs on the client
