@@ -42,6 +42,24 @@ class MyDocument extends Document {
 
           <meta name="robots" content="max-image-preview:large"></meta>
 
+          <link
+            rel="preload"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            as="style"
+          />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            media="print"
+            onLoad="this.onload=null;this.removeAttribute('media');"
+          />
+          <noscript>
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            />
+          </noscript>
+
           <Script
             defer
             src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
@@ -57,7 +75,7 @@ class MyDocument extends Document {
 
         <body>
           <Main />
-          <link
+          {/* <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
             as="style"
@@ -69,7 +87,7 @@ class MyDocument extends Document {
             onLoad="this.media='all'"
 
             
-          />
+          /> */}
           <NextScript />
         </body>
       </Html>
