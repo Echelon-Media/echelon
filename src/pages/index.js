@@ -384,7 +384,7 @@ export default function Home() {
             </div>
           </main>
        
-          <MobileAd slot={"home_mobile_square_4"} />
+          {/* <MobileAd slot={"home_mobile_square_2"} /> */}
           {/* <HomebrandedPicksMobile /> */}
           {/* <HomeBrandedPicks /> */},
           <HomebrandedPicksMobiles />
@@ -414,7 +414,7 @@ export default function Home() {
 
             </div>
           </main>
-          <MobileAd slot={"home_mobile_square_3"} />
+          {/* <MobileAd slot={"home_mobile_square_3"} /> */}
           <div className="editor-pick-hide-on-mobile">
             <div className="editors-pick-carousel-main-wrapper">
               <div className="editors-pick-carousel-header-section">

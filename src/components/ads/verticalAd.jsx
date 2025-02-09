@@ -7,7 +7,7 @@ const VerticalAd = ({ adStyle, adClass, url, img, slot }) => {
   const image = img ? img : ad2;
   const link = url
     ? url
-    : "https://www.youtube.com/playlist?list=PL85zhIvKzyYZYgTOw_bkkgrASeysu3oit";
+    : "";
   return (
     <>
       <div className={`${adClass}  mb-5 `} style={adStyle}>
