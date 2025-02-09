@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const BannerCarousel = React.memo(({ bannerPosts }) => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -50,11 +51,10 @@ const BannerCarousel = React.memo(({ bannerPosts }) => {
   const bannerItems = useMemo(() => {
     return bannerPosts.map((post, index) => (
       <div
-        className={`w-1/4 space-x-5 carasol-box border-1 cursor-pointer ${
-          currentImage === index
+        className={`w-1/4 space-x-5 carasol-box border-1 cursor-pointer ${currentImage === index
             ? " border-t-4 border-gray-900"
             : " border-t-4 border-transparent opacity-30"
-        }`}
+          }`}
         key={index}
         onMouseOver={() => setCurrentImage(index)}
       >
@@ -88,13 +88,28 @@ const BannerCarousel = React.memo(({ bannerPosts }) => {
     <div className="absolute md:contents hidden caresoul-home-desktop">
       <div className="overflow-hidden">
         {images.length > 0 && (
-          <div
-            className="cover"
-            style={{
-              background: `url(${images[currentImage]}) center / cover`,
-            }}
-            priority
-          />
+          <>
+
+{/* 
+            <div
+              className="cover"
+              style={{
+                background: `url(${images[currentImage]}) center / cover`,
+              }}
+              priority
+            /> */}
+
+            <div className="cover">
+              <Image
+                src={`${images[currentImage]}`}
+                alt="Cover Image"
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
+            </div>
+
+          </>
         )}
       </div>
       <div className="inherit banner-box-list mb-5 inset-x-0 bottom-0 flex justify-center space-x-2 px-16 py-0">
