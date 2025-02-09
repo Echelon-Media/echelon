@@ -80,8 +80,7 @@ export default function Home() {
   const [isPopularFixed, setIsPopularFixed] = useState(false);
   const [isTopAd, setIsTopAd] = useState(false);
 
-  const TkUrl =
-    "https://backend.echelon.lk/wp-json/jwt-auth/v1/token?username=Sachintha&password=xJ(cMWpDUpY1*Vy9";
+ 
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -257,43 +256,43 @@ export default function Home() {
   }, []);
   
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const winTop = window.scrollY;
-      let screenWidth = window.innerWidth;
-      if (screenWidth > 760) {
-        setIsDesktop(true);
-        if (winTop > 1450 && winTop <= 5200) {
-          setIsFixed(true);
-        } else if (winTop >= 4900 && winTop <= 5200) {
-          //setIsPopularFixed(true);
-        } else if (winTop >= 6400 && winTop <= 10300) {
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const winTop = window.scrollY;
+  //     let screenWidth = window.innerWidth;
+  //     if (screenWidth > 760) {
+  //       setIsDesktop(true);
+  //       if (winTop > 1450 && winTop <= 5200) {
+  //         setIsFixed(true);
+  //       } else if (winTop >= 4900 && winTop <= 5200) {
+  //         //setIsPopularFixed(true);
+  //       } else if (winTop >= 6400 && winTop <= 10300) {
 
-          setIsFixed2(true);
-        } else if (winTop >= 12000 && winTop) {
-          setIsFixed2(false);
-          setIsFixed3(true);
-        } else {
-          setIsPopularFixed(false);
-          setIsFixed(false);
-          setIsFixed2(false);
-          setIsFixed3(false);
-          console.log("Setting isFixed to false");
-        }
-      }
-    };
+  //         setIsFixed2(true);
+  //       } else if (winTop >= 12000 && winTop) {
+  //         setIsFixed2(false);
+  //         setIsFixed3(true);
+  //       } else {
+  //         setIsPopularFixed(false);
+  //         setIsFixed(false);
+  //         setIsFixed2(false);
+  //         setIsFixed3(false);
+  //         console.log("Setting isFixed to false");
+  //       }
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
-  const firstfixclass = isFixed ? "ad1-fixed" : "ad1-relative";
-  const popularFixed = isPopularFixed ? "popular-relative" : "popular-relative";
-  const Secondfixclass = isFixed2 ? "ad2-fixed" : "ad2-relative";
-  const Thirdfixclass = isFixed3 ? "ad3-fixed" : "ad3-relative";
+  // const firstfixclass = isFixed ? "ad1-fixed" : "ad1-relative";
+  // const popularFixed = isPopularFixed ? "popular-relative" : "popular-relative";
+  // const Secondfixclass = isFixed2 ? "ad2-fixed" : "ad2-relative";
+  // const Thirdfixclass = isFixed3 ? "ad3-fixed" : "ad3-relative";
 
   const settings = {
     dots: true,
@@ -307,10 +306,16 @@ export default function Home() {
 
   useEffect(() => {
     // Load the GPT script
+    // const gptScript = document.createElement('script');
+    // gptScript.async = true;
+    // gptScript.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
+    // document.head.appendChild(gptScript);
+
     const gptScript = document.createElement('script');
-    gptScript.async = true;
-    gptScript.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
-    document.head.appendChild(gptScript);
+gptScript.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
+gptScript.defer = true;
+document.head.appendChild(gptScript);
+
 
     // Initialize GPT after script is loaded
     // gptScript.onload = () => {
@@ -434,7 +439,7 @@ export default function Home() {
           <main id="main" className="first-main mt-5">
             <PostSection homePagePosts={homepagePosts1} />
             <div className="desktop-right-side ">
-              <div className={`postList ${popularFixed}`}>
+              <div className={`postList popular-relative`}>
                 <div className="home-popular-header-wrapper">
                   <h2
                     className="text-xl text-black home-popular-header homepage-popular"
@@ -445,11 +450,11 @@ export default function Home() {
                 </div>
                 <PostList />
               </div>
-              <VerticalAd
+              {/* <VerticalAd
                 adClass={firstfixclass}
 
                 slot={"story_top_right_vertically_long_300*500"}
-              />
+              /> */}
 
 
             </div>
@@ -507,14 +512,14 @@ export default function Home() {
             <PostSection homePagePosts={homepagePosts3} />
 
             <div className="desktop-right-side sm-fulls">
-              <VerticalAd
+              {/* <VerticalAd
                 adClass={Secondfixclass}
                 // img={ad1}
                 // url={
                 //   "https://youtube.com/playlist?list=PL85zhIvKzyYYPAE5HipW_u1nsoQaTuKoO&si=VqiWHMpQtleYf00y"
                 // }
                 slot={"story_top_right_vertically_long_2_300*500"}
-              />
+              /> */}
 
               {/* bottom ad */}
 
