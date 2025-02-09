@@ -105,6 +105,7 @@ const BannerCarousel = React.memo(({ bannerPosts }) => {
                 alt="Cover Image"
                 layout="fill"
                 objectFit="cover"
+                
                 priority
               />
             </div>
