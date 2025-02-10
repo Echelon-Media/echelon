@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Developer guide - https://docs.google.com/document/d/1UVI2Ra4epydFR-FbkfH3Wymy3-IyBmEYcSqlWmwIC6Q/edit?usp=sharing 
+### Documentation - https://docs.google.com/document/d/1ptNBJqVON8GJGPlKuwnCEfznMWgJRhuevR2I_BfE38Q/edit?usp=drive_link
 
 ## Getting Started
 
@@ -24,7 +25,7 @@ REST API is used for the data retrieved from the backend.
 
 
 Github repository link - https://github.com/Echelon-Media/echelon.git
-Main documentation for other information - Echelon Documentation
+
 	
 
 About the Backend
