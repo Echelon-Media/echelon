@@ -34,8 +34,8 @@ class MyDocument extends Document {
                 `}
           </Script> */}
 
-          <meta name="robots" content="noindex, nofollow" />
-          <meta name="nogooglebot" content="noindex, nofollow" />
+          <meta name="robots" content="index, follow" />
+          <meta name="nogooglebot" content="index, follow" />
           <meta name="theme-color" content="#e6ecf5" />
           <meta name="robots" content="max-image-preview:large" />
 
