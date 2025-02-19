@@ -100,7 +100,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsBannerLoaded(true), 1000);
+    const timer = setTimeout(() => setIsBannerLoaded(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
