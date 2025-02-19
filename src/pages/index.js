@@ -100,9 +100,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsBannerLoaded(true), 2000);
+    const timer = setTimeout(() => setIsBannerLoaded(true), 2300);
     return () => clearTimeout(timer);
   }, []);
+
+  
+
+  
 
   const memoizedBannerCarousel = useMemo(() => <BannerCarousel bannerPosts={bannerPosts} />, [bannerPosts]);
 
