@@ -29,7 +29,7 @@ const BannerCarousel = React.memo(({ bannerPosts }) => {
     setImages(imageUrls);
 
     if (imageUrls.length > 0) {
-      const interval = setInterval(updateCarousel, 5000);
+      const interval = setInterval(updateCarousel, 3000);
       return () => clearInterval(interval);
     }
   }, [bannerPosts, updateCarousel]);

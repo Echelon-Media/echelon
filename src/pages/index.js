@@ -7,73 +7,25 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 import { Inter } from "next/font/google";
 import { getAdvertorials, getBrandedPicks, getEditorials } from "./api/api";
-import { useEffect, useRef, useState } from "react";
-
+import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import dynamic from "next/dynamic";
-
 import { useRouter } from "next/router";
-// import Loading from "../components/Loading";
-// import logo from "@/images/logo.png";
-// import ad1 from "@/images/vertical.gif";
-// import ad2 from "@/images/new_issue.jpg";
-// import { useRef } from "react";
-
 import Link from "next/link";
+import BannerCarousel from "@/components/home-components/BannerCarousel";
+import HomeTopCarouselMobile from "@/components/home-components/HomeTopCarouselMobile";
 import Navbar from "@/components/Navbar";
-// import BannerCarousel from "@/components/home-components/BannerCarousel";
-// import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
-// import HomeTopCarouselMobile from "@/components/home-components/HomeTopCarouselMobile";
-// import HomeEditorsPickCarouselMobile from "@/components/home-components/HomeEditorsPickCarouselMobile";
-// import HomeEditorsPickCarouselDesktop from "@/components/home-components/HomeEditorsPickCarouselDesktop";
 
-// ADS Lazy Loadinf
-const BannerAd = dynamic(() =>
-  import("@/components/ads/BannerAd", { ssr: false })
-);
-const MobileAd = dynamic(() =>
-  import("@/components/ads/MobileAd", { ssr: false })
-);
-const VerticalAd = dynamic(() =>
-  import("@/components/ads/verticalAd", { ssr: false })
-);
-const HomebrandedPicksMobiles = dynamic(
-  () => import("../components/home-components/HomeBrandedPicksMobile.tsx"),
-  { ssr: false }
-);
-const HomeTopCarouselMobile = dynamic(
-  () => import("@/components/home-components/HomeTopCarouselMobile"),
-  { ssr: false }
-);
-const HomeEditorsPickCarouselMobile = dynamic(
-  () => import("@/components/home-components/HomeEditorsPickCarouselMobile"),
-  { ssr: false }
-);
-const HomeEditorsPickCarouselDesktop = dynamic(
-  () => import("@/components/home-components/HomeEditorsPickCarouselDesktop"),
-  { ssr: false }
-);
-
-//componenets Lazy loading
-
-const BannerCarousel = dynamic(() =>
-  import("@/components/home-components/BannerCarousel", { ssr: false })
-);
-const PostSection = dynamic(() =>
-  import("@/components/home-components/PostSection", { ssr: false })
-);
-const PostList = dynamic(
-  () => import("@/components/home-components/PostList"),
-  { ssr: false }
-);
-
-const BrandVoiceCarouselDesktop = dynamic(() =>
-  import("@/components/home-components/HomeBrandedPicksDesktop", { ssr: false })
-);
-const ScrollToTop = dynamic(() =>
-  import("@/components/story-components/ScrollToTop", { ssr: false })
-);
-
-const Footer = dynamic(() => import("@/components/Footer", { ssr: false }));
+const BannerAd = dynamic(() => import("@/components/ads/BannerAd"), { ssr: false });
+const MobileAd = dynamic(() => import("@/components/ads/MobileAd"), { ssr: false });
+const VerticalAd = dynamic(() => import("@/components/ads/verticalAd"), { ssr: false });
+const HomebrandedPicksMobiles = dynamic(() => import("../components/home-components/HomeBrandedPicksMobile.tsx"), { ssr: false });
+const HomeEditorsPickCarouselMobile = dynamic(() => import("@/components/home-components/HomeEditorsPickCarouselMobile"), { ssr: false });
+const HomeEditorsPickCarouselDesktop = dynamic(() => import("@/components/home-components/HomeEditorsPickCarouselDesktop"), { ssr: false });
+const PostSection = dynamic(() => import("@/components/home-components/PostSection"), { ssr: false });
+const PostList = dynamic(() => import("@/components/home-components/PostList"), { ssr: false });
+const BrandVoiceCarouselDesktop = dynamic(() => import("@/components/home-components/HomeBrandedPicksDesktop"), { ssr: false });
+const ScrollToTop = dynamic(() => import("@/components/story-components/ScrollToTop"), { ssr: false });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -81,133 +33,22 @@ export default function Home() {
   const [editorials, setEditorials] = useState([]);
   const [bannerPosts, setBannerPosts] = useState([]);
   const [advertorials, setAdvertorials] = useState([]);
+  // const [homepagePosts, setHomepagePosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isBannerLoaded, setIsBannerLoaded] = useState(false);
+  const router = useRouter();
   const [homepagePosts1, setHomepagePosts1] = useState([]);
   const [homepagePosts2, setHomepagePosts2] = useState([]);
   const [homepagePosts3, setHomepagePosts3] = useState([]);
-  // const [popularPosts, setPopularPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  // const [isFixed, setIsFixed] = useState(false);
-  // const [isFixed2, setIsFixed2] = useState(false);
-  // const [isFixed3, setIsFixed3] = useState(false);
-  // const [isDesktop, setIsDesktop] = useState(false);
-  // const [isPopularFixed, setIsPopularFixed] = useState(false);
-  // const [isTopAd, setIsTopAd] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const router = useRouter();
-
-  const handleSeeMoreClick = () => {
-    setCurrentPage(currentPage);
+  const handleSeeMoreClick = useCallback(() => {
     router.push(`/page/${currentPage}`);
-  };
-
-  const [elementHeight, setElementHeight] = useState(0);
+  }, [router]);
 
   useEffect(() => {
-    // Ensure the code only runs on the client
-    if (typeof window !== "undefined") {
-      const elem = document.querySelector("first-main");
-      if (elem) {
-        const { height } = elem.getBoundingClientRect();
-        setElementHeight(height);
-      }
-    }
-  }, []);
-
-  // console.log('height is -',elementHeight);
-
-  //  useEffect(() => {
-  //    const cachedBannerPosts = localStorage.getItem("bannerPosts");
-  //    if (cachedBannerPosts) {
-  //      setImages(JSON.parse(cachedBannerPosts));
-  //    }
-  //  }, []);
-
-  // Function to cache data in localStorage
-
-  // useEffect(() => {
-  //   async function fetchInitialData() {
-  //     try {
-  //       const [editorialData, brandedData, brandedPicks] = await Promise.all([
-  //         getEditorials(),
-  //         getAdvertorials(),
-  //         getBrandedPicks(),
-  //       ]);
-
-  //       // Filter and process editorial data
-  //       const nonVideoPosts = editorialData.filter(
-  //         (post) => post.type !== "videos"
-  //       );
-
-  //       const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
-  //       let firstThreePosts;
-  //       let restOfEditorials;
-
-  //       if (topPosts.length > 0) {
-  //         // Sort topPosts by "top_position"
-  //         const sortedTopPosts = topPosts.sort(
-  //           (a, b) => a.top_position - b.top_position
-  //         );
-
-  //         if (sortedTopPosts.length < 3) {
-  //           // If there are less than 3 top posts, fill the remaining slots from nonVideoPosts
-  //           const remainingPostsCount = 3 - sortedTopPosts.length;
-  //           firstThreePosts = sortedTopPosts.concat(
-  //             nonVideoPosts.slice(0, remainingPostsCount)
-  //           );
-  //         } else {
-  //           // Take the first three posts from the sorted top posts
-  //           firstThreePosts = sortedTopPosts.slice(0, 3);
-  //         }
-
-  //         restOfEditorials = editorialData.filter(
-  //           (post) => !firstThreePosts.includes(post)
-  //         );
-  //       } else {
-  //         firstThreePosts = nonVideoPosts.slice(0, 3);
-  //         restOfEditorials = editorialData.filter(
-  //           (post) => !firstThreePosts.includes(post)
-  //         );
-  //       }
-
-  //       const firstFourPosts = brandedPicks.length
-  //         ? firstThreePosts.concat(brandedPicks[0])
-  //         : firstThreePosts;
-
-  //       setBannerPosts(firstFourPosts);
-
-  //       setEditorials(restOfEditorials);
-
-  //       // Set advertorials
-  //       setAdvertorials(brandedData);
-
-  //       // Combine editorial and advertorial data for homepage posts
-  //       const homepagePosts = [];
-  //       for (
-  //         let i = 0;
-  //         i < Math.min(restOfEditorials.length, brandedData.length);
-  //         i += 2
-  //       ) {
-  //         homepagePosts.push(...restOfEditorials.slice(i, i + 2));
-  //         homepagePosts.push(...brandedData.slice(i, i + 2));
-  //       }
-  //       setHomepagePosts1(homepagePosts.slice(0, 20));
-  //       setHomepagePosts2(homepagePosts.slice(20, 40));
-  //       setHomepagePosts3(homepagePosts.slice(40)); // Assuming 60 is a reasonable number for homepage posts
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-
-  //   fetchInitialData();
-  // }, []);
-
-  useEffect(() => {
-    let isMounted = true; // To prevent state updates if the component unmounts
-
+    let isMounted = true;
     async function fetchInitialData() {
       try {
         const [editorialData, brandedData, brandedPicks] = await Promise.all([
@@ -218,42 +59,15 @@ export default function Home() {
 
         if (!isMounted) return;
 
-        // Filter and process editorial data once
-        const nonVideoPosts = editorialData.filter(
-          (post) => post.type !== "videos"
-        );
+        const nonVideoPosts = editorialData.filter((post) => post.type !== "videos");
         const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
+        const firstThreePosts = topPosts.length ? topPosts.slice(0, 3) : nonVideoPosts.slice(0, 3);
+        const restOfEditorials = nonVideoPosts.filter((post) => !firstThreePosts.includes(post));
 
-        let firstThreePosts = [];
-        let restOfEditorials = [];
-
-        if (topPosts.length) {
-          const sortedTopPosts = [...topPosts].sort(
-            (a, b) => a.top_position - b.top_position
-          );
-          firstThreePosts =
-            sortedTopPosts.length < 3
-              ? [
-                  ...sortedTopPosts,
-                  ...nonVideoPosts.slice(0, 3 - sortedTopPosts.length),
-                ]
-              : sortedTopPosts.slice(0, 3);
-        } else {
-          firstThreePosts = nonVideoPosts.slice(0, 3);
-        }
-
-        restOfEditorials = nonVideoPosts.filter(
-          (post) => !firstThreePosts.includes(post)
-        );
-
-        // Optimize homepage posts creation
         const homepagePosts = [];
         const minLength = Math.min(restOfEditorials.length, brandedData.length);
         for (let i = 0; i < minLength; i += 2) {
-          homepagePosts.push(
-            ...restOfEditorials.slice(i, i + 2),
-            ...brandedData.slice(i, i + 2)
-          );
+          homepagePosts.push(...restOfEditorials.slice(i, i + 2), ...brandedData.slice(i, i + 2));
         }
 
         // Batch state updates to prevent multiple re-renders
@@ -269,110 +83,28 @@ export default function Home() {
         if (isMounted) setLoading(false);
       }
     }
-
     fetchInitialData();
-
     return () => {
-      isMounted = false; // Cleanup to prevent state update on unmount
+      isMounted = false;
     };
   }, []);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const winTop = window.scrollY;
-  //     let screenWidth = window.innerWidth;
-  //     if (screenWidth > 760) {
-  //       setIsDesktop(true);
-  //       if (winTop > 1450 && winTop <= 5200) {
-  //         setIsFixed(true);
-  //       } else if (winTop >= 4900 && winTop <= 5200) {
-  //         //setIsPopularFixed(true);
-  //       } else if (winTop >= 6400 && winTop <= 10300) {
-
-  //         setIsFixed2(true);
-  //       } else if (winTop >= 12000 && winTop) {
-  //         setIsFixed2(false);
-  //         setIsFixed3(true);
-  //       } else {
-  //         setIsPopularFixed(false);
-  //         setIsFixed(false);
-  //         setIsFixed2(false);
-  //         setIsFixed3(false);
-  //         console.log("Setting isFixed to false");
-  //       }
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-
-  // const firstfixclass = isFixed ? "ad1-fixed" : "ad1-relative";
-  // const popularFixed = isPopularFixed ? "popular-relative" : "popular-relative";
-  // const Secondfixclass = isFixed2 ? "ad2-fixed" : "ad2-relative";
-  // const Thirdfixclass = isFixed3 ? "ad3-fixed" : "ad3-relative";
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-  };
-
   useEffect(() => {
-    // Load the GPT script
-    // const gptScript = document.createElement('script');
-    // gptScript.async = true;
-    // gptScript.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
-    // document.head.appendChild(gptScript);
-
     const gptScript = document.createElement("script");
     gptScript.src = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
     gptScript.defer = true;
     document.head.appendChild(gptScript);
-
-    // Initialize GPT after script is loaded
-    // gptScript.onload = () => {
-    //   window.googletag = window.googletag || { cmd: [] };
-    //   googletag.cmd.push(function () {
-    //     googletag.defineSlot('/103700377/echelon_test_ad', [300, 250], 'div-gpt-ad-1727089579794-0').addService(googletag.pubads());
-    //     googletag.pubads().enableSingleRequest();
-    //     googletag.enableServices();
-    //   });
-    // };
-
-    // Clean up the script if the component unmounts
     return () => {
       document.head.removeChild(gptScript);
     };
   }, []);
 
-  // useEffect(() => {
-  //   // Display the ad after initialization
-  //   if (window.googletag && window.googletag.cmd) {
-  //     googletag.cmd.push(function () {
-  //       googletag.display('div-gpt-ad-1727089579794-0');
-  //     });
-  //   }
-  // }, []);
-
-  //loading time
   useEffect(() => {
-    const timer = setTimeout(() => {
-      onLoadComplete();
-    }, 1200);
+    const timer = setTimeout(() => setIsBannerLoaded(true), 1000);
     return () => clearTimeout(timer);
   }, []);
 
-  const [isBannerLoaded, setIsBannerLoaded] = useState(false);
-
-  const onLoadComplete = () => {
-    setIsBannerLoaded(true);
-  };
+  const memoizedBannerCarousel = useMemo(() => <BannerCarousel bannerPosts={bannerPosts} />, [bannerPosts]);
 
   // intergration test update testing
   //testing
@@ -522,7 +254,7 @@ export default function Home() {
         <></>
       )}
 
-      <BannerCarousel bannerPosts={bannerPosts} />
+{memoizedBannerCarousel}
       {loading ? (
         <div className="min-h-screen">{/* <Loading /> */}</div>
       ) : (
@@ -641,10 +373,7 @@ export default function Home() {
                 ref={rightContainerRef3}
               >
                 <div className="home-second-section-right-side-content">
-                  {/* <div className="ad-box">
-           
-            Ad Content
-          </div> */}
+                 
                   <VerticalAd
                     adClass={""}
                     slot={"story_top_right_vertically_long_300*500"}

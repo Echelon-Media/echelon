@@ -22,8 +22,9 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 // import BannerCarousel from "@/components/home-components/BannerCarousel";
-// import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
 // import HomeTopCarouselMobile from "@/components/home-components/HomeTopCarouselMobile";
+
+// import HomebrandedPicksMobiles from "../components/home-components/HomeBrandedPicksMobile.tsx";
 // import HomeEditorsPickCarouselMobile from "@/components/home-components/HomeEditorsPickCarouselMobile";
 // import HomeEditorsPickCarouselDesktop from "@/components/home-components/HomeEditorsPickCarouselDesktop";
 
