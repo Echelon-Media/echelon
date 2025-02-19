@@ -9,6 +9,7 @@ import { Inter } from "next/font/google";
 import { getAdvertorials, getBrandedPicks, getEditorials } from "./api/api";
 import { useEffect, useRef, useState } from "react";
 
+
 import dynamic from "next/dynamic";
 
 import { useRouter } from "next/router";
@@ -26,32 +27,17 @@ import Navbar from "@/components/Navbar";
 // import HomeEditorsPickCarouselMobile from "@/components/home-components/HomeEditorsPickCarouselMobile";
 // import HomeEditorsPickCarouselDesktop from "@/components/home-components/HomeEditorsPickCarouselDesktop";
 
+
+
 // ADS Lazy Loadinf
-const BannerAd = dynamic(() =>
-  import("@/components/ads/BannerAd", { ssr: false })
-);
-const MobileAd = dynamic(() =>
-  import("@/components/ads/MobileAd", { ssr: false })
-);
-const VerticalAd = dynamic(() =>
-  import("@/components/ads/verticalAd", { ssr: false })
-);
-const HomebrandedPicksMobiles = dynamic(
-  () => import("../components/home-components/HomeBrandedPicksMobile.tsx"),
-  { ssr: false }
-);
-const HomeTopCarouselMobile = dynamic(
-  () => import("@/components/home-components/HomeTopCarouselMobile"),
-  { ssr: false }
-);
-const HomeEditorsPickCarouselMobile = dynamic(
-  () => import("@/components/home-components/HomeEditorsPickCarouselMobile"),
-  { ssr: false }
-);
-const HomeEditorsPickCarouselDesktop = dynamic(
-  () => import("@/components/home-components/HomeEditorsPickCarouselDesktop"),
-  { ssr: false }
-);
+const BannerAd = dynamic(() => import("@/components/ads/BannerAd", { ssr: false }));
+const MobileAd = dynamic(() => import("@/components/ads/MobileAd", { ssr: false }));
+const VerticalAd = dynamic(() => import("@/components/ads/verticalAd", { ssr: false }));
+const HomebrandedPicksMobiles = dynamic(() => import("../components/home-components/HomeBrandedPicksMobile.tsx"), { ssr: false });
+const HomeTopCarouselMobile = dynamic(() => import("@/components/home-components/HomeTopCarouselMobile"), { ssr: false });
+const HomeEditorsPickCarouselMobile = dynamic(() => import("@/components/home-components/HomeEditorsPickCarouselMobile"), { ssr: false });
+const HomeEditorsPickCarouselDesktop = dynamic(() => import("@/components/home-components/HomeEditorsPickCarouselDesktop"), { ssr: false });
+
 
 //componenets Lazy loading
 
@@ -61,10 +47,7 @@ const BannerCarousel = dynamic(() =>
 const PostSection = dynamic(() =>
   import("@/components/home-components/PostSection", { ssr: false })
 );
-const PostList = dynamic(
-  () => import("@/components/home-components/PostList"),
-  { ssr: false }
-);
+const PostList = dynamic(() => import("@/components/home-components/PostList"), { ssr: false });
 
 const BrandVoiceCarouselDesktop = dynamic(() =>
   import("@/components/home-components/HomeBrandedPicksDesktop", { ssr: false })
@@ -74,6 +57,10 @@ const ScrollToTop = dynamic(() =>
 );
 
 const Footer = dynamic(() => import("@/components/Footer", { ssr: false }));
+
+
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -92,6 +79,8 @@ export default function Home() {
   // const [isDesktop, setIsDesktop] = useState(false);
   // const [isPopularFixed, setIsPopularFixed] = useState(false);
   // const [isTopAd, setIsTopAd] = useState(false);
+
+
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -115,96 +104,7 @@ export default function Home() {
     }
   }, []);
 
-  // console.log('height is -',elementHeight);
-
-  //  useEffect(() => {
-  //    const cachedBannerPosts = localStorage.getItem("bannerPosts");
-  //    if (cachedBannerPosts) {
-  //      setImages(JSON.parse(cachedBannerPosts));
-  //    }
-  //  }, []);
-
-  // Function to cache data in localStorage
-
-  // useEffect(() => {
-  //   async function fetchInitialData() {
-  //     try {
-  //       const [editorialData, brandedData, brandedPicks] = await Promise.all([
-  //         getEditorials(),
-  //         getAdvertorials(),
-  //         getBrandedPicks(),
-  //       ]);
-
-  //       // Filter and process editorial data
-  //       const nonVideoPosts = editorialData.filter(
-  //         (post) => post.type !== "videos"
-  //       );
-
-  //       const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
-  //       let firstThreePosts;
-  //       let restOfEditorials;
-
-  //       if (topPosts.length > 0) {
-  //         // Sort topPosts by "top_position"
-  //         const sortedTopPosts = topPosts.sort(
-  //           (a, b) => a.top_position - b.top_position
-  //         );
-
-  //         if (sortedTopPosts.length < 3) {
-  //           // If there are less than 3 top posts, fill the remaining slots from nonVideoPosts
-  //           const remainingPostsCount = 3 - sortedTopPosts.length;
-  //           firstThreePosts = sortedTopPosts.concat(
-  //             nonVideoPosts.slice(0, remainingPostsCount)
-  //           );
-  //         } else {
-  //           // Take the first three posts from the sorted top posts
-  //           firstThreePosts = sortedTopPosts.slice(0, 3);
-  //         }
-
-  //         restOfEditorials = editorialData.filter(
-  //           (post) => !firstThreePosts.includes(post)
-  //         );
-  //       } else {
-  //         firstThreePosts = nonVideoPosts.slice(0, 3);
-  //         restOfEditorials = editorialData.filter(
-  //           (post) => !firstThreePosts.includes(post)
-  //         );
-  //       }
-
-  //       const firstFourPosts = brandedPicks.length
-  //         ? firstThreePosts.concat(brandedPicks[0])
-  //         : firstThreePosts;
-
-  //       setBannerPosts(firstFourPosts);
-
-  //       setEditorials(restOfEditorials);
-
-  //       // Set advertorials
-  //       setAdvertorials(brandedData);
-
-  //       // Combine editorial and advertorial data for homepage posts
-  //       const homepagePosts = [];
-  //       for (
-  //         let i = 0;
-  //         i < Math.min(restOfEditorials.length, brandedData.length);
-  //         i += 2
-  //       ) {
-  //         homepagePosts.push(...restOfEditorials.slice(i, i + 2));
-  //         homepagePosts.push(...brandedData.slice(i, i + 2));
-  //       }
-  //       setHomepagePosts1(homepagePosts.slice(0, 20));
-  //       setHomepagePosts2(homepagePosts.slice(20, 40));
-  //       setHomepagePosts3(homepagePosts.slice(40)); // Assuming 60 is a reasonable number for homepage posts
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-
-  //   fetchInitialData();
-  // }, []);
-
+  
   useEffect(() => {
     let isMounted = true; // To prevent state updates if the component unmounts
 
@@ -219,41 +119,28 @@ export default function Home() {
         if (!isMounted) return;
 
         // Filter and process editorial data once
-        const nonVideoPosts = editorialData.filter(
-          (post) => post.type !== "videos"
-        );
+        const nonVideoPosts = editorialData.filter((post) => post.type !== "videos");
         const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
 
         let firstThreePosts = [];
         let restOfEditorials = [];
 
         if (topPosts.length) {
-          const sortedTopPosts = [...topPosts].sort(
-            (a, b) => a.top_position - b.top_position
-          );
-          firstThreePosts =
-            sortedTopPosts.length < 3
-              ? [
-                  ...sortedTopPosts,
-                  ...nonVideoPosts.slice(0, 3 - sortedTopPosts.length),
-                ]
-              : sortedTopPosts.slice(0, 3);
+          const sortedTopPosts = [...topPosts].sort((a, b) => a.top_position - b.top_position);
+          firstThreePosts = sortedTopPosts.length < 3
+            ? [...sortedTopPosts, ...nonVideoPosts.slice(0, 3 - sortedTopPosts.length)]
+            : sortedTopPosts.slice(0, 3);
         } else {
           firstThreePosts = nonVideoPosts.slice(0, 3);
         }
 
-        restOfEditorials = nonVideoPosts.filter(
-          (post) => !firstThreePosts.includes(post)
-        );
+        restOfEditorials = nonVideoPosts.filter((post) => !firstThreePosts.includes(post));
 
         // Optimize homepage posts creation
         const homepagePosts = [];
         const minLength = Math.min(restOfEditorials.length, brandedData.length);
         for (let i = 0; i < minLength; i += 2) {
-          homepagePosts.push(
-            ...restOfEditorials.slice(i, i + 2),
-            ...brandedData.slice(i, i + 2)
-          );
+          homepagePosts.push(...restOfEditorials.slice(i, i + 2), ...brandedData.slice(i, i + 2));
         }
 
         // Batch state updates to prevent multiple re-renders
@@ -263,6 +150,7 @@ export default function Home() {
         setHomepagePosts1(homepagePosts.slice(0, 20));
         setHomepagePosts2(homepagePosts.slice(20, 40));
         setHomepagePosts3(homepagePosts.slice(40, 60));
+
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -276,6 +164,7 @@ export default function Home() {
       isMounted = false; // Cleanup to prevent state update on unmount
     };
   }, []);
+
 
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -323,6 +212,8 @@ export default function Home() {
     slidesToScroll: 1,
   };
 
+
+
   useEffect(() => {
     // Load the GPT script
     // const gptScript = document.createElement('script');
@@ -330,10 +221,11 @@ export default function Home() {
     // gptScript.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
     // document.head.appendChild(gptScript);
 
-    const gptScript = document.createElement("script");
-    gptScript.src = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
+    const gptScript = document.createElement('script');
+    gptScript.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
     gptScript.defer = true;
     document.head.appendChild(gptScript);
+
 
     // Initialize GPT after script is loaded
     // gptScript.onload = () => {
@@ -368,6 +260,8 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+
+
   const [isBannerLoaded, setIsBannerLoaded] = useState(false);
 
   const onLoadComplete = () => {
@@ -379,18 +273,7 @@ export default function Home() {
 
   const leftContainerRef1 = useRef(null);
   const rightContainerRef1 = useRef(null);
-  const leftContainerRef2 = useRef(null);
-  const rightContainerRef2 = useRef(null);
-  const leftContainerRef3 = useRef(null);
-  const rightContainerRef3 = useRef(null);
-  const leftContainerRef4 = useRef(null);
-  const rightContainerRef4 = useRef(null);
-  const leftContainerRef5 = useRef(null);
-  const rightContainerRef5 = useRef(null);
-  const leftContainerRef6 = useRef(null);
-  const rightContainerRef6 = useRef(null);
-  const leftContainerRef7 = useRef(null);
-  const rightContainerRef7 = useRef(null);
+ 
 
   const debounce = (func, delay) => {
     let timer;
@@ -400,17 +283,13 @@ export default function Home() {
     };
   };
 
+
   useEffect(() => {
     const updateHeights = () => {
       if (window.innerWidth > 768) {
         const pairs = [
           [leftContainerRef1, rightContainerRef1],
-          [leftContainerRef2, rightContainerRef2],
-          [leftContainerRef3, rightContainerRef3],
-          [leftContainerRef4, rightContainerRef4],
-          [leftContainerRef5, rightContainerRef5],
-          [leftContainerRef6, rightContainerRef6],
-          [leftContainerRef7, rightContainerRef7],
+         
         ];
 
         pairs.forEach((pair) => {
@@ -434,7 +313,7 @@ export default function Home() {
 
         rightContainers.forEach((rightRef) => {
           if (rightRef.current) {
-            rightRef.current.style.height = "auto";
+            rightRef.current.style.height = 'auto';
           }
         });
       }
@@ -444,14 +323,15 @@ export default function Home() {
 
     updateHeights();
 
-    window.addEventListener("resize", debouncedUpdateHeights);
-    window.addEventListener("scroll", debouncedUpdateHeights);
+    window.addEventListener('resize', debouncedUpdateHeights);
+    window.addEventListener('scroll', debouncedUpdateHeights);
 
     return () => {
-      window.removeEventListener("resize", debouncedUpdateHeights);
-      window.removeEventListener("scroll", debouncedUpdateHeights);
+      window.removeEventListener('resize', debouncedUpdateHeights);
+      window.removeEventListener('scroll', debouncedUpdateHeights);
     };
   }, []);
+
 
   return (
     <>
@@ -514,13 +394,12 @@ export default function Home() {
 
       {/* <BannerAd />
       <MobileAd /> */}
-      {isBannerLoaded ? (
-        <>
-          <Navbar />
-        </>
-      ) : (
-        <></>
-      )}
+      {isBannerLoaded ? <><Navbar />
+
+
+      </>
+
+        : <></>}
 
       <BannerCarousel bannerPosts={bannerPosts} />
       {loading ? (
@@ -531,20 +410,10 @@ export default function Home() {
           {/* <BannerAd /> */}
           <MobileAd slot={"home_mobile_square_2"} />
 
-          {/* section 1 */}
-          <main className="section-container first-main mt-5">
-            <div
-              className="home-second-section-left-side-container"
-              ref={leftContainerRef1}
-            >
-              <PostSection homePagePosts={homepagePosts1} />
-            </div>
-
-            <div className="home-second-section-right-main-wrapper">
-              <div
-                className="home-second-section-right-side-container"
-                ref={rightContainerRef1}
-              >
+          <main id="main" className="first-main mt-5">
+            <PostSection homePagePosts={homepagePosts1} />
+            <div className="desktop-right-side ">
+              <div className={`postList popular-relative`}>
                 <div className="home-popular-header-wrapper">
                   <h2
                     className="text-xl text-black home-popular-header homepage-popular"
@@ -554,17 +423,20 @@ export default function Home() {
                   </h2>
                 </div>
                 <PostList />
-                <div className="home-second-section-right-side-content mt-10 mb-2">
-                  <VerticalAd
-                    adClass={""}
-                    slot={"story_top_right_vertically_long_300*500"}
-                  />
-                </div>
               </div>
+              {/* <VerticalAd
+                adClass={firstfixclass}
+
+                slot={"story_top_right_vertically_long_300*500"}
+              /> */}
+
+
             </div>
           </main>
+
           {/* <MobileAd slot={"home_mobile_square_2"} /> */}
-          {/* branded pick section */}
+          {/* <HomebrandedPicksMobile /> */}
+          {/* <HomeBrandedPicks /> */},
           <HomebrandedPicksMobiles />
           <div className="home-branded-picks-hide-on-mobile">
             <Link href="./category/brand-voice/">
@@ -576,36 +448,22 @@ export default function Home() {
             <BrandVoiceCarouselDesktop />
           </div>
           <br></br>
+          <main>
+            <PostSection homePagePosts={homepagePosts2} />
+            <div className="desktop-right-side sm-fulls">
+              {/* <VerticalAd
+                adClass={Thirdfixclass}
+                // img={ad1}
+                // url={
+                //   "https://youtube.com/playlist?list=PL85zhIvKzyYYPAE5HipW_u1nsoQaTuKoO&si=VqiWHMpQtleYf00y"
+                // }
+                slot={"story_top_right_vertically_long_300*500"} /> */}
 
-          {/* section 2 */}
 
-          <main className="section-container">
-            <div
-              className="home-second-section-left-side-container"
-              ref={leftContainerRef2}
-            >
-              <PostSection homePagePosts={homepagePosts2} />
-            </div>
 
-            <div className="home-second-section-right-main-wrapper">
-              <div
-                className="home-second-section-right-side-container"
-                ref={rightContainerRef2}
-              >
-                <div className="home-second-section-right-side-content">
-                  {/* <div className="ad-box">
-           
-            Ad Content
-          </div> */}
-                  <VerticalAd
-                    adClass={""}
-                    slot={"story_top_right_vertically_long_300*500"}
-                  />
-                </div>
-              </div>
+
             </div>
           </main>
-          {/* Edirotrial picks section */}
           {/* <MobileAd slot={"home_mobile_square_3"} /> */}
           <div className="editor-pick-hide-on-mobile">
             <div className="editors-pick-carousel-main-wrapper">
@@ -624,36 +482,26 @@ export default function Home() {
             <HomeEditorsPickCarouselMobile />
           </div>
           <br></br>
+          <main>
+            <PostSection homePagePosts={homepagePosts3} />
 
-          {/* main section 3 */}
+            <div className="desktop-right-side sm-fulls">
+              {/* <VerticalAd
+                adClass={Secondfixclass}
+                // img={ad1}
+                // url={
+                //   "https://youtube.com/playlist?list=PL85zhIvKzyYYPAE5HipW_u1nsoQaTuKoO&si=VqiWHMpQtleYf00y"
+                // }
+                slot={"story_top_right_vertically_long_2_300*500"}
+              /> */}
 
-          <main className="section-container">
-            <div
-              className="home-second-section-left-side-container"
-              ref={leftContainerRef3}
-            >
-              <PostSection homePagePosts={homepagePosts3} />
-            </div>
+              {/* bottom ad */}
 
-            <div className="home-second-section-right-main-wrapper">
-              <div
-                className="home-second-section-right-side-container"
-                ref={rightContainerRef3}
-              >
-                <div className="home-second-section-right-side-content">
-                  {/* <div className="ad-box">
-           
-            Ad Content
-          </div> */}
-                  <VerticalAd
-                    adClass={""}
-                    slot={"story_top_right_vertically_long_300*500"}
-                  />
-                </div>
-              </div>
+
+
+
             </div>
           </main>
-
           <div className="see-more-button-wrapper">
             <button onClick={handleSeeMoreClick} className="see-more-button">
               See More Stories{" "}
@@ -662,6 +510,37 @@ export default function Home() {
           <ScrollToTop />
         </>
       )}
+
+
+
+
+      <main className="section-container" >
+        
+
+
+        <div className="home-second-section-left-side-container" ref={leftContainerRef1}>
+        <PostSection homePagePosts={homepagePosts2} />
+        </div>
+
+        <div className="home-second-section-right-main-wrapper">
+          <div
+            className="home-second-section-right-side-container" ref={rightContainerRef1}>
+            <div className="home-second-section-right-side-content">
+            {/* <div className="ad-box">
+           
+            Ad Content
+          </div> */}
+          <VerticalAd
+                adClass={''}
+
+                slot={"story_top_right_vertically_long_300*500"}
+              /> 
+            </div>
+          </div>
+        </div>
+
+
+      </main>
       <Footer />
     </>
   );

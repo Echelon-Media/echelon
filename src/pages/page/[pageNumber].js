@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { getAllPostsPaginate } from "../api/api";
@@ -24,6 +24,8 @@ const PaginatePosts = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
+    const leftContainerRef1 = useRef(null);
+    const rightContainerRef1 = useRef(null);
 
   const perPage = 30;
 
@@ -38,8 +40,8 @@ const PaginatePosts = () => {
     try {
       const results = await getAllPostsPaginate(perPage, pageNumber);
       setTotalPages(results?.max_pages); // Ensure totalPages is a number
-      setSet1(results.results.slice(0, 15)); // Ensure this is an array
-      setSet2(results.results.slice(15, 30)); // Ensure this is an array
+      setSet1(results?.results.slice(0, 15)); // Ensure this is an array
+      setSet2(results?.results.slice(15, 30)); // Ensure this is an array
     } catch (error) {
       console.error("Error fetching posts:", error);
     } finally {
@@ -81,6 +83,58 @@ const PaginatePosts = () => {
   const popularFixed = isFixed ? "popular-fixed" : "popular-relative-story";
   const leftMargin = isFixed ? "3%" : "12%";
 
+
+  const debounce = (func, delay) => {
+    let timer;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => func.apply(this, args), delay);
+    };
+  };
+
+  useEffect(() => {
+    const updateHeights = () => {
+      if (window.innerWidth > 768) {
+        const pairs = [
+          [leftContainerRef1, rightContainerRef1],
+        
+        ];
+
+        pairs.forEach((pair) => {
+          const [leftRef, rightRef] = pair;
+
+          if (leftRef.current && rightRef.current) {
+            const leftHeight = leftRef.current.offsetHeight;
+            rightRef.current.style.height = `${leftHeight*1.98}px`;
+          }
+        });
+      } else {
+        const rightContainers = [
+          rightContainerRef1,
+          
+        ];
+
+        rightContainers.forEach((rightRef) => {
+          if (rightRef.current) {
+            rightRef.current.style.height = "auto";
+          }
+        });
+      }
+    };
+
+    const debouncedUpdateHeights = debounce(updateHeights, 50);
+
+    updateHeights();
+
+    window.addEventListener("resize", debouncedUpdateHeights);
+    window.addEventListener("scroll", debouncedUpdateHeights);
+
+    return () => {
+      window.removeEventListener("resize", debouncedUpdateHeights);
+      window.removeEventListener("scroll", debouncedUpdateHeights);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -102,7 +156,7 @@ const PaginatePosts = () => {
         <Loading />
       ) : (
         <>
-          <main id="main" className="lg:max-w-screen-xl">
+          {/* <main id="main" className="lg:max-w-screen-xl">
             <div className="paginationpage">
               <PostSection homePagePosts={set1} />
             </div>
@@ -125,9 +179,37 @@ const PaginatePosts = () => {
                 <PostList />
               </div>
             </div>
+          </main> */}
+
+          <main className="section-container first-main mt-5">
+            <div
+              className="home-second-section-left-side-container"
+              ref={leftContainerRef1}
+            >
+                           <PostSection homePagePosts={set1} />
+
+            </div>
+
+            <div className="home-second-section-right-main-wrapper">
+              <div
+                className="home-second-section-right-side-container"
+                ref={rightContainerRef1}
+              >
+                
+                <div className="home-second-section-right-side-content">
+                <div className="list-header bg-black h-10">
+                  <h2 className="text-xl text-white home-popular-header">
+                    Most Popular
+                  </h2>
+                  <div className="hr" />
+                </div>
+                <PostList />
+                </div>
+              </div>
+            </div>
           </main>
 
-          <main id="main" className="max-w-screen-md lg:max-w-screen-xl">
+          <main className="section-container first-main mt-5">
             <div className="paginationpage">
               <PostSection homePagePosts={set2} />
             </div>
