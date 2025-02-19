@@ -48,6 +48,12 @@ export default function Home() {
   }, [router]);
 
   useEffect(() => {
+    const timer = setTimeout(() => setIsBannerLoaded(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+
+  useEffect(() => {
     let isMounted = true;
     async function fetchInitialData() {
       try {
@@ -72,11 +78,16 @@ export default function Home() {
 
         // Batch state updates to prevent multiple re-renders
         setBannerPosts(firstThreePosts.concat(brandedPicks[0] || []));
-        setEditorials(restOfEditorials);
-        setAdvertorials(brandedData);
-        setHomepagePosts1(homepagePosts.slice(0, 20));
-        setHomepagePosts2(homepagePosts.slice(20, 40));
-        setHomepagePosts3(homepagePosts.slice(40, 60));
+
+      
+          setEditorials(restOfEditorials);
+          setAdvertorials(brandedData);
+          
+          setHomepagePosts1(homepagePosts.slice(0, 20));
+          setHomepagePosts2(homepagePosts.slice(20, 40));
+          setHomepagePosts3(homepagePosts.slice(40, 60));
+        
+       
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -99,11 +110,7 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsBannerLoaded(true), 2300);
-    return () => clearTimeout(timer);
-  }, []);
-
+ 
   
 
   
