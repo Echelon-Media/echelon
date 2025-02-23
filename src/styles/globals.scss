@@ -2311,10 +2311,7 @@ p strong {
 //******************* MOBILE STYLES *********************//
 @media screen and (max-width: 767px) {
 
-  .section-container .home-second-section-right-main-wrapper .home-second-section-right-side-container {
-    position: static;
-    margin-left: 5%;
-}
+ 
 
   //notice
   .notice {
@@ -2512,6 +2509,20 @@ p strong {
   .home-second-section-left-side-container {
     width: 100% !important;
   }
+
+  .section-container .home-second-section-right-main-wrapper .home-second-section-right-side-container {
+    position: static;
+    margin-left: 0%;
+    width: 100% !important;
+    max-width: none;
+    
+}
+
+// .story-container,.featured-container{
+//   .home-second-section-right-side-container{
+//     margin-left: 5%;
+//   }
+// }
 
   .main-section-2 {
     display: block;
@@ -3723,7 +3734,7 @@ p strong {
 
   .featured-container {
     display: block;
-    margin: 7% 5% 0 0%;
+    margin: 7% 3% 0 3%;
 
     .desktop-left-side {
       margin-top: 0%;
