@@ -334,7 +334,7 @@ const VideoPage = ({ videoCategories }) => {
           <br></br>
          
 
-           <BannerAd />
+           <BannerAd slot={'home_middle_wide'} />
            <MobileAd slot={"home_mobile_square_2"} />
            <br></br>
 
