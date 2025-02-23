@@ -36,6 +36,7 @@ import Link from "next/link";
 import Slider from "react-slick";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import dynamic from "next/dynamic";
+import MobileAd from "@/components/ads/MobileAd";
 
 const VideoPageCarousel = dynamic(() =>
   import("@/components/inner-pages/VideoPageCarousel")
@@ -331,8 +332,11 @@ const VideoPage = ({ videoCategories }) => {
             </div>
           </div>
           <br></br>
-          <BannerAd />
-          <br></br>
+         
+
+           <BannerAd />
+           <MobileAd slot={"home_mobile_square_2"} />
+           <br></br>
 
           <div>
             {categories.map((category) => (

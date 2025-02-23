@@ -181,7 +181,7 @@ const PaginatePosts = () => {
             </div>
           </main> */}
 
-          <main className="section-container first-main mt-5">
+          <main className="section-container first-main mt-10">
             <div
               className="home-second-section-left-side-container"
               ref={leftContainerRef1}
@@ -190,7 +190,7 @@ const PaginatePosts = () => {
 
             </div>
 
-            <div className="home-second-section-right-main-wrapper">
+            <div className="home-second-section-right-main-wrapper m-6">
               <div
                 className="home-second-section-right-side-container"
                 ref={rightContainerRef1}
