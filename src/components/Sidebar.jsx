@@ -17,8 +17,8 @@ const Sidebar = ({ isOpen, onClose }) => {
 
         if (issuesData.length > 0) {
           const sortedArray = issuesData.sort((a, b) => {
-            const dateA = new Date(a.acf.issue_date);
-            const dateB = new Date(b.acf.issue_date);
+            const dateA = new Date(a?.acf?.issue_date);
+            const dateB = new Date(b?.acf?.issue_date);
 
             return dateB - dateA;
           });
@@ -27,7 +27,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           // console.log(`issue is ${JSON.stringify(issues)}`);
         }
       } catch (error) {
-        console.error("Error fetching issues:", error);
+        // console.error("Error fetching issues:", error);
       }
     }
 
