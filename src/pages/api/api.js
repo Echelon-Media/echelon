@@ -45,7 +45,7 @@ const refreshJwtToken = async () => {
   }
 };
 
-// Example usage
+
 refreshJwtToken()
   .then(() => {
     // Proceed with  API requests using jwtAuth
@@ -54,7 +54,6 @@ refreshJwtToken()
   // @ts-ignore
   .catch((error) => {
     // console.error("Error:", error);
-    // Handle other errors or redirect to re-authenticate if needed
   });
 
 export async function getPosts() {
@@ -123,7 +122,7 @@ export async function getIssues() {
     return issueRes.data;
   } catch (error) {
     // console.error("Error fetching Issues:", error);
-    throw error; // Re-throw the error to handle it in the component
+    //throw error; // Re-throw the error to handle it in the component
   }
 }
 
