@@ -622,8 +622,7 @@ nav {
 
 .section-container {
   
-  // Ensure the container is tall enough to scroll:
-  min-height: 150vh; // Adjust as needed for testing
+  min-height: 150vh; // 
 
   .home-second-section-right-main-wrapper {
     grid-column: 40%;
@@ -631,7 +630,8 @@ nav {
     .home-second-section-right-side-container {
       position: absolute;
       // width: 20.8%;
-      right: 8%;
+      right: 11%;
+      width: 375px;
 
     }
 
@@ -650,7 +650,7 @@ nav {
   .home-second-section-left-side-container {
     grid-column: 1;
     text-align: left;
-    width: 70%;
+    width: 68%;
 
     
   }
@@ -1209,9 +1209,9 @@ footer {
     top: 0;
   }
 
-  .inner-story-copy-icon-refreshed {
-    padding: 19% 28% !important;
-  }
+  // .inner-story-copy-icon-refreshed {
+  //   padding: 19% 28% !important;
+  // }
 
   .inner-story-copy-icon {
     background-color: #000;
@@ -1224,6 +1224,9 @@ footer {
     .copy-icon {
       width: 16px;
       height: 16px;
+    }
+    .svg-inline--fa{
+      vertical-align: 0em;
     }
   }
 }
@@ -1534,10 +1537,16 @@ p strong {
 
 .featured-container {
   display: flex;
-  margin: 0% 10% 0 11%;
+  margin: 0% 34% 0 11%;
 
-  .desktop-left-side {
+  .home-second-section-left-side-container {
     margin-top: 0%;
+    width: 85%;
+    
+  }
+
+  .home-second-section-right-main-wrapper{
+    
   }
 }
 
@@ -2278,11 +2287,33 @@ p strong {
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
+
+
+  }
+
+  .featured-container {
+    display: flex;
+    margin: 0% 34% 0 11%;
+  
+    .home-second-section-left-side-container {
+      margin-top: 0%;
+      width: 65%;
+      
+    }
+  
+    .home-second-section-right-main-wrapper{
+      
+    }
   }
 }
 
 //******************* MOBILE STYLES *********************//
 @media screen and (max-width: 767px) {
+
+  .section-container .home-second-section-right-main-wrapper .home-second-section-right-side-container {
+    position: static;
+    margin-left: 5%;
+}
 
   //notice
   .notice {

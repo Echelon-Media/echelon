@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import moment from "moment";
@@ -23,11 +23,16 @@ const BrandedVideo = dynamic(() =>
   import("@/components/inner-pages/BrandedVideoTemplate")
 );
 
+
+
+
+
+
 function Post({ post, type }) {
 
   const router = useRouter();
   if (post == null) {
-    router.push("/404");
+    router?.push("/404");
     return null; // Return null to prevent rendering the rest of the component
   } else {
     const renderPostTemplate = () => {
@@ -66,7 +71,7 @@ function Post({ post, type }) {
 
       const thumbnail = post?.thumbnail_url ? post.thumbnail_url : "";
 
-      console.log('co title - ', correctCasedTitle);
+      // console.log('co title - ', correctCasedTitle);
 
       // console.log("thumbnail -", thumbnail);
 
@@ -224,7 +229,7 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    console.error("Error fetching post:", error);
+    // console.error("Error fetching post:", error);
 
     return {
       props: {

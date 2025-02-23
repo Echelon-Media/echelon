@@ -4,7 +4,7 @@ import imageurl from "../../images/Capture6.jpg";
 import PostList from "@/components/home-components/PostList";
 import PostShare from "@/components/story-components/PostShare";
 import Footer from "@/components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import CategoryLink from "../CategoryLink";
 import moment from "moment";
@@ -173,6 +173,68 @@ const Featured = ({
 
   const mobileImage = verticalImageUrl ? verticalImageUrl : imageUrl;
 
+
+  const leftContainerRef1 = useRef(null);
+    const rightContainerRef1 = useRef(null);
+    const leftContainerRef2 = useRef(null);
+    const rightContainerRef2 = useRef(null);
+  
+  
+    const debounce = (func, delay) => {
+      let timer;
+      return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+      };
+    };
+  
+    useEffect(() => {
+      const updateHeights = () => {
+        if (window.innerWidth > 768) {
+          const pairs = [
+            [leftContainerRef1, rightContainerRef1],
+            [leftContainerRef2, rightContainerRef2],
+          
+          ];
+  
+          pairs.forEach((pair) => {
+            const [leftRef, rightRef] = pair;
+  
+            if (leftRef.current && rightRef.current) {
+              const leftHeight = leftRef.current.offsetHeight;
+              rightRef.current.style.height = `${leftHeight}px`;
+            }
+          });
+        } else {
+          const rightContainers = [
+            rightContainerRef1,
+          ];
+  
+          rightContainers.forEach((rightRef) => {
+            if (rightRef.current) {
+              rightRef.current.style.height = "auto";
+            }
+          });
+        }
+      };
+  
+      const debouncedUpdateHeights = debounce(updateHeights, 50);
+  
+      updateHeights();
+  
+      window.addEventListener("resize", debouncedUpdateHeights);
+      window.addEventListener("scroll", debouncedUpdateHeights);
+  
+      return () => {
+        window.removeEventListener("resize", debouncedUpdateHeights);
+        window.removeEventListener("scroll", debouncedUpdateHeights);
+      };
+    }, []);
+  
+  
+  
+  
+
   return (
     <>
       <>
@@ -238,8 +300,8 @@ const Featured = ({
             <></>
           )}
         </div>
-        <div className="featured-container">
-          <div id="left-side" className="desktop-left-side sm-fulls">
+        <div className="featured-container  section-container">
+          <div id="left-side" ref={leftContainerRef1}  className="home-second-section-left-side-container sm-fulls">
             <div className="story-post-content">
               {isDesktop ? (
                 <div style={socialShareStyle} className="">
@@ -267,25 +329,29 @@ const Featured = ({
               </div>
             </div>
           </div>
-          <div className="desktop-right-side  sm-fulls">
-            <VerticalAd adClass={firstfixclass} url="" img={ad1} />
-            {/* <VerticalAd adStyle={style2} /> */}
-            {/* <MobileAd /> */}
-
-            <div
-              className={`postList ${popularFixed}`}
-              style={popularMarginTopStyle}
-            >
-              <div className="list-header bg-black h-10 ">
-                <h1 className=" text-xl text-white home-popular-header ">
-                  Most Popular
-                </h1>
-                <div className="hr" />
-              </div>
-
-              <PostList />
-            </div>
-          </div>
+          <div className="home-second-section-right-main-wrapper">
+      <div
+        className="home-second-section-right-side-container"
+        ref={rightContainerRef1}
+      >
+        <div className="home-popular-header-wrapper">
+          <h2
+            className="text-xl text-black home-popular-header homepage-popular"
+            style={{ color: "black !important" }}
+          >
+            Most Popular
+          </h2>
+        </div>
+        <PostList />
+        <div className="home-second-section-right-side-content mt-10 mb-2">
+          <VerticalAd
+            adClass={""}
+            slot={"story_top_right_vertically_long_300*500"}
+          />
+        </div>
+        
+        </div>
+      </div>
         </div>
         {/* <MobileAd /> */}
 

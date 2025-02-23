@@ -4,7 +4,7 @@ import imageurl from "../../images/Capture6.jpg";
 import PostList from "@/components/home-components/PostList";
 import PostShare from "@/components/story-components/PostShare";
 import Footer from "@/components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import CategoryLink from "../CategoryLink";
 import StoryBottomList from "../story-components/StoryBottomList";
@@ -40,6 +40,68 @@ const Featured = ({
   const [isDesktop, setIsDesktop] = useState(false);
   const [updateComplete, setUpdateComplete] = useState(false);
   const [isPopularFixed, setPopularFixed] = useState(false);
+
+const leftContainerRef1 = useRef(null);
+  const rightContainerRef1 = useRef(null);
+  const leftContainerRef2 = useRef(null);
+  const rightContainerRef2 = useRef(null);
+
+
+  const debounce = (func, delay) => {
+    let timer;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => func.apply(this, args), delay);
+    };
+  };
+
+  useEffect(() => {
+    const updateHeights = () => {
+      if (window.innerWidth > 768) {
+        const pairs = [
+          [leftContainerRef1, rightContainerRef1],
+          [leftContainerRef2, rightContainerRef2],
+        
+        ];
+
+        pairs.forEach((pair) => {
+          const [leftRef, rightRef] = pair;
+
+          if (leftRef.current && rightRef.current) {
+            const leftHeight = leftRef.current.offsetHeight;
+            rightRef.current.style.height = `${leftHeight}px`;
+          }
+        });
+      } else {
+        const rightContainers = [
+          rightContainerRef1,
+        ];
+
+        rightContainers.forEach((rightRef) => {
+          if (rightRef.current) {
+            rightRef.current.style.height = "auto";
+          }
+        });
+      }
+    };
+
+    const debouncedUpdateHeights = debounce(updateHeights, 50);
+
+    updateHeights();
+
+    window.addEventListener("resize", debouncedUpdateHeights);
+    window.addEventListener("scroll", debouncedUpdateHeights);
+
+    return () => {
+      window.removeEventListener("resize", debouncedUpdateHeights);
+      window.removeEventListener("scroll", debouncedUpdateHeights);
+    };
+  }, []);
+
+
+
+
+
 
   useEffect(() => {
     const updateViews = async () => {
@@ -95,26 +157,7 @@ const Featured = ({
     };
   }, []);
 
-  const popularClass = isPopularFixed
-    ? "story-page-popular-floating"
-    : "story-page-popular-not-Floating";
-  const popularMarginTopStyle = {
-    marginTop: `25%`,
-  };
-
-  const style = isFixed
-    ? {
-        position: "relative",
-        bottom: "10px",
-        top: "30px",
-      }
-    : {
-        position: "relative",
-        bottom: "10px",
-        top: "30px",
-        // marginTop: "50%",
-      };
-
+ 
   const socialShareStyle = isFixed
     ? {
         position: "fixed",
@@ -128,10 +171,10 @@ const Featured = ({
   const mobileImage = verticalImageUrl ? verticalImageUrl : imageUrl;
 
   return (
-    <>
-      <img src="" alt="" />
+    <>  
+    
       <div className="story-container" id="story-container">
-        <div id="left-side" className="desktop-left-side sm-fulls">
+        <div id="left-side"  ref={leftContainerRef1} className="  desktop-left-side sm-fulls ">
           <div style={{ display: "flex", paddingTop: "2%" }}>
             <span className="story-date ">{`${date} `} </span>
             {categoryId ? (
@@ -216,42 +259,33 @@ const Featured = ({
             </div>
           </div>
         </div>
-        <div className="desktop-right-side pt-10 sm-fulls">
-          <div id="rightShort" style={style}>
-            <VerticalAd
-              adStyle={{ marginTop: "8%" }}
-              url={
-                "https://backend.echelon.lk/wp-content/uploads/2024/09/Echelon-September-2024.pdf"
-              }
-              img={ad2}
-            />
-            {/* <MobileAd /> */}
-          </div>
-          <div
-            className={`postList ${popularClass}`}
-            style={popularMarginTopStyle}
+        <div className="home-second-section-right-main-wrapper">
+      <div
+        className="home-second-section-right-side-container"
+        ref={rightContainerRef1}
+      >
+        <div className="home-popular-header-wrapper">
+          <h2
+            className="text-xl text-black home-popular-header homepage-popular"
+            style={{ color: "black !important" }}
           >
-            <div className="list-header bg-black h-10 ">
-              <h2 className=" text-xl text-white home-popular-header ">
-                Most Popular
-              </h2>
-              <div className="hr" />
-            </div>
-
-            <PostList
-              key={1}
-              category={"Next"}
-              headline={
-                "Decoding The Code: Bridging Boundaries For An Exceptional Journey"
-              }
-              imageUrl={imageurl}
-              slug={"podt"}
-            />
-          </div>
+            Most Popular
+          </h2>
+        </div>
+        <PostList />
+        <div className="home-second-section-right-side-content mt-10 mb-2">
+          <VerticalAd
+            adClass={""}
+            slot={"story_top_right_vertically_long_300*500"}
+          />
         </div>
       </div>
+    </div>
+      </div>
+
+      
       <BannerAd />
-      {/* <MobileAd /> */}
+      <MobileAd />
 
       <StoryBottomList category_id={categoryId} />
       <ScrollToTop />

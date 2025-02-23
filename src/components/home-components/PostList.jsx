@@ -59,8 +59,8 @@ const PostList = () => {
             className={`listImage sm:float-right`}
             src={post.featured_image}
             alt={post.title}
-            width={2480}
-            height={1395}
+            width={155}
+            height={90}
           />
         </div>
       ))}
