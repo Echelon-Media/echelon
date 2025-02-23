@@ -15,7 +15,10 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://backend.echelon.lk" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/favicon.png" />
-          <meta name="google-adsense-account" content="ca-pub-3125013168548093" />
+          <meta
+            name="google-adsense-account"
+            content="ca-pub-3125013168548093"
+          />
 
           {/* <Script
           defer
@@ -56,7 +59,11 @@ class MyDocument extends Document {
 
           {/* <!-- Preconnect to Google Fonts --> */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
 
           {/* <!-- Preload critical fonts --> */}
           <link
@@ -64,15 +71,14 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600&display=swap"
             as="style"
           />
-         
-         
+
           {/* <!-- Load fonts from Google Fonts --> */}
           <link
             href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;600&display=swap"
             rel="stylesheet"
           />
-          
 
+       
           <Script
             defer
             src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
