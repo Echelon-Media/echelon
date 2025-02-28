@@ -387,7 +387,7 @@ export default function Home() {
                  
                   <VerticalAd
                     adClass={""}
-                    slot={"story_top_right_vertically_long_2_300*500"}
+                    slot={"story_top_right_vertically_long2"}
                   />
                 </div>
               </div>
