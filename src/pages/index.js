@@ -300,7 +300,7 @@ export default function Home() {
                 <div className="home-second-section-right-side-content mt-10 mb-2">
                   <VerticalAd
                     adClass={""}
-                    slot={"story_top_right_vertically_long_300*500"}
+                    slot={"home_top_right_vertically_long_300*500"}
                   />
                 </div>
               </div>
@@ -387,7 +387,7 @@ export default function Home() {
                  
                   <VerticalAd
                     adClass={""}
-                    slot={"story_top_right_vertically_long_300*500"}
+                    slot={"story_top_right_vertically_long_2_300*500"}
                   />
                 </div>
               </div>
