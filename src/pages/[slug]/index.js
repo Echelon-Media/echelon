@@ -158,7 +158,7 @@ function Post({ post, type }) {
           <meta property="og:image:height" content="400" />
           <meta property="og:image:type" content="image/jpg" />
           {/* <!-- Twitter Meta Tags --> */}
-          <meta property="twitter:domain" content="neonmedia.lk" />
+          <meta property="twitter:domain" content="echelon.lk" />
           <meta property="twitter:url" content={postUrl} />
           <meta name="twitter:title" content={ogTitile} />
           <meta name="twitter:description" content={metaDesc} />
