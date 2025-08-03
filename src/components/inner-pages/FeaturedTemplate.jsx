@@ -178,8 +178,8 @@ const Featured = ({
     const rightContainerRef1 = useRef(null);
     const leftContainerRef2 = useRef(null);
     const rightContainerRef2 = useRef(null);
-  
-  
+
+
     const debounce = (func, delay) => {
       let timer;
       return function (...args) {
@@ -187,19 +187,19 @@ const Featured = ({
         timer = setTimeout(() => func.apply(this, args), delay);
       };
     };
-  
+
     useEffect(() => {
       const updateHeights = () => {
         if (window.innerWidth > 768) {
           const pairs = [
             [leftContainerRef1, rightContainerRef1],
             [leftContainerRef2, rightContainerRef2],
-          
+
           ];
-  
+
           pairs.forEach((pair) => {
             const [leftRef, rightRef] = pair;
-  
+
             if (leftRef.current && rightRef.current) {
               const leftHeight = leftRef.current.offsetHeight;
               rightRef.current.style.height = `${leftHeight}px`;
@@ -209,7 +209,7 @@ const Featured = ({
           const rightContainers = [
             rightContainerRef1,
           ];
-  
+
           rightContainers.forEach((rightRef) => {
             if (rightRef.current) {
               rightRef.current.style.height = "auto";
@@ -217,23 +217,23 @@ const Featured = ({
           });
         }
       };
-  
+
       const debouncedUpdateHeights = debounce(updateHeights, 50);
-  
+
       updateHeights();
-  
+
       window.addEventListener("resize", debouncedUpdateHeights);
       window.addEventListener("scroll", debouncedUpdateHeights);
-  
+
       return () => {
         window.removeEventListener("resize", debouncedUpdateHeights);
         window.removeEventListener("scroll", debouncedUpdateHeights);
       };
     }, []);
-  
-  
-  
-  
+
+
+
+
 
   return (
     <>
@@ -311,7 +311,7 @@ const Featured = ({
                 <></>
               )}
 
-              <div style={paragraphStyle}>
+              <div style={paragraphStyle} className="w-full overflow-x-scroll lg:overflow-x-hidden max-w-[100vw] ">
                 <div className="date-byline ">
                   {authorId ? (
                     <>
@@ -323,7 +323,7 @@ const Featured = ({
                   )}
                 </div>
                 <div
-                  className="body-font"
+                  className="body-font overflow-x-scroll lg:overflow-x-hidden w-full max-w-[100vw]"
                   dangerouslySetInnerHTML={{ __html: content }}
                 ></div>
               </div>
@@ -349,7 +349,7 @@ const Featured = ({
             slot={"story_top_right_vertically_long_300*500"}
           />
         </div>
-        
+
         </div>
       </div>
         </div>
