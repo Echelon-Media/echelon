@@ -2,7 +2,7 @@
  * @file Home Page Component - Echelon Magazine Homepage
  * @description Main landing page for Echelon website, Display news articles,
  *              banners, carousels, ads , and branded content using Next.js ISR
- * @author vihanga Mallawaarachchi 
+ * @author vihanga Mallawaarachchi
  */
 
 
@@ -24,7 +24,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 /**
  * @setup fontawesome
- * 
+ *
  */
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -32,9 +32,9 @@ config.autoAddCss = false;
 
 /**
  * @import apicall functions
- * 
+ *
  */
-import { getAdvertorials, getBrandedPicks, getEditorials } from "./api/api";
+import { getAdvertorials, getBrandedPicks, getEditorials, getTopStories } from "./api/api";
 
 /**
  * @import components
@@ -59,28 +59,29 @@ const ScrollToTop = dynamic(() => import("@/components/story-components/ScrollTo
 const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
 
 /**
- * 
+ *
  * @returns Fetch data at build time using ISR ( Incremental static Regeneration )
- * @reference https://nextjs.org/docs/app/guides/incremental-static-regeneration 
+ * @reference https://nextjs.org/docs/app/guides/incremental-static-regeneration
  * ( Hi, before you work ISR please go through the documentation )
  * @returns {Object} Props containing fetched editorials, branded, and advertorial content.
  */
 export async function getStaticProps() {
-  
+
   console.log("get static Props is running at ", new Date().toISOString()); //remove this once the testing is over
 
   try {
     // API call execution
-    const [editorialData, brandedData, brandedPicks] = await Promise.all([
+    const [editorialData, brandedData, brandedPicks, topStoryPosts] = await Promise.all([
       getEditorials(),
       getAdvertorials(),
       getBrandedPicks(),
+      getTopStories(),
     ]);
 
     // Filter outvideo posts and prioritize top stories
     const nonVideoPosts = editorialData.filter((post) => post.type !== "videos");
     const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
-    const firstThreePosts = topPosts.length ? topPosts.slice(0, 3) : nonVideoPosts.slice(0, 3);
+    const firstThreePosts = topStoryPosts.length ? topStoryPosts : nonVideoPosts.slice(0, 3);
     const restOfEditorials = nonVideoPosts.filter((post) => !firstThreePosts.includes(post));
 
     // Mix editorials  and edvetorials in chunk of 2 each
@@ -93,6 +94,11 @@ export async function getStaticProps() {
       );
     }
 
+    // console.log(editorialData);
+    // console.log("=======================================================")
+    // console.log(brandedData)
+    // console.log("=======================================================")
+    // console.log(brandedPicks)
     return {
       props: {
         initialBannerPosts: firstThreePosts.concat(brandedPicks[0] || []),
@@ -124,13 +130,13 @@ export async function getStaticProps() {
  * Main Homepage Component
  * Display banners, articles , ads, carousels, and navigation.
  * Uses client-side effects for layout adjustments and ad scripts.
- * @param {*initialBannerPosts} param0 
+ * @param {*initialBannerPosts} param0
  * @param {*initialEditorials} params1
  * @param {*initialAdvertorials} param2
  * @param {*initialHomepagePosts1} param3
  * @param {*initialHomepagePosts2} param4
  * @param {*initialHomepagePosts3} param5
- * 
+ *
  * @returns HomePage UI
  */
 export default function Home({
@@ -239,7 +245,7 @@ export default function Home({
   //const [advertorials, setAdvertorials] = useState(initialAdvertorials);
   // const [homepagePosts, setHomepagePosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   // useEffect(() => {
   //   let isMounted = true;
   //   async function fetchInitialData() {
@@ -300,7 +306,7 @@ export default function Home({
   // intergration test update testing
   //testing
 
-  
+
 
   // useEffect(() => {
   //   const updateHeights = () => {
@@ -492,7 +498,7 @@ export default function Home({
           >
             <div className="home-second-section-right-side-content">
               {/* <div className="ad-box">
-        
+
         Ad Content
       </div> */}
               <VerticalAd
@@ -562,8 +568,8 @@ export default function Home({
 
       {/* Footer */}
       <Footer />
-      
-      
+
+
     </>
   );
 }
@@ -640,7 +646,7 @@ export default function Home({
               >
                 <div className="home-second-section-right-side-content">
                   {/* <div className="ad-box">
-           
+
             Ad Content
           </div> }
                   <VerticalAd
