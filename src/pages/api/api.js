@@ -1,3 +1,4 @@
+// @ts-nocheck
 // @ts-ignore
 import axios from "axios";
 
@@ -99,8 +100,37 @@ async function fetchData(endpoint) {
   }
 }
 
+export async function getTopStories() {
+  try {
+    const response = await axios.get(`${LIVE_BASE_URL2}top-stories`, {
+      headers: {
+        Authorization: jwtAuth,
+      },
+    });
+
+    const stories = response.data;
+
+    if (!Array.isArray(stories) || stories.length === 0) {
+      console.warn("No top stories returned");
+      return [];
+    }
+
+    // Return directly, since API gives complete article info already
+    return stories;
+  } catch (error) {
+    console.error("Error fetching top stories:", error.response?.data || error.message);
+    return [];
+  }
+}
+
+
+
 export async function getEditorials() {
   return fetchData("editorials");
+}
+
+export async function getTopBannerPosts() {
+  return fetchData("banner-posts");
 }
 
 export async function getAdvertorials() {
@@ -566,7 +596,7 @@ export async function getProfile(slug) {
       }
     );
     // console.log('profile data',response.data);
-    
+
     return response.data;
   } catch (error) {
     console.log("error fetching data", error);
