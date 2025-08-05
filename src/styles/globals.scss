@@ -621,8 +621,8 @@ nav {
 
 
 .section-container {
-  
-  min-height: 150vh; // 
+
+  min-height: 150vh; //
 
   .home-second-section-right-main-wrapper {
     grid-column: 40%;
@@ -653,7 +653,7 @@ nav {
     text-align: left;
     width: 65%;
 
-    
+
   }
 }
 
@@ -1538,16 +1538,18 @@ p strong {
 
 .featured-container {
   display: flex;
+  flex: content;
+  
   margin: 0% 34% 0 11%;
 
   .home-second-section-left-side-container {
     margin-top: 0%;
     width: 85%;
-    
+
   }
 
   .home-second-section-right-main-wrapper{
-    
+
   }
 }
 
@@ -2295,15 +2297,15 @@ p strong {
   .featured-container {
     display: flex;
     margin: 0% 34% 0 11%;
-  
+
     .home-second-section-left-side-container {
       margin-top: 0%;
       width: 90%;
-      
+
     }
-  
+
     .home-second-section-right-main-wrapper{
-      
+
     }
   }
 }
@@ -2311,7 +2313,7 @@ p strong {
 //******************* MOBILE STYLES *********************//
 @media screen and (max-width: 767px) {
 
- 
+
 
   //notice
   .notice {
@@ -2515,7 +2517,7 @@ p strong {
     margin-left: 0%;
     width: 100% !important;
     max-width: none;
-    
+
 }
 
 // .story-container,.featured-container{
@@ -3889,7 +3891,7 @@ p strong {
   }
 
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -5034,7 +5036,7 @@ p strong {
   }
 
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -5274,7 +5276,7 @@ p strong {
 
   }
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -5907,7 +5909,7 @@ p strong {
     text-align: center;
   }
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -6558,7 +6560,7 @@ p strong {
     text-align: center;
   }
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -7211,7 +7213,7 @@ p strong {
     text-align: center;
   }
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -7732,7 +7734,7 @@ p strong {
     text-align: center;
   }
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -8137,7 +8139,7 @@ p strong {
     text-align: center;
   }
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -8844,7 +8846,7 @@ p strong {
     padding: 1% 16% 0 15%;
   }
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
@@ -9460,7 +9462,7 @@ p strong {
     text-align: center;
   }
 
-  //Video Landing Page 
+  //Video Landing Page
 
   .video-landing-page-page-wrapper {
     width: 100%;
