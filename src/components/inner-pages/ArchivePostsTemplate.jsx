@@ -27,13 +27,12 @@ const Archives = ({
   slug,
   authorId,
 }) => {
-  // ✅ Safely parse date with explicit format
+
   const d = moment(date, "MMM D, YYYY", true);
   const formattedDate = d.isValid() ? d.format("YYYY/MM/DD") : "Invalid Date";
 
   const [updateComplete, setUpdateComplete] = useState(false);
 
-  // ✅ Fix: Define missing ref
   const rightContainerRef1 = useRef(null);
 
   // Handle first load
@@ -63,7 +62,6 @@ const Archives = ({
     return () => clearTimeout(timer);
   }, [postId, updateComplete]);
 
-  // ✅ Preserve mobile image logic
   const mobileImage = verticalImageUrl || imageUrl;
 
   return (
