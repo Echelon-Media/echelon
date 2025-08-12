@@ -417,18 +417,54 @@ const SearchPage = () => {
       {showPagination && (
         <div className="flex justify-center my-10">
           <div className=" shadow-lg border  rounded-full px-6 py-3 flex items-center gap-4">
-            <button className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition">
+            <button className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition" onClick={goToPrevPage}>
               Prev
             </button>
             <span className="font-medium">
               Page {currentPage} of {totalPages}
             </span>
-            <button className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition">
+            <button className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition" onClick={goToNextPage}>
               Next
             </button>
           </div>
         </div>
       )}
+
+        {/* {showPagination && (
+      <div className="w-full bg-white shadow-md p-4 rounded-lg">
+        <div className="flex flex-col gap-3">
+          <button
+            onClick={goToPrevPage}
+            disabled={currentPage === 1}
+            className={`px-4 py-2 w-full rounded-lg font-medium transition ${
+              currentPage === 1
+                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+            }`}
+            aria-label="Previous page"
+          >
+            Previous
+          </button>
+
+          <div className="text-center text-gray-700 font-semibold">
+            Page {currentPage} of {totalPages}
+          </div>
+
+          <button
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages}
+            className={`px-4 py-2 w-full rounded-lg font-medium transition ${
+              currentPage === totalPages
+                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+            }`}
+            aria-label="Next page"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    )} */}
 
       <Footer />
     </>
