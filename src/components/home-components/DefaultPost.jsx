@@ -17,7 +17,7 @@ const DefaultPost = ({
 }) => {
   const categorySlug = category?.toString().replace(/\s+/g, "-").toLowerCase();
   return (
-    <>
+    <section className="w-full max-w-[800px] bg-black">
       <div className="bg-white text-gray-700 hover:text-black overflow-hidden defaultpost-mobile mb-2 border-b-2">
         <div className="row flex ">
           <div
@@ -114,7 +114,7 @@ const DefaultPost = ({
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
