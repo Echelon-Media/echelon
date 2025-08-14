@@ -89,11 +89,12 @@ export async function getStaticProps() {
 
     // Mix editorials  and edvetorials in chunk of 2 each
     const homepagePosts = [];
-    const minLength = Math.min(restOfEditorials.length, branded_content.length);
+    const minLength = Math.min(restOfEditorials.length, brandedData.length);
     for (let i = 0; i < minLength; i += 2) {
       homepagePosts.push(
         ...restOfEditorials.slice(i, i + 2),
-        ...branded_content.slice(i, i + 2)
+        ...branded_content.slice(i, i + 2),
+        ...brandedData.slice(i, i + 2)
       );
     }
 
