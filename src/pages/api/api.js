@@ -28,7 +28,8 @@ const refreshJwtToken = async () => {
 
     // Assuming the response contains a new access token
     const newToken = refreshResponse.data.token;
-    // console.log(`Token is ${newToken}`);
+
+     //console.log(`Token is ${newToken}`);
 
     // Update jwtAuth with the new token
     jwtAuth = `Bearer ${newToken}`;
@@ -79,7 +80,7 @@ export async function getPosts() {
 }
 
 // @ts-ignore
-async function fetchData(endpoint) {
+export async function fetchData(endpoint) {
   try {
     const response = await axios.get(`${LIVE_BASE_URL2}${endpoint}`, {
       headers: {
@@ -333,8 +334,59 @@ export async function getCategoryPosts(categoryslug, pageNumber) {
     return categoryPosts.data;
   } catch (error) {
     console.log("Error fetching Category posts data", error);
+    return { results: [] };
   }
 }
+
+export async function getAdvertorials2() {
+try {
+    const response = await axios.get(`https://backend.echelon.lk/wp-json/custom/v1/category-posts?category=brand-voice&page=1`, {
+      headers: {
+        Authorization: jwtAuth,
+      },
+    });
+    return response.data?.results || [];
+  } catch (error) {
+    // @ts-ignore
+    if (error.response && error.response.status === 401) {
+      // Token refresh logic
+      await refreshJwtToken();
+      // Retry request after token refresh
+      return getAdvertorials2();
+    } else {
+      throw error;
+    }
+  }
+
+  //const response = await getCategoryPosts('brand-voice', 2); // <-- add await
+}
+
+// export async function fetchData(endpoint) {
+//   try {
+//     const response = await axios.get(`${LIVE_BASE_URL2}${endpoint}`, {
+//       headers: {
+//         Authorization: jwtAuth,
+//       },
+//     });
+//     if( endpoint === "category-posts?category=brand-voice&page=1"){
+//       console.log('this is the fuck : ',response)
+//       return response
+//     }else {
+//       return response.data.results;
+//     }
+//   } catch (error) {
+//     // @ts-ignore
+//     if (error.response && error.response.status === 401) {
+//       // Token refresh logic
+//       await refreshJwtToken();
+//       // Retry request after token refresh
+//       return fetchData(endpoint);
+//     } else {
+//       throw error;
+//     }
+//   }
+// }
+
 
 // Branded picks
 
