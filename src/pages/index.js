@@ -34,7 +34,7 @@ config.autoAddCss = false;
  * @import apicall functions
  *
  */
-import { getAdvertorials, getBrandedPicks, getEditorials, getTopStories } from "./api/api";
+import { getAdvertorials, getAdvertorials2, getBrandedPicks, getEditorials, getTopStories } from "./api/api";
 
 /**
  * @import components
@@ -71,26 +71,29 @@ export async function getStaticProps() {
 
   try {
     // API call execution
-    const [editorialData, brandedData, brandedPicks, topStoryPosts] = await Promise.all([
+    const [editorialData, brandedData, brandedPicks, topStoryPosts, branded_content] = await Promise.all([
       getEditorials(),
       getAdvertorials(),
       getBrandedPicks(),
       getTopStories(),
+      getAdvertorials2()
     ]);
+
+    console.log("Branded Data Count:", branded_content.length, branded_content);
 
     // Filter outvideo posts and prioritize top stories
     const nonVideoPosts = editorialData.filter((post) => post.type !== "videos");
     const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
-    const firstThreePosts = topStoryPosts.length ? topStoryPosts : nonVideoPosts.slice(0, 3);
+    const firstThreePosts = topStoryPosts.length ? topStoryPosts : topPosts.slice(0, 3);
     const restOfEditorials = nonVideoPosts.filter((post) => !firstThreePosts.includes(post));
 
     // Mix editorials  and edvetorials in chunk of 2 each
     const homepagePosts = [];
-    const minLength = Math.min(restOfEditorials.length, brandedData.length);
+    const minLength = Math.min(restOfEditorials.length, branded_content.length);
     for (let i = 0; i < minLength; i += 2) {
       homepagePosts.push(
         ...restOfEditorials.slice(i, i + 2),
-        ...brandedData.slice(i, i + 2)
+        ...branded_content.slice(i, i + 2)
       );
     }
 
@@ -103,7 +106,7 @@ export async function getStaticProps() {
       props: {
         initialBannerPosts: firstThreePosts.concat(brandedPicks[0] || []),
         initialEditorials: restOfEditorials,
-        initialAdvertorials: brandedData,
+        initialAdvertorials: branded_content,
         initialHomepagePosts1: homepagePosts.slice(0, 20),
         initialHomepagePosts2: homepagePosts.slice(20, 40),
         initialHomepagePosts3: homepagePosts.slice(40, 60),
