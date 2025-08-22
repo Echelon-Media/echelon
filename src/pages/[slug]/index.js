@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import moment from "moment";
@@ -29,6 +29,11 @@ const BrandedVideo = dynamic(() =>
 
 
 function Post({ post, type }) {
+
+  useEffect(() => {
+    console.log('post : ', post)
+    console.log('type', type)
+  })
 
   const router = useRouter();
   if (post == null) {
@@ -165,7 +170,7 @@ function Post({ post, type }) {
           <meta name="twitter:image" content={ogImage} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:image:alt" content={ogTitile} />
-          
+
         </Head>
         {post.type == "branded" || post.type == "brandedvideos" ? (
           <></>

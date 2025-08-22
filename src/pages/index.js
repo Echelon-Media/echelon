@@ -79,7 +79,7 @@ export async function getStaticProps() {
       getAdvertorials2()
     ]);
 
-    console.log("Branded Data Count:", branded_content.length, branded_content);
+    console.log("Branded Data Count:", brandedPicks.length, brandedPicks);
 
     // Filter outvideo posts and prioritize top stories
     const nonVideoPosts = editorialData.filter((post) => post.type !== "videos");
@@ -93,7 +93,7 @@ export async function getStaticProps() {
     for (let i = 0; i < minLength; i += 2) {
       homepagePosts.push(
         ...restOfEditorials.slice(i, i + 2),
-        ...branded_content.slice(i, i + 2),
+        ...brandedPicks.slice(i, i + 2),
         ...brandedData.slice(i, i + 2)
       );
     }
@@ -107,7 +107,7 @@ export async function getStaticProps() {
       props: {
         initialBannerPosts: firstThreePosts.concat(brandedPicks[0] || []),
         initialEditorials: restOfEditorials,
-        initialAdvertorials: branded_content,
+        initialAdvertorials: brandedPicks,
         initialHomepagePosts1: homepagePosts.slice(0, 20),
         initialHomepagePosts2: homepagePosts.slice(20, 40),
         initialHomepagePosts3: homepagePosts.slice(40, 60),
