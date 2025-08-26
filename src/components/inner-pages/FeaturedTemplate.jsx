@@ -323,7 +323,7 @@ const Featured = ({
                   )}
                 </div>
                 <div
-                  className="body-font overflow-x-scroll lg:overflow-x-hidden w-full max-w-[100vw]"
+                  className="body-font overflow-x-scroll lg:overflow-x-hidden w-full max-w-[100vw] py-6"
                   dangerouslySetInnerHTML={{ __html: content }}
                 ></div>
               </div>
