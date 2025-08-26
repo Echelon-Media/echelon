@@ -231,7 +231,7 @@ const SearchPage = () => {
       </Head>
 
       <nav className="w-full py-4 md:py-8 bg-[#0f0f0f]/90 backdrop-blur-md border-b border-white/10 sticky top-0 z-50 shadow-lg">
-        <div className="max-w-[1366px] w-full md:mx-auto flex flex-col sm:flex-row justify-between items-center px-4">
+        <div className="max-w-[1440px] w-full md:mx-auto flex flex-col sm:flex-row justify-between items-center px-4">
           {/* Logo */}
           <div className="flex items-center group">
             <Link href={"/"}>
@@ -279,9 +279,9 @@ const SearchPage = () => {
         </div>
       </nav>
 
-      <section className="max-w-[1366px] mx-auto flex flex-col lg:flex-row items-start justify-between px-4 min-h-[80vh] gap-6 py-8">
+      <section className="w-full max-w-[1440px] mx-auto overflow-hidden pr-16 2xl:px-0 flex flex-col xl:flex-row items-start justify-between px-4 md:px-6 lg:px-8 min-h-[80vh] gap-6 py-6 md:py-8">
         {/* Left Side - Search Results */}
-        <div className="flex-1 mt-2">
+        <div className="flex justify-center xl:justify-start w-full min-w-[0] mt-2">
           {loading && (
             <div className="mb-4 text-sm text-gray-600">Searching...</div>
           )}
@@ -322,149 +322,49 @@ const SearchPage = () => {
         </div>
 
         {/* Right Side - Sticky Ad + Pagination */}
-        <aside className="hidden lg:block w-[320px] mt-2">
+        <aside className="hidden xl:block w-full max-w-[300px] xl:max-w-[350px] mt-2 overflow-hidden ">
           <div className="sticky top-20 flex flex-col items-center gap-6">
-            <div className="w-full">
-              <VerticalAd
-                adClass=""
-                slot="home_top_right_vertically_long_300*500"
-              />
-            </div>
-
-            {/* {showPagination && (
-      <div className="w-full bg-white shadow-md p-4 rounded-lg">
-        <div className="flex flex-col gap-3">
-          <button
-            onClick={goToPrevPage}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 w-full rounded-lg font-medium transition ${
-              currentPage === 1
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-            }`}
-            aria-label="Previous page"
-          >
-            Previous
-          </button>
-
-          <div className="text-center text-gray-700 font-semibold">
-            Page {currentPage} of {totalPages}
-          </div>
-
-          <button
-            onClick={goToNextPage}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 w-full rounded-lg font-medium transition ${
-              currentPage === totalPages
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-            }`}
-            aria-label="Next page"
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    )} */}
+            <VerticalAd
+              adClass="w-full"
+              slot="home_top_right_vertically_long_300*500"
+            />
           </div>
         </aside>
       </section>
 
       {/* Mobile / small screens: show ad + pagination below content so they're always accessible */}
-      <div className="lg:hidden max-w-[1366px] mx-auto px-4 pb-8">
+      <div className="hidden w-full max-w-[1366px] mx-auto px-4 pb-8">
         <div className="w-full mb-6">
           <VerticalAd
-            adClass=""
+            adClass="w-full"
             slot="home_top_right_vertically_long_300*500"
           />
         </div>
 
-        {showPagination && (
-          <div className="w-full flex items-center justify-between gap-4">
-            <button
-              onClick={goToPrevPage}
-              disabled={currentPage === 1}
-              className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${
-                currentPage === 1
-                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-              }`}
-              aria-label="Previous page"
-            >
-              Previous
-            </button>
-
-            <div className="text-gray-700 font-semibold whitespace-nowrap">
-              {currentPage} / {totalPages}
-            </div>
-
-            <button
-              onClick={goToNextPage}
-              disabled={currentPage === totalPages}
-              className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${
-                currentPage === totalPages
-                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-              }`}
-              aria-label="Next page"
-            >
-              Next
-            </button>
-          </div>
-        )}
       </div>
+
       {/* Pagination - bottom center */}
       {showPagination && (
-        <div className="flex justify-center my-10">
-          <div className=" shadow-lg border  rounded-full px-6 py-3 flex items-center gap-4">
-            <button className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition" onClick={goToPrevPage}>
+        <div className="flex justify-center my-10 px-4">
+          <div className="shadow-lg border rounded-full px-4 sm:px-6 py-2 sm:py-3 flex items-center gap-2 sm:gap-4 text-sm sm:text-base">
+            <button
+              className="px-2 sm:px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition"
+              onClick={goToPrevPage}
+            >
               Prev
             </button>
             <span className="font-medium">
               Page {currentPage} of {totalPages}
             </span>
-            <button className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition" onClick={goToNextPage}>
+            <button
+              className="px-2 sm:px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition"
+              onClick={goToNextPage}
+            >
               Next
             </button>
           </div>
         </div>
       )}
-
-        {/* {showPagination && (
-      <div className="w-full bg-white shadow-md p-4 rounded-lg">
-        <div className="flex flex-col gap-3">
-          <button
-            onClick={goToPrevPage}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 w-full rounded-lg font-medium transition ${
-              currentPage === 1
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-            }`}
-            aria-label="Previous page"
-          >
-            Previous
-          </button>
-
-          <div className="text-center text-gray-700 font-semibold">
-            Page {currentPage} of {totalPages}
-          </div>
-
-          <button
-            onClick={goToNextPage}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 w-full rounded-lg font-medium transition ${
-              currentPage === totalPages
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-            }`}
-            aria-label="Next page"
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    )} */}
 
       <Footer />
     </>

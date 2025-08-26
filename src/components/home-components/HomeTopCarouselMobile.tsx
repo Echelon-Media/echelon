@@ -104,6 +104,7 @@ export default function TopCarouselMobiles({ bannerPosts }: Props) {
           swiperRef.current = swiper;
         }}
       >
+        
         {bannerPosts.map((post, index) => (
           <SwiperSlide key={index}>
             <div className="home-top-carousel-mobile-featured-image">

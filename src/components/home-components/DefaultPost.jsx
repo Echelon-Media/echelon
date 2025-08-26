@@ -54,16 +54,19 @@ const DefaultPost = ({
                   ?.replace(/(^|\.\s+)([a-z])/g, (match) => match)}
               </h2>
 
-              <div
-                className="home-strap-line"
-                dangerouslySetInnerHTML={{
-                  __html: strapline
-                    ?.replace(/&#8217;/g, "'")
-                    .replace(/&#038;/g, "&")
-                    .replace(/&#8211;/g, "-")
-                    ?.replace(/(^|\.\s+)([a-z])/g, (match) => match),
-                }}
-              ></div>
+             <div
+  className="home-strap-line text-sm md:text-base text-gray-600 leading-relaxed"
+  dangerouslySetInnerHTML={{
+    __html: (strapline || "")
+      .replace(/&#8217;/g, "'")        // Right single quote → '
+      .replace(/&#038;/g, "&")         // Ampersand → &
+      .replace(/&#8211;/g, "-")         // En dash → -
+      .replace(/&#8220;/g, '"')         // Left double quote → "
+      .replace(/&#8221;/g, '"')         // Right double quote → "
+      .replace(/&#039;/g, "'")          // Apostrophe → '
+      .trim(),
+  }}
+/>
             </Link>
           </div>
 
