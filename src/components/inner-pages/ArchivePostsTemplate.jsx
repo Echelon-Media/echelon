@@ -27,21 +27,19 @@ const Archives = ({
   slug,
   authorId,
 }) => {
-
   const d = moment(date, "MMM D, YYYY", true);
   const formattedDate = d.isValid() ? d.format("YYYY/MM/DD") : "Invalid Date";
 
   const [updateComplete, setUpdateComplete] = useState(false);
-
   const rightContainerRef1 = useRef(null);
 
   // Handle first load
   useEffect(() => {
     if (localStorage.getItem("firstLoadDone") === null) {
       localStorage.setItem("firstLoadDone", "1");
-      console.log("This is the initial load");
+      console.log("Initial load");
     } else {
-      console.log("This is a page refresh");
+      console.log("Page refresh");
     }
   }, []);
 
@@ -53,7 +51,6 @@ const Archives = ({
       try {
         await updatePostviews({ postId });
         setUpdateComplete(true);
-        console.log("Post view updated successfully");
       } catch (error) {
         console.error("Error updating post view count:", error);
       }
@@ -62,6 +59,7 @@ const Archives = ({
     return () => clearTimeout(timer);
   }, [postId, updateComplete]);
 
+  // Use vertical image for mobile if available
   const mobileImage = verticalImageUrl || imageUrl;
 
   return (
@@ -69,112 +67,114 @@ const Archives = ({
       <Head>
         <title>{title}</title>
         <meta name="description" content={excerpt} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <Navbar />
 
-      {/* Featured Image Container */}
-      <div className="featured-image-container">
-        {/* Mobile Image (hidden on desktop) */}
-        <div className="mobile-image-and-caption hidden">
+      {/* Featured Image */}
+      <div className="relative w-full overflow-hidden bg-gray-100">
+        {/* Mobile Image */}
+        <div className="md:hidden w-full aspect-[4/5]">
           <Image
-            className="featured-page-image"
             src={mobileImage}
             alt={title}
-            width={1200}
-            height={1650}
+            fill
+            className="object-cover"
             priority
           />
         </div>
 
         {/* Desktop Image */}
-        <Image
-          className="featured-page-image featured-desktop-image"
-          src={imageUrl}
-          alt={title}
-          width={2480}
-          height={1395}
-          priority
-        />
+        <div className="hidden md:block w-full aspect-[16/9] max-h-[600px]">
+          <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
 
-      {/* Headline Container */}
-      <div className="featured-headline-container">
-        <div>
-          <div style={{ display: "flex", paddingTop: "2%" }}>
-            <span className="story-date">{date}</span>
+      {/* Headline & Metadata */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 py-6">
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
+            <span>{date}</span>
             {categoryId && (
               <>
-                <span style={{ margin: "-0.10% 1% 0" }}>|</span>
+                <span>|</span>
                 <CategoryLink categoryId={categoryId} />
               </>
             )}
           </div>
 
-          <h1 className="story-headline titlefont">{title}</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            {title}
+          </h1>
 
-          <h6
-            className="story-strapline featured-strap"
+          <div
+            className="text-base md:text-lg text-gray-600 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: excerpt }}
-          ></h6>
+          />
         </div>
       </div>
 
       {/* Main Content Layout */}
-      <div className="flex items-start justify-between max-w-[1500px] mx-auto">
-        {/* Left Side: Article Content */}
-        <div className="min-w-[50%] w-full max-w-[900px]">
-          <div className="story-post-content">
-            {/* Desktop Share Icons */}
-            <div style={{ position: "relative", marginTop: "3%" }}>
+      <div className="max-w-6xl mx-auto px-4 md:px-6 pb-12">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Article Content */}
+          <div className="flex-1 min-w-0">
+            {/* Share Buttons (Sticky on desktop) */}
+            <div className="sticky top-24 mb-6 max-w-sm">
               <PostShare slug={slug} title={title} excerpt={excerpt} />
             </div>
 
-            {/* Author & Content */}
-            <div style={{ marginLeft: "5%" }}>
-              <div className="date-byline">
-                {authorId && <Author authorId={authorId} />}
+            {/* Author */}
+            {authorId && (
+              <div className="mb-6 border-t pt-6">
+                <Author authorId={authorId} />
               </div>
-              <div
-                className="body-font"
-                dangerouslySetInnerHTML={{ __html: content }}
-              ></div>
-            </div>
-          </div>
-        </div>
+            )}
 
-        {/* Right Side: Sidebar */}
-        <div
-          className="home-second-section-right-side-container"
-          ref={rightContainerRef1}
-        >
-          {/* Most Popular Header */}
-          <div className="home-popular-header-wrapper">
-            <h2
-              className="text-xl text-black home-popular-header homepage-popular"
-              style={{ color: "black !important" }}
-            >
-              Most Popular
-            </h2>
-          </div>
-
-          {/* Most Popular Posts List */}
-          <PostList />
-
-          {/* Vertical Ad */}
-          <div className="home-second-section-right-side-content mt-10 mb-2">
-            <VerticalAd
-              adClass=""
-              slot="story_top_right_vertically_long_300*500"
+            {/* Article Body */}
+            <div
+              className="body-font text-base md:text-lg text-gray-800 leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: content }}
             />
+          </div>
+
+          {/* Sidebar (Hidden on mobile) */}
+          <div className="lg:w-80 lg:flex-shrink-0 lg:sticky lg:top-24">
+            <div className="space-y-6">
+              {/* Most Popular */}
+              <div>
+                <h2 className="text-xl font-semibold text-gray-900 mb-4">Most Popular</h2>
+                <PostList limit={5} />
+              </div>
+
+              {/* Vertical Ad */}
+              <div className="mt-8">
+                <VerticalAd
+                  adClass="w-full"
+                  slot="story_top_right_vertically_long_300*500"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Related Stories */}
-      <StoryBottomList category_id={categoryId} />
+      {/* Related Stories (Full Width) */}
+      <div className="bg-gray-50 py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">You May Also Like</h2>
+          <StoryBottomList category_id={categoryId} limit={3} />
+        </div>
+      </div>
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top */}
       <ScrollToTop />
 
       {/* Footer */}
