@@ -10,10 +10,10 @@ const HomeBrandedPicksDesktop = () => {
     async function FetchBrandedPicks() {
       try {
         const results = await getBrandedPicks();
-        // console.log("branded desktop", results);
+        console.log("branded desktop", results);
 
-        if (results && results.length >= 5) {
-          const slicedResults = results.slice(1, 6);
+        if (results && results.length >= 0) {
+          const slicedResults = results.slice(0, results.length +1);
           // console.log("branded desktop", slicedResults);
           setBrandVoicePicks(slicedResults);
         }
@@ -30,7 +30,7 @@ const HomeBrandedPicksDesktop = () => {
         <div key={index} className="home-brand-voice-pick-component-wrapper-desktop">
           <div className="home-brand-voice-pick-content-desktop">
             <Image
-              src={brandVoicePick?.vertical_image}
+              src={brandVoicePick?.vertical_image.trim()}
               alt={brandVoicePick?.title}
               layout="fill"
               objectFit="cover"
