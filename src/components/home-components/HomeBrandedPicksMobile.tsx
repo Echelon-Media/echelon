@@ -25,8 +25,8 @@ const HomeBrandedPicksMobile = () => {
         async function fetchBrandedPicks() {
             try {
                 const results = await getBrandedPicks();
-                if (results && results.length >= 5) {
-                    const slicedResults = results.slice(1, 6);
+                if (results && results.length >= 0) {
+                    const slicedResults = results.slice(0, results.length + 1);
                     setBrandedPicks(slicedResults);
                 }
             } catch (error) {
