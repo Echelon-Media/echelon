@@ -66,11 +66,9 @@ const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
  * @returns {Object} Props containing fetched editorials, branded, and advertorial content.
  */
 export async function getStaticProps() {
-
-  console.log("get static Props is running at ", new Date().toISOString()); //remove this once the testing is over
+  console.log("get static Props is running at ", new Date().toISOString());
 
   try {
-    // API call execution
     const [editorialData, brandedData, brandedPicks, topStoryPosts, branded_content] = await Promise.all([
       getEditorials(),
       getAdvertorials(),
@@ -79,15 +77,13 @@ export async function getStaticProps() {
       getAdvertorials2()
     ]);
 
-    console.log("Branded Data Count:", brandedPicks.length, brandedPicks);
-
-    // Filter outvideo posts and prioritize top stories
+    // Filter out video posts and prioritize top stories
     const nonVideoPosts = editorialData.filter((post) => post.type !== "videos");
     const topPosts = nonVideoPosts.filter((post) => post.is_a_top_story);
     const firstThreePosts = topStoryPosts.length ? topStoryPosts : topPosts.slice(0, 3);
     const restOfEditorials = nonVideoPosts.filter((post) => !firstThreePosts.includes(post));
 
-    // Mix editorials  and edvetorials in chunk of 2 each
+    // Mix content in chunks
     const homepagePosts = [];
     const minLength = Math.min(restOfEditorials.length, brandedData.length);
     for (let i = 0; i < minLength; i += 2) {
@@ -98,21 +94,29 @@ export async function getStaticProps() {
       );
     }
 
-    // console.log(editorialData);
-    // console.log("=======================================================")
-    // console.log(brandedData)
-    // console.log("=======================================================")
-    // console.log(brandedPicks)
+    // ✅ DEDUPLICATE by ID — this is the key fix
+    const seenIds = new Set();
+    const deduplicatedPosts = [];
+    for (const post of homepagePosts) {
+      if (!seenIds.has(post.ID)) {
+        seenIds.add(post.ID);
+        deduplicatedPosts.push(post);
+      }
+    }
+
+    // Now safely slice the cleaned array
+    console.log('Deduplicated posts:', deduplicatedPosts.slice(0, 20));
+
     return {
       props: {
         initialBannerPosts: firstThreePosts.concat(brandedPicks[0] || []),
         initialEditorials: restOfEditorials,
         initialAdvertorials: brandedPicks,
-        initialHomepagePosts1: homepagePosts.slice(0, 20),
-        initialHomepagePosts2: homepagePosts.slice(20, 40),
-        initialHomepagePosts3: homepagePosts.slice(40, 60),
+        initialHomepagePosts1: deduplicatedPosts.slice(0, 20),
+        initialHomepagePosts2: deduplicatedPosts.slice(20, 40),
+        initialHomepagePosts3: deduplicatedPosts.slice(40, 60),
       },
-      revalidate: 60, // ⏱ ISR: Regenerate page every 60 seconds
+      revalidate: 60,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
