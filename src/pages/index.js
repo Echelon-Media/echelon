@@ -89,7 +89,6 @@ export async function getStaticProps() {
     for (let i = 0; i < minLength; i += 2) {
       homepagePosts.push(
         ...restOfEditorials.slice(i, i + 2),
-        ...brandedPicks.slice(i, i + 2),
         ...brandedData.slice(i, i + 2)
       );
     }
